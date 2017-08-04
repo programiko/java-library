@@ -7,5 +7,6 @@
    
    <body>
       <p>Checking this page first</p>
+      <p>Strana1</p>
    </body>
 </html>

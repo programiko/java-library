@@ -11,11 +11,11 @@
 
 <br><br>
 
-<a href="url">Admin user page</a>
+<a href="hello/">Admin user page</a>
 
 <br><br>
 
-<a href="url">Regular user page</a>
+<a href="hello/test">Regular user page</a>
 
 </body>
 

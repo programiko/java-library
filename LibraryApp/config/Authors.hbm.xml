@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Aug 3, 2017 10:40:14 PM by Hibernate Tools 5.2.5.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_library" dynamic-insert="false" dynamic-update="false" mutable="true" name="Authors" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="authors">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="surename" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="surename" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="false" lazy="true" mutable="true" name="bookses" optimistic-lock="true" sort="unsorted" table="affiliations">
+            <key on-delete="noaction">
+                <column name="author_id" not-null="true"/>
+            </key>
+            <many-to-many embed-xml="true" entity-name="Books" not-found="exception" unique="false">
+                <column name="book_id" not-null="true"/>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

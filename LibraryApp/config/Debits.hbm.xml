@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Aug 3, 2017 10:40:14 PM by Hibernate Tools 5.2.5.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_library" dynamic-insert="false" dynamic-update="false" mutable="true" name="Debits" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="debits">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="Books" embed-xml="true" fetch="select" insert="true" name="books" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="book_id"/>
+        </many-to-one>
+        <many-to-one class="Members" embed-xml="true" fetch="select" insert="true" name="members" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="member_id"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="dateOfDebit" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="date_of_debit" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="returnDate" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="return_date" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="note" optimistic-lock="true" type="string" unique="false">
+            <column name="note"/>
+        </property>
+    </class>
+</hibernate-mapping>
