@@ -11,7 +11,7 @@
 
 <br><br>
 
-<a href="url">Admin user page</a>
+<a href="${pageContext.request.contextPath}/admin/administrators">Admin user page</a>
 
 <br><br>
 
