@@ -17,6 +17,12 @@
 
 <a href="url">Regular user page</a>
 
+<br><br>
+
+<a href="${pageContext.request.contextPath}/admin/members">Member page</a>
+
+
+
 </body>
 
 </html>
