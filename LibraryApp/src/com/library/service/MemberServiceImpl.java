@@ -2,6 +2,7 @@ package com.library.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,30 +10,23 @@ import com.library.dao.MemberDAO;
 import com.library.model.Member;
 
 @Service
-public class LibraryServiceImpl implements LibraryService {
+public class MemberServiceImpl implements MemberService {
 
+	@Autowired
 	private MemberDAO memberDAO;
-
-	public MemberDAO getMemberDAO() {
-		return memberDAO;
+	
+	public MemberServiceImpl() {
 	}
-
 	public void setMemberDAO(MemberDAO memberDAO) {
 		this.memberDAO = memberDAO;
 	}
 
 	@Override
+	@Transactional
 	public void addMember(Member theMember) {
-		// TODO Auto-generated method stub
-		
+		memberDAO.addMember(theMember);	
 	}
-
-	@Override
-	public void updateMember(Member theMember) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	@Transactional
 	public List<Member> getMembers() {
@@ -40,15 +34,15 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
+	@Transactional
 	public Member getMemberById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return memberDAO.getMemberById(id);
 	}
 
 	@Override
+	@Transactional
 	public void removeMember(int id) {
-		// TODO Auto-generated method stub
-		
+		memberDAO.removeMember(id);
 	}
 
 }

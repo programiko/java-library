@@ -64,7 +64,7 @@
     
     <input type="button" 
     	   value="Add Member" 
-    	   onclick="window.location.href='addMember'; return false;" 
+    	   onclick="window.location.href='showFormForAdd'; return false;" 
     	   class="add-button"/>
     
     <!-- Member table -->    
@@ -78,9 +78,18 @@
             <th width="60">Member Activity</th>
             <th width="60">Member Class</th>
             <th width="120">Action</th>
-        </tr>
+        </tr>        
         <c:if test="${!empty listMembers}">
             <c:forEach var="member" items="${listMembers}">
+        
+        		<!-- Create an update and delete link with member id -->
+       			<c:url var="updateLink" value="/admin/showFormForUpdate">
+       				<c:param name="memberId" value="${member.memberId}"/>
+       			</c:url>       			
+       			<c:url var="deleteLink" value="/admin/delete">
+       				<c:param name="memberId" value="${member.memberId}"/>
+       			</c:url>
+                
                 <tr>
                     <td>${member.memberId}</td>
                     <td>${member.memberName}</td>
@@ -89,7 +98,10 @@
                     <td>${member.memberPhone}</td>
                     <td>${member.memberActivity}</td>
                     <td>${member.memberClass}</td>
-                    <td>Update | Delete</td>
+                    <td><a href="${updateLink}">Update</a> | 
+                    	<a href="${deleteLink}" 
+                    	onclick="if(!(confirm('Are you sure you want to delete this member?'))) return false"
+                    	>Delete</a></td>
                 </tr>
             </c:forEach>
         </c:if>

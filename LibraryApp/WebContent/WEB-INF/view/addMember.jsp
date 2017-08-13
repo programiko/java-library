@@ -5,7 +5,17 @@
 <html>
 	<head>
 		<title>Save Member</title>
-		<style>
+		<style type="text/css">
+		.add-button {
+			border: 1px solid #666; 
+			border-radius: 5px; 
+			padding: 4px; 
+			font-size: 12px;
+			font-weight: bold;
+			width: 120px; 
+			padding: 5px 10px; 		
+			margin-bottom: 15px;
+		}
 		</style>
 	</head>
 	<body>
@@ -14,6 +24,10 @@
 		</div>
 		<div>
 			<form:form action="saveMember" modelAttribute="member" method="POST">
+				
+				<!-- associate this data with member id -->
+				<form:hidden path="memberId"/>
+				
 				<table>
 					<tbody>
 						<tr>
@@ -26,7 +40,7 @@
 						</tr>	
 						<tr>
 							<td>Address: </td>
-							<td><form:textarea path="memberAddress"/></td>
+							<td><form:input path="memberAddress"/></td>
 						</tr>	
 						<tr>
 							<td>Phone: </td>
@@ -40,9 +54,16 @@
 							<td>Class: </td>
 							<td><form:input path="memberClass"/></td>
 						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" value="Save" class="add-button"/></td>
+						</tr>
 					</tbody>
-				</table>
+				</table>				
 			</form:form>
+			<div>
+				<p><a href="${pageContext.request.contextPath}/admin/members">Back to members</a></p>
+			</div>
 		</div>
 	</body>
 </html>

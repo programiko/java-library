@@ -5,8 +5,6 @@ import com.library.model.Member;
 
 public interface MemberDAO {
 	public void addMember(Member theMember);
-	 
-    public void updateMember(Member theMember);
  
     public List<Member> getMembers();
  
