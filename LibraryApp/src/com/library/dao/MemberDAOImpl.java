@@ -60,4 +60,32 @@ public class MemberDAOImpl implements MemberDAO {
 		session.delete(member);
 	}
 
+	
+	@Override
+	public List<Member> searchMember(String theSearchName) {
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+				
+		Query<Member> theQuery = null;
+				
+		//
+		// only search by name if theSearchName is not empty
+		//
+		if (theSearchName != null && theSearchName.trim().length() > 0) {
+
+		// search for firstName or lastName ... case insensitive		
+		theQuery =currentSession.createQuery("from Member where lower(memberName) like "
+				+ ":theName or lower(memberSurename) like :theName", Member.class);
+		theQuery.setParameter("theName", "%" + theSearchName.toLowerCase() + "%");
+		}else{
+			// theSearchName is empty ... so just get all customers
+			theQuery =currentSession.createQuery("from Member", Member.class);			
+		}
+				
+		// execute query and get result list
+		List<Member> members = theQuery.getResultList();
+	
+		return members;
+	}
+
 }

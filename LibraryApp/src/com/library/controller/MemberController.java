@@ -1,5 +1,7 @@
 package com.library.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,6 +64,53 @@ public class MemberController {
     	return "redirect:/admin/members";
     }
     
+    @GetMapping("/viewProfile")
+    public String viewProfile(@RequestParam("memberId") int memberId, Model model) {
+    	
+    	Member theMember = memberService.getMemberById(memberId);
+    	
+    	model.addAttribute("member", theMember);
+    	
+    	return "memberProfile";
+    }
+    
+    @GetMapping("/booksForRentForm")
+    public String booksForRentForm(@RequestParam("memberId") int memberId, Model model) {
+
+    	Member theMember = memberService.getMemberById(memberId);
+    	
+    	model.addAttribute("member", theMember);
+    	return "rentBookList";
+    }
+    
+    @GetMapping("/rentBooks")
+    public String rentBooks(@RequestParam("memberId") int memberId, Model model) {
+
+    	Member theMember = memberService.getMemberById(memberId);
+    	
+    	model.addAttribute("member", theMember);
+    	
+    	return "memberProfile";
+    }
+    
+    @GetMapping("/backToMemberProfile")
+    public String backToMemberProfile(@RequestParam("memberId") int memberId, Model model) {
+
+    	Member theMember = memberService.getMemberById(memberId);
+    	
+    	model.addAttribute("member", theMember);
+    	
+    	return "memberProfile";
+    }
+    
+    @PostMapping("/search")
+    public String searchMember(@RequestParam("theSearchName") String theSearchName, Model model) {
+    	
+    	List<Member> listMembers = memberService.searchMember(theSearchName);
+    	model.addAttribute("listMembers", listMembers);
+    	
+    	return "members";
+    }
 }
 
 

@@ -1,6 +1,7 @@
 package com.library.service;
 
 import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.library.dao.MemberDAO;
@@ -39,6 +40,12 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	public void removeMember(int id) {
 		memberDAO.removeMember(id);
+	}
+
+	@Override
+	@Transactional
+	public List<Member> searchMember(String theSearchName) {
+		return memberDAO.searchMember(theSearchName);
 	}
 
 }

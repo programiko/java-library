@@ -11,4 +11,6 @@ public interface MemberDAO {
     public Member getMemberById(int id);
  
     public void removeMember(int id);
+
+	public List<Member> searchMember(String theSearchName);
 }
