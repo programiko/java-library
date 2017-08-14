@@ -1,22 +1,18 @@
 package com.library.service;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.library.dao.MemberDAO;
 import com.library.model.Member;
 
-@Service
 public class MemberServiceImpl implements MemberService {
 
-	@Autowired
 	private MemberDAO memberDAO;
 	
 	public MemberServiceImpl() {
 	}
+	
 	public void setMemberDAO(MemberDAO memberDAO) {
 		this.memberDAO = memberDAO;
 	}

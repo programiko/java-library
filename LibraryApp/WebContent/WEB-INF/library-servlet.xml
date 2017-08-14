@@ -19,6 +19,8 @@
 
 	<!-- General and other annotations support (conversion, formatting and validation) -->
 	<mvc:annotation-driven/>
+	
+	<context:annotation-config/>
 
 	<!-- Define Spring MVC view resolver -->
 	<bean
@@ -70,5 +72,12 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     
+    <bean id="memeberDAOImpl" 
+    	class="com.library.dao.MemberDAOImpl"/>   
+    <bean id="memberServiceImpl"
+    	class="com.library.service.MemberServiceImpl">
+    		<property name="memberDAO" ref="memeberDAOImpl"/>
+    </bean>    
+   
 
 </beans>
