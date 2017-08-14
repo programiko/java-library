@@ -11,7 +11,11 @@
 
 <br><br>
 
-<a href="${pageContext.request.contextPath}/admin/administrators">Admin user page</a>
+<a href="${pageContext.request.contextPath}/admin/administrators">Admin - Administrators</a>
+
+<br><br>
+
+<a href="${pageContext.request.contextPath}/admin/members">Admin - Members</a>
 
 <br><br>
 
