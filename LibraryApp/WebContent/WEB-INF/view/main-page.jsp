@@ -19,6 +19,10 @@
 
 <br><br>
 
+<a href="${pageContext.request.contextPath}/admin/authors">Admin - Authors</a>
+
+<br><br>
+
 <a href="url">Regular user page</a>
 
 <br><br>

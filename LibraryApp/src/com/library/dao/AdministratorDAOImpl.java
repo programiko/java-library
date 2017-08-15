@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,11 +13,9 @@ import com.library.model.Administrator;
 @Repository
 public class AdministratorDAOImpl implements AdministratorDAO {
 	
+	@Autowired
     private SessionFactory sessionFactory;
     
-    public void setSessionFactory(SessionFactory sf) {
-        sessionFactory = sf;
-    }
     
 	@Override
 	public void addAdministrator(Administrator p) {
