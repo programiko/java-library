@@ -14,12 +14,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDAO memberDAO;
-	
-	public MemberServiceImpl() {
-	}
-	public void setMemberDAO(MemberDAO memberDAO) {
-		this.memberDAO = memberDAO;
-	}
 
 	@Override
 	@Transactional

@@ -13,7 +13,7 @@ import com.library.model.Administrator;
 public class AdministratorDAOImpl implements AdministratorDAO {
 	
     private SessionFactory sessionFactory;
-
+    
     public void setSessionFactory(SessionFactory sf) {
         sessionFactory = sf;
     }

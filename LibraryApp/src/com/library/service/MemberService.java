@@ -2,6 +2,7 @@ package com.library.service;
 
 import java.util.List;
 
+import com.library.dao.MemberDAO;
 import com.library.model.Member;
 
 public interface MemberService {
@@ -13,4 +14,5 @@ public interface MemberService {
     public Member getMemberById(int id);
  
     public void removeMember(int id);
+    
 }

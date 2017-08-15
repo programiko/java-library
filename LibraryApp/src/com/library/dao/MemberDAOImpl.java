@@ -15,11 +15,6 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	public MemberDAOImpl() {
-	}
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	public void addMember(Member theMember) {
