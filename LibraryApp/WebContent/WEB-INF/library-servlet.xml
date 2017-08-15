@@ -72,13 +72,5 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     
-    <bean id="memeberDAOImpl" 
-    	class="com.library.dao.MemberDAOImpl"/>   
-    <bean id="memberServiceImpl"
-    	class="com.library.service.MemberServiceImpl">
-    		<property name="memberDAO" ref="memeberDAOImpl"/>
-    </bean>    
-   
-    
 
 </beans>
