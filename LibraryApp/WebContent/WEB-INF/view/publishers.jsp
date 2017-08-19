@@ -51,6 +51,8 @@ onclick="if (!(confirm('Are you sure you want to delete this PUBLISHER?'))) retu
 </c:forEach>
 
 </table>
-
+<p>
+<a href="${pageContext.request.contextPath }/">Back to Home page</a>
+</p>
 </body>
 </html>
