@@ -25,7 +25,11 @@
 
 <a href="${pageContext.request.contextPath}/admin/members">Member page</a>
 
+<br><br>
 
+<!-- Link >> publisher.jsp -->
+
+<a href="${pageContext.request.contextPath}/publisher/publishers">Publisher page</a>
 
 </body>
 
