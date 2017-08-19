@@ -6,13 +6,13 @@ import com.library.model.Administrator;
 
 public interface AdministratorDAO {
  
-    public void addAdministrator(Administrator a);
+    public void addAdministrator(Administrator admin);
  
-    public void updateAdministrator(Administrator a);
+    public Administrator updateAdministrator(int id);
  
     public List<Administrator> getAdministrators();
  
-    public Administrator getAdministratorById(int id);
+    public List<Administrator>  getAdministratorById(int id);
  
     public void removeAdministrator(int id);
 }
