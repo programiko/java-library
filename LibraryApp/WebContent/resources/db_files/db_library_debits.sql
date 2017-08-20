@@ -22,7 +22,7 @@
 DROP TABLE IF EXISTS `debits`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `debits` (
+CREATE TABLE `deb	its` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `date_of_debit` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `return_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',

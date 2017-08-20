@@ -15,7 +15,7 @@
 
 <br><br>
 
-<a href="${pageContext.request.contextPath}/admin/members">Admin - Members</a>
+<a href="${pageContext.request.contextPath}/member/members">Admin - Members</a>
 
 <br><br>
 
@@ -23,13 +23,14 @@
 
 <br><br>
 
-<a href="${pageContext.request.contextPath}/admin/members">Member page</a>
-
-<br><br>
-
 <!-- Link >> publisher.jsp -->
 
 <a href="${pageContext.request.contextPath}/publisher/publishers">Publisher page</a>
+
+
+<br><br>
+
+<a href="${pageContext.request.contextPath}/debit/debits">Admin - Debit</a>
 
 </body>
 

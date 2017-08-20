@@ -1,10 +1,14 @@
 package com.library.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,6 +37,9 @@ public class Member {
 	
 	@Column(name="class_squad")
 	private String memberClass;
+	
+	@OneToMany(mappedBy="member", cascade=CascadeType.ALL)
+	private List<Debits> debits;
 
 	
 	public Member() {
@@ -48,8 +55,6 @@ public class Member {
 		this.memberActivity = memberActivity;
 		this.memberClass = memberClass;
 	}
-
-
 
 	public int getMemberId() {
 		return memberId;
@@ -105,6 +110,14 @@ public class Member {
 
 	public void setMemberSurename(String memberSurename) {
 		this.memberSurename = memberSurename;
+	}
+
+	public List<Debits> getDebits() {
+		return debits;
+	}
+
+	public void setDebits(List<Debits> debits) {
+		this.debits = debits;
 	}
 
 	@Override

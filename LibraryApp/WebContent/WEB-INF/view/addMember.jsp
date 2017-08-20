@@ -5,18 +5,9 @@
 <html>
 	<head>
 		<title>Save Member</title>
-		<style type="text/css">
-		.add-button {
-			border: 1px solid #666; 
-			border-radius: 5px; 
-			padding: 4px; 
-			font-size: 12px;
-			font-weight: bold;
-			width: 120px; 
-			padding: 5px 10px; 		
-			margin-bottom: 15px;
-		}
-		</style>
+		<link type="text/css"
+		rel="stylesheet"
+		href="${pageContext.request.contextPath}/resources/css/style.css" />
 	</head>
 	<body>
 		<div>
@@ -62,7 +53,7 @@
 				</table>				
 			</form:form>
 			<div>
-				<p><a href="${pageContext.request.contextPath}/admin/members">Back to members</a></p>
+				<p><a href="${pageContext.request.contextPath}/member/members">Back to members</a></p>
 			</div>
 		</div>
 	</body>
