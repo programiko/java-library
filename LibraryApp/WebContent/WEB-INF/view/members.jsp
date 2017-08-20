@@ -32,7 +32,7 @@
             <th width="120">Member Phone</th>
             <th width="60">Member Activity</th>
             <th width="60">Member Class</th>
-            <th width="60">Profile</th>
+            <th width="120">Profile</th>
             <th width="120">Action</th>
         </tr>        
         <c:if test="${!empty listMembers}">
