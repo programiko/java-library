@@ -56,17 +56,25 @@
 		<!-- Debits table -->
 		<table class="tg">
 			<tr>
-				<th width="80">Debits ID</th>
-				<th width="120">Date of debit</th>
-				<th width="120">Note</th>
-				<th width="80">Action</th>
+				<th width="5%">Debits ID</th>
+				<th width="10%">Date of debit</th>
+				<th width="10%">Note</th>
+				<th width="5%">Book ID</th>
+				<th width="10%">Book Title</th>
+				<th width="10%">Book Author</th>
+				<th width="10%">Book Publisher</th>
+				<th width="5%">Action</th>
 			</tr>
 			<c:if test="${!empty member.debits}">
 				<c:forEach var="debit" items="${member.debits}">
 					<tr>
 						<td>${debit.debitsId}</td>
-						<td>${debit.returnDate}</td>
+						<td>${debit.dateOfDebit}</td>
 						<td>${debit.note}</td>
+						<td>${debit.book.bookId}</td>
+						<td>${debit.book.bookTitle}</td>
+						<td></td>
+						<td></td>
 						<td><a>Return</a></td>
 					</tr>
 				</c:forEach>

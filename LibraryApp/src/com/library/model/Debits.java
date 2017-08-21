@@ -16,6 +16,8 @@ import javax.persistence.Table;
 @Table(name="debits")
 public class Debits {
 
+	//table columns
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
@@ -33,7 +35,13 @@ public class Debits {
 	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name="member_id")
 	private Member member;
+	
+	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinColumn(name="book_id")
+	private Book book;
 
+	
+	//constructors
 	public Debits() {
 	}
 		
@@ -42,6 +50,16 @@ public class Debits {
 		this.dateOfDebit = dateOfDebit;
 		this.returnDate = returnDate;
 		this.note = note;
+	}
+	
+	
+	//getters/setters
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
 	public int getDebitsId() {
@@ -84,6 +102,7 @@ public class Debits {
 		this.member = member;
 	}
 
+	//toString()
 	@Override
 	public String toString() {
 		return "Debits [debitsId=" + debitsId + ", dateOfDebit=" + dateOfDebit + ", returnDate=" + returnDate

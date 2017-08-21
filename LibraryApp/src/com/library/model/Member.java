@@ -16,6 +16,8 @@ import javax.persistence.Table;
 @Table(name="members")
 public class Member {
 	
+	
+	//table columns
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
@@ -42,6 +44,7 @@ public class Member {
 	@OneToMany(mappedBy="member", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Debits> debits;
 		
+	//constructors
 	public Member() {
 	}		
 		
@@ -55,6 +58,7 @@ public class Member {
 		this.memberClass = memberClass;
 	}
 
+	//getters/setters
 	public int getMemberId() {
 		return memberId;
 	}
@@ -119,6 +123,7 @@ public class Member {
 		this.debits = debits;
 	}
 
+	//toString()
 	@Override
 	public String toString() {
 		return "Member [memberId=" + memberId + ", memberName=" + memberName + ", memberSurename=" + memberSurename

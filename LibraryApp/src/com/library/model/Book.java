@@ -1,13 +1,17 @@
 package com.library.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -46,7 +50,8 @@ public class Book {
 	@JoinColumn(name="publisher_id")
 	private Publisher publisher;
 	
-	
+	@OneToMany(mappedBy="book", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private List<Debits> debit;	
 	
 	//constructors
 	public Book() {
@@ -67,12 +72,23 @@ public class Book {
     
     
 	//getters and setters
+    
+    
 	public int getBookId() {
 		return bookId;
 	}
 
+
 	public void setBookId(int bookId) {
 		this.bookId = bookId;
+	}
+	
+public List<Debits> getDebit() {
+		return debit;
+	}
+
+	public void setDebit(List<Debits> debit) {
+		this.debit = debit;
 	}
 
 	public String getBookTitle() {
@@ -146,6 +162,6 @@ public class Book {
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", numberOfPages=" + numberOfPages
 				+ ", numberOfCopies=" + numberOfCopies + ", numberOfRenting=" + numberOfRenting
 				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRaiting=" + bookRating + ", bookLocation="
-				+ bookLocation + ", publisher=" + publisher + "]";
+				+ bookLocation + "]";
 	}
 }
