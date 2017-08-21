@@ -34,6 +34,13 @@ public class Publisher {
 	private List<Book> books;
 	
 	public Publisher() {}
+	
+	public Publisher(String name, String address, String phone) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+	}
 
 	public int getId() {
 		return id;

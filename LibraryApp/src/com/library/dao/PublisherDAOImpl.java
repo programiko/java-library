@@ -60,6 +60,7 @@ public class PublisherDAOImpl implements PublisherDAO {
 	}
 
 	
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void removePublisher(int id) {
 		
