@@ -13,7 +13,7 @@ import com.library.model.Member;
 import com.library.service.MemberService;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/member")
 public class MemberController {
 	
 	@Autowired
