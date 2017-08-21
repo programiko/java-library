@@ -25,15 +25,15 @@
     <!-- Member table -->    
     <table class="tg">
         <tr>
-            <th width="80">Member ID</th>
-            <th width="120">Member Name</th>
-            <th width="120">Member Surname</th>  
-            <th width="120">Member Address</th>
-            <th width="120">Member Phone</th>
-            <th width="60">Member Activity</th>
-            <th width="60">Member Class</th>
-            <th width="120">Profile</th>
-            <th width="120">Action</th>
+            <th width="5%">Member ID</th>
+            <th width="15%">Member Name</th>
+            <th width="15%">Member Surname</th>  
+            <th width="15%">Member Address</th>
+            <th width="10%">Member Phone</th>
+            <th width="5%">Member Activity</th>
+            <th width="5%">Member Class</th>
+            <th width="15%">Profile</th>
+            <th width="15%">Action</th>
         </tr>        
         <c:if test="${!empty listMembers}">
             <c:forEach var="member" items="${listMembers}">

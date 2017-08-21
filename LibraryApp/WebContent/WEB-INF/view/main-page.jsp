@@ -32,6 +32,10 @@
 
 <a href="${pageContext.request.contextPath}/debit/debits">Admin - Debit</a>
 
+<br><br>
+
+<a href="${pageContext.request.contextPath}/book/books">Admin - Books</a>
+
 </body>
 
 </html>

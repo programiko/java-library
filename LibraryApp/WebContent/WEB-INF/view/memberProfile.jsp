@@ -58,7 +58,6 @@
 			<tr>
 				<th width="80">Debits ID</th>
 				<th width="120">Date of debit</th>
-				<th width="120">Return date</th>
 				<th width="120">Note</th>
 				<th width="80">Action</th>
 			</tr>
@@ -66,7 +65,6 @@
 				<c:forEach var="debit" items="${member.debits}">
 					<tr>
 						<td>${debit.debitsId}</td>
-						<td>${debit.dateOfDebit}</td>
 						<td>${debit.returnDate}</td>
 						<td>${debit.note}</td>
 						<td><a>Return</a></td>

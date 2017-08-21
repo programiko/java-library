@@ -39,9 +39,9 @@ public class Member {
 	@Column(name="class_squad")
 	private String memberClass;
 	
-	@OneToMany(mappedBy="member", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="member", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Debits> debits;
-	
+		
 	public Member() {
 	}		
 		
