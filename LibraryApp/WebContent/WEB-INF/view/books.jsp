@@ -29,7 +29,7 @@
         </tr>        
         <c:if test="${!empty listBooks}">
             <c:forEach var="book" items="${listBooks}">
-        
+         
         		<!-- Create an update and delete link with book id
        			<c:url var="updateLink" value="/book/showFormForUpdate">
        				<c:param name="bookId" value="${book.bookId}"/>
