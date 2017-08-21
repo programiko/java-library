@@ -1,10 +1,13 @@
 package com.library.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,12 +36,14 @@ public class Book {
 	@Column(name="number_of_rented_books")
 	private int numberOfRentedBook;
 	
-	@Column(name="raiting")
-	private float bookRaiting;
+	@Column(name="rating")
+	private float bookRating;
 	
 	@Column(name="location")
 	private String bookLocation;
 	
+	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinColumn(name="publisher_id")
 	private Publisher publisher;
 	
 	
@@ -48,14 +53,14 @@ public class Book {
 	}
 		
     public Book(String bookTitle, int numberOfPages, int numberOfCopies, int numberOfRenting, int numberOfRentedBook,
-			float bookRaiting, String bookLocation) {
+			float bookRating, String bookLocation) {
 		super();
 		this.bookTitle = bookTitle;
 		this.numberOfPages = numberOfPages;
 		this.numberOfCopies = numberOfCopies;
 		this.numberOfRenting = numberOfRenting;
 		this.numberOfRentedBook = numberOfRentedBook;
-		this.bookRaiting = bookRaiting;
+		this.bookRating = bookRating;
 		this.bookLocation = bookLocation;
 	}
 
@@ -110,12 +115,12 @@ public class Book {
 		this.numberOfRentedBook = numberOfRentedBook;
 	}
 
-	public float getBookRaiting() {
-		return bookRaiting;
+	public float getBookRating() {
+		return bookRating;
 	}
 
-	public void setBookRaiting(float bookRaiting) {
-		this.bookRaiting = bookRaiting;
+	public void setBookRating(float bookRating) {
+		this.bookRating = bookRating;
 	}
 
 	public String getBookLocation() {
@@ -140,7 +145,7 @@ public class Book {
 	public String toString() {
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", numberOfPages=" + numberOfPages
 				+ ", numberOfCopies=" + numberOfCopies + ", numberOfRenting=" + numberOfRenting
-				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRaiting=" + bookRaiting + ", bookLocation="
+				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRaiting=" + bookRating + ", bookLocation="
 				+ bookLocation + ", publisher=" + publisher + "]";
 	}
 }
