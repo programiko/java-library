@@ -50,7 +50,7 @@
                     <td>${book.bookId}</td>
                     <td>${book.bookTitle}</td>
                     <td></td>
-                    <td></td>
+                    <td>${book.publisher.name}</td>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
                     <td>${book.numberOfRenting}</td>
