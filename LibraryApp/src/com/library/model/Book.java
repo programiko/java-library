@@ -53,6 +53,8 @@ public class Book {
 	@OneToMany(mappedBy="book", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Debits> debit;	
 	
+	
+	
 	//constructors
 	public Book() {
 	}

@@ -38,27 +38,29 @@
         <c:if test="${!empty listBooks}">
             <c:forEach var="book" items="${listBooks}">
          
-        		Create an update and delete link with book id
+        		<!-- Create an update and delete link with book id  -->
        			<c:url var="updateLink" value="/book/showFormForUpdate">
        				<c:param name="bookId" value="${book.bookId}"/>
        			</c:url>       			
-       			<c:url var="deleteLink" value="/book/deleteMember">
+       			<c:url var="deleteLink" value="/book/deleteBook">
        				<c:param name="bookId" value="${book.bookId}"/>
-       			</c:url> 
+       			</c:url>
                 
                 <tr>
                     <td>${book.bookId}</td>
                     <td>${book.bookTitle}</td>
                     <td></td>
-                    <td></td>
+                    <td>${book.publisher.name}</td>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
                     <td>${book.numberOfRenting}</td>
                     <td>${book.numberOfRentedBook}</td>
                     <td>${book.bookRating}</td>
                     <td>${book.bookLocation}</td>
-                    <td><a>Update</a> | 
-                    	<a>Delete</a></td>
+                    <td><a href="${updateLink}">Update</a> | 
+                    	<a href="${deleteLink}"
+                    	   onclick="if(!(confirm('Are you sure you want to delete this book?'))) return false"
+                    	>Delete</a></td>
                 </tr>
             </c:forEach>
         </c:if>

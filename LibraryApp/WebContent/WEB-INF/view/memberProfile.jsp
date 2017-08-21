@@ -74,7 +74,7 @@
 						<td>${debit.book.bookId}</td>
 						<td>${debit.book.bookTitle}</td>
 						<td></td>
-						<td></td>
+						<td>${debit.book.publisher.name}</td>
 						<td><a>Return</a></td>
 					</tr>
 				</c:forEach>
