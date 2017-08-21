@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.library.model.Administrator;
 
@@ -39,6 +38,7 @@ public class AdministratorDAOImpl implements AdministratorDAO {
 		if (id != 0) {
 		query = session.createQuery("from Administrator a where a.id = :id", Administrator.class);
 		query.setParameter("id", id);
+		query.uniqueResult();
 		
 		}else {
 			
@@ -80,6 +80,24 @@ public class AdministratorDAOImpl implements AdministratorDAO {
 	
 		
 	}
+
+
+	@Override
+	public Administrator getById(int id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Administrator admin = new Administrator();
+		
+		session.load(Administrator.class, id);
+		
+		
+		
+		return admin;
+	}
+
+
+	
  
 
  

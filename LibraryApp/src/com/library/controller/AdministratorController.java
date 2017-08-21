@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.library.dao.AdministratorDAO;
 import com.library.model.Administrator;
-import com.library.model.Member;
 import com.library.service.AdministratorService;
-import com.sun.tracing.dtrace.ModuleAttributes;
 
 @Controller  
 @RequestMapping("/admin")
@@ -31,21 +28,18 @@ public class AdministratorController {
         model.addAttribute("listAdministrators",adminService.getAdministrators());
         return "administrators";
     }
-    /*
+    
+    
     @PostMapping("/search")
-    public String SearchAdminById(@RequestParam("adminId") int id ,Model model) {
+    public String SearchAdminById( @RequestParam("adminId") int id ,Model model) {
     	
     	List<Administrator> admins = adminService.getAdministratorById(id);
-    	if(admins != null) {
-    		model.addAttribute("getbyid", admins);
-    	}else {
     		
-    		return "administrators";
-    	}
+    		model.addAttribute("admins", admins);
     	
     	return "AdminData";
     }
-    */
+    
     @GetMapping("/showFormForUpdate")
     public  String updatingAdmin (@RequestParam ("adminId") int id,Model model) {
     	Administrator admin = adminService.updateAdministrator(id);
@@ -76,5 +70,15 @@ public class AdministratorController {
     	
     	return "redirect:/admin/administrators";
     }
-}  
+/*
+@PostMapping("/search")
+public String searchID(@RequestParam("adminId") int id ,Model model) {
+	
+	Administrator admin = adminService.getById(id);
+	model.addAttribute("admin", admin);
+	
+	return "AdminData";
+}
 
+*/
+}

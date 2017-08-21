@@ -23,8 +23,8 @@
 
 <br><br>
 
-<a href="${pageContext.request.contextPath}/admin/members">Member page</a>
-
+<a href="${pageContext.request.contextPath}/admin/members">Member page</a> <br><br>
+<a href="${pageContext.request.contextPath}/category/categories">Category page</a>
 
 
 </body>

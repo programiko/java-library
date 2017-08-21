@@ -71,6 +71,6 @@
     <bean id="administratorDAO" class="com.library.dao.AdministratorDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    
+   
 
 </beans>

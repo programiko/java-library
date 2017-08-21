@@ -25,7 +25,7 @@ public class AdministratorServiceImpl implements AdministratorService {
 	@Override
 	@Transactional
 	public List<Administrator> getAdministrators() {
-		// TODO Auto-generated method stub
+
 		return administratorDAO.getAdministrators();
 	}
 
@@ -49,6 +49,15 @@ public class AdministratorServiceImpl implements AdministratorService {
 	public Administrator updateAdministrator(int id) {
 		
 		return administratorDAO.updateAdministrator(id);
+	}
+
+
+
+	@Override
+	@Transactional
+	public Administrator getById(int id) {
+		
+		return administratorDAO.getById(id);
 	}
 
 }

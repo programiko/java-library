@@ -15,4 +15,6 @@ public interface AdministratorDAO {
     public List<Administrator>  getAdministratorById(int id);
  
     public void removeAdministrator(int id);
+    
+   public Administrator getById(int id);
 }

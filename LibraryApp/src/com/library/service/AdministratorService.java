@@ -17,4 +17,7 @@ public interface AdministratorService {
     
     public Administrator updateAdministrator(int id);
     
+    public Administrator getById(int id);
+    
+    
 }

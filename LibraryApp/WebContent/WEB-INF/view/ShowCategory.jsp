@@ -3,8 +3,9 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
-<title>List Administrators</title>
+	<title>Save Category</title>
 <style type="text/css">
 .tg {
     border-collapse: collapse;
@@ -42,36 +43,71 @@
 .tg .tg-4eph {
     background-color: #f9f9f9
 }
-
-
 </style>
 </head>
+
 <body>
-    <h1>List Administrators</h1>
- 
-    <br>
-    <h3>Administrator List</h3>
-  
-    <table class="tg">
-        <tr>
-            <th width="80">Administrator ID</th>
-            <th width="120">Administrator Username</th>
-            <th width="120">Administrator Password</th>
-         
-        </tr>
-       	<c:if test="${!empty admins}">
-            <c:forEach items="${admins}" var="admins">
-                <tr>
-                    <td>${admins.id}</td>
-                    <td>${admins.username}</td>
-                    <td>${admins.password}</td>
-                </tr>
-            </c:forEach>
-            </c:if>
-    </table>
-		 <p>
-			<a href="${pageContext.request.contextPath}/admin/administrators">Back to List</a>
+	
+	<div id="wrapper">
+		<div id="header">
+			<h2>Category Page</h2>
+		</div>
+	</div>
+
+	<div id="container">
+		<h3>Save Category</h3>
+	
+		<form:form action="saveCategory" modelAttribute="category" method="POST">
+		
+			
+			<table>
+			
+				<tbody>
+					<tr>
+					
+						<form:hidden path="id"/>
+					
+					</tr>
+					<tr>
+						<td><label>Name:</label></td>
+						<td><form:input path="name" /></td>
+					</tr>
+				
+					<tr>
+						<td><label>Description:</label></td>
+						<td><form:input path="description" /></td>
+					</tr>
+					
+					<tr>
+						<td><label></label></td>
+						<td><input type="submit" value="Save" class="save" /></td>
+					</tr>
+
+				
+				</tbody>
+			</table>
+		
+		
+		</form:form>
+	
+		<div style="clear; both;"></div>
+		
+		<p>
+			<a href="${pageContext.request.contextPath}/category/categories">Back to List</a>
 		</p>
 	
+	</div>
+
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+

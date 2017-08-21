@@ -45,7 +45,7 @@
 </style>
 </head>
 <body>
-    <h1>List Administrators</h1>
+    <h1>List of Administrators</h1>
  <!-- button: Add Administrator -->
     
     <input type="button" 
@@ -54,9 +54,10 @@
     	   class="add-button"/>
     
     <br>
-    <h3>Administrator List</h3>
+    <h3>Administrator List's</h3>
     <form:form action="search" method="POST" modelAttribute="searchAdmin">
-                Search for an Administrator: <input type="text" name="adminId" />
+                Search for an Administrator: 
+                <input type="text" name="adminId" />
                 <input type="submit" value="Search" class="add-button" />
             </form:form>
             
