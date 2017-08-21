@@ -23,8 +23,12 @@
 
 <br><br>
 
-<a href="${pageContext.request.contextPath}/admin/members">Member page</a> <br><br>
+<a href="${pageContext.request.contextPath}/admin/members">Member page</a> 
+
+<br><br>
+
 <a href="${pageContext.request.contextPath}/category/categories">Category page</a>
+
 <br><br>
 
 <!-- Link >> publisher.jsp -->
