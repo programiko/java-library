@@ -1,6 +1,8 @@
 package com.library.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,7 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -46,9 +49,7 @@ public class Book {
 	@Column(name="location")
 	private String bookLocation;
 	
-	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinColumn(name="publisher_id")
-	private Publisher publisher;
+	private Set<Publisher> publisher;
 	
 	@OneToMany(mappedBy="book", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Debits> debit;	
@@ -149,16 +150,28 @@ public List<Debits> getDebit() {
 		this.bookLocation = bookLocation;
 	}
 
-	public Publisher getPublisher() {
+	@ManyToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinTable(name = "book_publisher", joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id"))
+	public Set<Publisher> getPublisher() {
 		return publisher;
 	}
-
-	public void setPublisher(Publisher publisher) {
+	public void setPublisher(Set<Publisher> publisher) {
 		this.publisher = publisher;
+	} 
+	
+	
+	void add(Debits tempDebits) {
+		if(debit == null) {
+			debit = new ArrayList<>();	
+		}
+		debit.add(tempDebits);
+		tempDebits.setBook(this);
 	}
 
 	//toString() method
 	
+	
+
 	@Override
 	public String toString() {
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", numberOfPages=" + numberOfPages
