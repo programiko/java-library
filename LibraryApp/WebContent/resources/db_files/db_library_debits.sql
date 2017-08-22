@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: db_library
+-- Host: 127.0.0.1    Database: db_library
 -- ------------------------------------------------------
 -- Server version	5.7.19-log
 
@@ -22,7 +22,7 @@
 DROP TABLE IF EXISTS `debits`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `deb	its` (
+CREATE TABLE `debits` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `date_of_debit` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `return_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-28 23:57:00
+-- Dump completed on 2017-08-22  9:44:00

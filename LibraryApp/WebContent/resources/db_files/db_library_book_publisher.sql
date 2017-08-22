@@ -38,6 +38,7 @@ CREATE TABLE `book_publisher` (
 
 LOCK TABLES `book_publisher` WRITE;
 /*!40000 ALTER TABLE `book_publisher` DISABLE KEYS */;
+INSERT INTO `book_publisher` VALUES (1,1),(1,2);
 /*!40000 ALTER TABLE `book_publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

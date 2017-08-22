@@ -27,10 +27,9 @@ public class BookController {
     public String listBooks(Model model) {
     	
 		Book book = new Book();
-		
     	model.addAttribute("books", book);
     	model.addAttribute("listBooks", bookService.getBooks());
-    	model.addAttribute("listPublishers", publisherService.getPublisher());
+    	//model.addAttribute("listPublishers", publisherService.getPublisher());
         return "books";
     }
 	

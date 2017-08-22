@@ -6,9 +6,12 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -30,8 +33,8 @@ public class Publisher{
 	@Column(name = "phone")
 	private String phone;
 	
-	@ManyToMany(mappedBy = "publisher", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	private Set<Book> books = new HashSet<Book>();
+	@ManyToMany(mappedBy = "publishers", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},fetch=FetchType.EAGER)
+	private Set<Book> books = new HashSet<Book>(0);
 	
 	public Publisher() {}
 	

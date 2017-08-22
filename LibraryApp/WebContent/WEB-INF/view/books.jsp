@@ -51,9 +51,12 @@
                 <tr>
                     <td>${book.bookId}</td>
                     <td>${book.bookTitle}</td>
-                    <td>
-                    </td>                    
-                    <td>Ovde ne znamo da ispisemo publisher.name</td>
+                    <td>dodati autora</td>
+                    <c:if test="${!empty book.publishers}">
+            		<c:forEach var="publ" items="${book.publishers}">
+                    <td>${publ.name}</td>
+                    </c:forEach>
+       				</c:if>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
                     <td>${book.numberOfRenting}</td>

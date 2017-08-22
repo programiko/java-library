@@ -49,9 +49,9 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
-	@ManyToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.LAZY)
+	@ManyToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.EAGER)
 	@JoinTable(name = "book_publisher", joinColumns = @JoinColumn(name = "book_id", referencedColumnName="id"), inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName="id"))
-	private Set<Publisher> publisher = new HashSet<Publisher>();
+	private Set<Publisher> publishers = new HashSet<Publisher>();
 	
 	@OneToMany(mappedBy="book", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Debits> debit;	
@@ -149,11 +149,11 @@ public class Book{
 	
 
 	
-	public Set<Publisher> getPublisher() {
-		return publisher;
+	public Set<Publisher> getPublishers() {
+		return publishers;
 	}
-	public void setPublisher(Set<Publisher> publisher) {
-		this.publisher = publisher;
+	public void setPublishers(Set<Publisher> publishers) {
+		this.publishers = publishers;
 	}
 
 	
@@ -168,7 +168,7 @@ public class Book{
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", numberOfPages=" + numberOfPages
 				+ ", numberOfCopies=" + numberOfCopies + ", numberOfRenting=" + numberOfRenting
 				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRaiting=" + bookRating + ", bookLocation="
-				+ bookLocation + "]";
+				+ bookLocation + publishers.toString() +"]";
 	}
 	
 
