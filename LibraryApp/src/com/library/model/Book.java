@@ -53,7 +53,9 @@ public class Book {
 	@OneToMany(mappedBy="book", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Debits> debit;	
 	
-	
+	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinColumn(name="category_id")
+	private Category category;
 	
 	//constructors
 	public Book() {
@@ -80,6 +82,14 @@ public class Book {
 		return bookId;
 	}
 
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
 	public void setBookId(int bookId) {
 		this.bookId = bookId;

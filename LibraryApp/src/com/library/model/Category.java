@@ -1,10 +1,14 @@
 package com.library.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity 
@@ -20,6 +24,10 @@ public class Category {
 	String name;
 	@Column(name="description")
 	String description;
+	
+	@OneToMany(mappedBy="category",cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH,CascadeType.REFRESH})	
+	private List<Book> books;
+	
 	public int getId() {
 		return id;
 	}
@@ -48,5 +56,6 @@ public class Category {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 }

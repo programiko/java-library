@@ -71,6 +71,6 @@
     <bean id="administratorDAO" class="com.library.dao.AdministratorDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-   
+   <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
 
 </beans>

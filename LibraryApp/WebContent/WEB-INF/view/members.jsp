@@ -5,54 +5,9 @@
 <html>
 	<head>
 		<title>Member List</title>
-		<style type="text/css">
-		.tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-			border-color: #ccc;
-		}
-		
-		.tg td {
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			padding: 10px 5px;
-			border-style: solid;
-			border-width: 1px;
-			overflow: hidden;
-			word-break: normal;
-			border-color: #ccc;
-			color: #333;
-			background-color: #fff;
-		}
-		
-		.tg th {
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			padding: 10px 5px;
-			border-style: solid;
-			border-width: 1px;
-			overflow: hidden;
-			word-break: normal;
-			border-color: #ccc;
-			color: #333;
-			background-color: #8FBC8F;
-		}
-		
-		.tg .tg-4eph {
-			background-color: #f9f9f9
-		}
-		.add-button {
-			border: 1px solid #666; 
-			border-radius: 5px; 
-			padding: 4px; 
-			font-size: 12px;
-			font-weight: bold;
-			width: 120px; 
-			padding: 5px 10px; 		
-			margin-bottom: 15px;
-		}
-		</style>
+		<link type="text/css"
+		rel="stylesheet"
+		href="${pageContext.request.contextPath}/resources/css/style.css" />
 	</head>
 		<body>
 			<h1>List Members</h1>
