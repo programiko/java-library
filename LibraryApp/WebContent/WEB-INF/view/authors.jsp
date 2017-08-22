@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>List Administrators</title>
+<title>List Authors</title>
 <style type="text/css">
 .tg {
     border-collapse: collapse;
@@ -49,22 +49,39 @@
 <body>
     <h1>List Authors</h1>
  
+ 
     <br>
     <h3>Authors List</h3>
+    <br>
+    <input type="button" value="AddAuthors" onclick="window.location.href='showFormAddAuthors'; return false;"
+    class="add-button"/> 
+    <br><br>
     <table class="tg">
         <tr>
             <th width="80">Authors ID</th>
             <th width="120">Authors Name</th>
             <th width="120">Authors Surname</th>
-            <th width="60">Edit</th>
-            <th width="60">Delete</th>
+            
+            <th width="120">Action</th>
         </tr>
         <c:if test="${!empty listAuthors}">
-            <c:forEach items="${listAuthors}" var="authors">
+            <c:forEach var="authors" items="${listAuthors}">
+        
+        		<!-- Create an update and delete link with authors id -->
+       			<c:url var="updateLink" value="/author/showFormForUpdateAuthors">
+       				<c:param name="authorsId" value="${authors.authorsId}"/>
+       			</c:url>       			
+       			<c:url var="deleteLink" value="/author/delete">
+       				<c:param name="authorsId" value="${authors.authorsId}"/>
+       			</c:url>
                 <tr>
                     <td>${authors.authorsId}</td>
                     <td>${authors.authorsName}</td>
                     <td>${authors.authorsSurname}</td>
+                     <td><a href="${updateLink}">Update</a> | 
+                    	<a href="${deleteLink}" 
+                    	onclick="if(!(confirm('Are you sure you want to delete this Authors?'))) return false"
+                    	>Delete</a></td>
                 </tr>
             </c:forEach>
         </c:if>

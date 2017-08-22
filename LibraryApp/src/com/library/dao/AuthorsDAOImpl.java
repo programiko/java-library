@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.library.model.Authors;
+import com.library.model.Member;
 
 @Repository
 public class AuthorsDAOImpl implements AuthorsDAO{
@@ -43,7 +44,10 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 
 		@Override
 		public Authors getAuthorsById(int id) {
+			//get the current hibernate session
 			Session session = sessionFactory.getCurrentSession();
+			
+			//now retrive from database using the primary key
 			Authors authors = session.get(Authors.class, id);
 					return authors;
 		}
@@ -51,7 +55,9 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 		@Override
 		public void removeAuthors(int id) {
 			Session session = sessionFactory.getCurrentSession();
+			
 			Authors authors = session.get(Authors.class, id);
+			
 			session.delete(authors);
 		
 			
