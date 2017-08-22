@@ -1,5 +1,8 @@
 package com.library.controller;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.library.dao.AuthorsDAO;
+import com.library.model.Authors;
 import com.library.model.Book;
 import com.library.service.BookService;
 
@@ -18,6 +23,8 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
+	@Autowired
+	private AuthorsDAO authorsDAO;
 	
 	@GetMapping("/books")
     public String listBooks(Model model) {
@@ -60,7 +67,17 @@ public class BookController {
 	    	
 	    	return "redirect:/book/books";
 	    }
-
+	    
+	  /*  @RequestMapping
+	    public String gettingData(Model model) {
+	    
+	    	Book book = new Book();
+	    	
+	    	book.getAuthors();
+	    	
+			return book;
+	    }
+*/
 }
 
 

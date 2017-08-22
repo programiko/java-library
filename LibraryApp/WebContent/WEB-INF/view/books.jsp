@@ -27,6 +27,7 @@
             <th width="8%">Book Title</th>
             <th width="8%">Book Author</th>
             <th width="8%">Book Publisher</th>
+            <th width="8%">Book Category</th>
             <th width="8%">Number Of Pages</th>  
             <th width="8%">Number Of Copies</th>
             <th width="8%">Number Of Renting</th>
@@ -37,7 +38,7 @@
         </tr>        
         <c:if test="${!empty listBooks}">
             <c:forEach var="book" items="${listBooks}">
-         
+          <c:forEach var="book1" items="${book1}">
         		<!-- Create an update and delete link with book id  -->
        			<c:url var="updateLink" value="/book/showFormForUpdate">
        				<c:param name="bookId" value="${book.bookId}"/>
@@ -49,8 +50,9 @@
                 <tr>
                     <td>${book.bookId}</td>
                     <td>${book.bookTitle}</td>
-                    <td></td>
+                   	<td>	${book1}				</td>
                     <td>${book.publisher.name}</td>
+                    <td>${book.category.name}</td>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
                     <td>${book.numberOfRenting}</td>
@@ -63,6 +65,8 @@
                     	>Delete</a></td>
                 </tr>
             </c:forEach>
+              </c:forEach>
+            
         </c:if>
     </table>
     <div>

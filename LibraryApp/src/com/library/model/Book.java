@@ -1,6 +1,8 @@
 package com.library.model;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -57,11 +61,31 @@ public class Book {
 	@JoinColumn(name="category_id")
 	private Category category;
 	
+	@ManyToMany(cascade = { 
+		    CascadeType.PERSIST, 
+		    CascadeType.MERGE
+		})
+		@JoinTable(name = "affiliations",
+		    joinColumns = @JoinColumn(name = "book_id"),
+		    inverseJoinColumns = @JoinColumn(name = "author_id")
+		)
+		private Set<Authors> authors = new HashSet<Authors>();
+	
+		
+	
 	//constructors
 	public Book() {
 	}
 		
-    public Book(String bookTitle, int numberOfPages, int numberOfCopies, int numberOfRenting, int numberOfRentedBook,
+    public Set<Authors> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(Set<Authors> authors) {
+		this.authors = authors;
+	}
+
+	public Book(String bookTitle, int numberOfPages, int numberOfCopies, int numberOfRenting, int numberOfRentedBook,
 			float bookRating, String bookLocation) {
 		super();
 		this.bookTitle = bookTitle;
