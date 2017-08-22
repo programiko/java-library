@@ -16,6 +16,7 @@ import com.library.dao.AuthorsDAO;
 import com.library.model.Authors;
 import com.library.model.Book;
 import com.library.service.BookService;
+import com.library.service.PublisherService;
 
 @Controller
 @RequestMapping("/book")
@@ -24,13 +25,14 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	@Autowired
-	private AuthorsDAO authorsDAO;
+	private PublisherService publisherService;
 	
 	@GetMapping("/books")
     public String listBooks(Model model) {
     	
     	model.addAttribute("books", new Book());
     	model.addAttribute("listBooks", bookService.getBooks());
+    	model.addAttribute("listPublishers", publisherService.getPublisher());
         return "books";
     }
 	

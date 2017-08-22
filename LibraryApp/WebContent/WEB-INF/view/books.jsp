@@ -47,12 +47,27 @@
        				<c:param name="bookId" value="${book.bookId}"/>
        			</c:url>
                 
-                <tr>
+               <!--  <tr>
                     <td>${book.bookId}</td>
                     <td>${book.bookTitle}</td>
                    	<td>	${book1}				</td>
                     <td>${book.publisher.name}</td>
                     <td>${book.category.name}</td>
+                    <td>${book.numberOfPages}</td>
+                    <td>${book.numberOfCopies}</td>
+                    <td>${book.numberOfRenting}</td>
+                    <td>${book.numberOfRentedBook}</td>
+                    <td>${book.bookRating}</td>
+                    <td>${book.bookLocation}</td>
+                     -->
+                      <td>${book.bookId}</td>
+                    <td>${book.bookTitle}</td>
+                    <td>dodati autora</td>
+                    <c:if test="${!empty book.publishers}">
+            		<c:forEach var="publ" items="${book.publishers}">
+                    <td>${publ.name}</td>
+                    </c:forEach>
+       				</c:if>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
                     <td>${book.numberOfRenting}</td>

@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: db_library
+-- Host: 127.0.0.1    Database: db_library
 -- ------------------------------------------------------
 -- Server version	5.7.19-log
 
@@ -32,13 +32,10 @@ CREATE TABLE `books` (
   `rating` float NOT NULL,
   `location` varchar(30) DEFAULT NULL,
   `category_id` int(10) DEFAULT NULL,
-  `publisher_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_categories` (`category_id`),
-  KEY `fk_publishers` (`publisher_id`),
-  CONSTRAINT `fk_categories` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
-  CONSTRAINT `fk_publishers` FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_categories` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +44,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,'Derviš i smrt',386,5,0,5,7.65,'Red drugi, sektor A',1,1);
+INSERT INTO `books` VALUES (1,'Derviš i smrt',386,5,0,5,7.65,'Red drugi, sektor A',1),(2,'Naslov',78,3,12,23,2,'gore-levo',NULL);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-28 23:57:00
+-- Dump completed on 2017-08-22 16:17:51

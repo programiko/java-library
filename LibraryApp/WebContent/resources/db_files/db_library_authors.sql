@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: db_library
+-- Host: 127.0.0.1    Database: db_library
 -- ------------------------------------------------------
 -- Server version	5.7.19-log
 
@@ -27,7 +27,7 @@ CREATE TABLE `authors` (
   `name` varchar(20) NOT NULL,
   `surename` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `authors` (
 
 LOCK TABLES `authors` WRITE;
 /*!40000 ALTER TABLE `authors` DISABLE KEYS */;
-INSERT INTO `authors` VALUES (1,'Yakov','Fain'),(2,'Mesa','Selimovic');
+INSERT INTO `authors` VALUES (1,'Yakov','Fain'),(2,'Mesa','Selimovic'),(3,'Ivo','Andric'),(4,'CONSUMER','CONSUMER COMPANY'),(5,'INVESTMENT','INVESTMENT COMPANY');
 /*!40000 ALTER TABLE `authors` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-28 23:57:01
+-- Dump completed on 2017-08-22 16:17:51

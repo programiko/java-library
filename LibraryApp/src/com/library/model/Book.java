@@ -71,6 +71,11 @@ public class Book {
 		)
 		private Set<Authors> authors = new HashSet<Authors>();
 	
+	
+	@ManyToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.EAGER)
+	@JoinTable(name = "book_publisher", joinColumns = @JoinColumn(name = "book_id", referencedColumnName="id"), inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName="id"))
+	private Set<Publisher> publishers = new HashSet<Publisher>();
+	
 		
 	
 	//constructors

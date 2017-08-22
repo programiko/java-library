@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: db_library
+-- Host: 127.0.0.1    Database: db_library
 -- ------------------------------------------------------
 -- Server version	5.7.19-log
 
@@ -28,7 +28,7 @@ CREATE TABLE `publishers` (
   `address` varchar(50) NOT NULL,
   `phone` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `publishers` (
 
 LOCK TABLES `publishers` WRITE;
 /*!40000 ALTER TABLE `publishers` DISABLE KEYS */;
-INSERT INTO `publishers` VALUES (1,'Zavod za udzbenike','Obilicev venac br. 5','011/2638-405');
+INSERT INTO `publishers` VALUES (1,'Zavod za udzbenike','Obilicev venac br. 5','011/2638-405'),(3,'Vulkan','Kralja Petra 12, Beograd','011/5329-871'),(5,'Mikro Knjiga','Svetog Save 66, Beograd','011/5438-765');
 /*!40000 ALTER TABLE `publishers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-28 23:56:59
+-- Dump completed on 2017-08-22 16:17:50
