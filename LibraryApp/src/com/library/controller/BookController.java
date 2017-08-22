@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.library.model.Book;
 import com.library.service.BookService;
+import com.library.service.PublisherService;
 
 @Controller
 @RequestMapping("/book")
@@ -19,11 +20,17 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
+	@Autowired 
+	private PublisherService publisherService;
+	
 	@GetMapping("/books")
     public String listBooks(Model model) {
     	
-    	model.addAttribute("books", new Book());
+		Book book = new Book();
+		
+    	model.addAttribute("books", book);
     	model.addAttribute("listBooks", bookService.getBooks());
+    	model.addAttribute("listPublishers", publisherService.getPublisher());
         return "books";
     }
 	

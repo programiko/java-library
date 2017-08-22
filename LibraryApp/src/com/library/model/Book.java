@@ -1,6 +1,6 @@
 package com.library.model;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="books")
-public class Book {
+public class Book{
 
 	
 	//table columns
@@ -49,7 +49,9 @@ public class Book {
 	@Column(name="location")
 	private String bookLocation;
 	
-	private Set<Publisher> publisher;
+	@ManyToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.LAZY)
+	@JoinTable(name = "book_publisher", joinColumns = @JoinColumn(name = "book_id", referencedColumnName="id"), inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName="id"))
+	private Set<Publisher> publisher = new HashSet<Publisher>();
 	
 	@OneToMany(mappedBy="book", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Debits> debit;	
@@ -71,22 +73,17 @@ public class Book {
 		this.bookRating = bookRating;
 		this.bookLocation = bookLocation;
 	}
-
     
-    
-	//getters and setters
-    
-    
+	//getters and setters    
 	public int getBookId() {
 		return bookId;
 	}
-
 
 	public void setBookId(int bookId) {
 		this.bookId = bookId;
 	}
 	
-public List<Debits> getDebit() {
+	public List<Debits> getDebit() {
 		return debit;
 	}
 
@@ -149,27 +146,21 @@ public List<Debits> getDebit() {
 	public void setBookLocation(String bookLocation) {
 		this.bookLocation = bookLocation;
 	}
+	
 
-	@ManyToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinTable(name = "book_publisher", joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id"))
+	
 	public Set<Publisher> getPublisher() {
 		return publisher;
 	}
 	public void setPublisher(Set<Publisher> publisher) {
 		this.publisher = publisher;
-	} 
-	
-	
-	void add(Debits tempDebits) {
-		if(debit == null) {
-			debit = new ArrayList<>();	
-		}
-		debit.add(tempDebits);
-		tempDebits.setBook(this);
 	}
 
-	//toString() method
 	
+	
+	
+	
+	//toString() method
 	
 
 	@Override

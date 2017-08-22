@@ -1,5 +1,6 @@
 package com.library.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="publishers")
-public class Publisher {
+public class Publisher{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,7 +30,8 @@ public class Publisher {
 	@Column(name = "phone")
 	private String phone;
 	
-	private Set<Book> books;
+	@ManyToMany(mappedBy = "publisher", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	private Set<Book> books = new HashSet<Book>();
 	
 	public Publisher() {}
 	
@@ -71,16 +73,15 @@ public class Publisher {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	
-	@ManyToMany(mappedBy = "publisher", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	public Set<Book> getBooks() {
 		return books;
 	}
-
 	public void setBooks(Set<Book> books) {
 		this.books = books;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Publishers [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";

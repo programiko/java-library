@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page import="java.util.List" 
+		import = "com.library.model.Publisher"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -49,8 +51,9 @@
                 <tr>
                     <td>${book.bookId}</td>
                     <td>${book.bookTitle}</td>
-                    <td></td>
-                    <td>${book.publisher.name}</td>
+                    <td>
+                    </td>                    
+                    <td>Ovde ne znamo da ispisemo publisher.name</td>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
                     <td>${book.numberOfRenting}</td>
