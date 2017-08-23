@@ -1,6 +1,11 @@
 package com.library.model;
 
+<<<<<<< HEAD
+
 import java.util.ArrayList;
+=======
+import java.util.HashSet;
+>>>>>>> 413c810936c484c32a1f7b104e49266070cd675c
 import java.util.List;
 import java.util.Set;
 
@@ -50,12 +55,18 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
+<<<<<<< HEAD
 	 @ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
 	 @JoinTable(name="affiliations", 
 	 joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), 
 	 inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
 	private List<Authors> authors = new ArrayList<>();
 
+=======
+	@ManyToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.EAGER)
+	@JoinTable(name = "book_publisher", joinColumns = @JoinColumn(name = "book_id", referencedColumnName="id"), inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName="id"))
+	private Set<Publisher> publishers = new HashSet<Publisher>();
+>>>>>>> 413c810936c484c32a1f7b104e49266070cd675c
 	
 	@OneToMany(mappedBy="book", cascade=CascadeType.ALL)
 	private List<Debits> debit;	
@@ -79,16 +90,9 @@ public class Book{
 	}
     
 	//getters and setters    
-
-    
-    
-	//getters and setters
-    
-    
 	public int getBookId() {
 		return bookId;
 	}
-
 
 	public void setBookId(int bookId) {
 		this.bookId = bookId;
@@ -158,12 +162,21 @@ public class Book{
 		this.bookLocation = bookLocation;
 	}
 	
+
 	
+<<<<<<< HEAD
 	public List<Authors> getAuthors() {
 		return authors;
 	}
 
+	public void setAuthors(List<Authors> authors) {
+		this.authors = authors;
+	}
 	
+  
+ 
+   
+=======
 	public Set<Publisher> getPublishers() {
 		return publishers;
 	}
@@ -174,10 +187,7 @@ public class Book{
 	
 	
 	
-	
-  
- 
-   
+>>>>>>> 413c810936c484c32a1f7b104e49266070cd675c
 	
 	//toString() method
 	
@@ -189,47 +199,6 @@ public class Book{
 				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRaiting=" + bookRating + ", bookLocation="
 				+ bookLocation + publishers.toString() +"]";
 	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

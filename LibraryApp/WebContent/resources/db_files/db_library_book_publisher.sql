@@ -16,35 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `debits`
+-- Table structure for table `book_publisher`
 --
 
-DROP TABLE IF EXISTS `debits`;
+DROP TABLE IF EXISTS `book_publisher`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `debits` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `date_of_debit` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `return_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `note` varchar(255) DEFAULT NULL,
-  `member_id` int(10) DEFAULT NULL,
-  `book_id` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_member` (`member_id`),
-  KEY `fk_book` (`book_id`),
-  CONSTRAINT `fk_book` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`),
-  CONSTRAINT `fk_member` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+CREATE TABLE `book_publisher` (
+  `book_id` int(10) NOT NULL,
+  `publisher_id` int(10) NOT NULL,
+  PRIMARY KEY (`book_id`,`publisher_id`),
+  KEY `publisher_fk1` (`publisher_id`),
+  CONSTRAINT `book_fk1` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`),
+  CONSTRAINT `publisher_fk1` FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `debits`
+-- Dumping data for table `book_publisher`
 --
 
-LOCK TABLES `debits` WRITE;
-/*!40000 ALTER TABLE `debits` DISABLE KEYS */;
-INSERT INTO `debits` VALUES (1,'2017-07-27 22:00:00','2017-08-26 22:00:00','zaduzio knjigu dana…',1,1);
-/*!40000 ALTER TABLE `debits` ENABLE KEYS */;
+LOCK TABLES `book_publisher` WRITE;
+/*!40000 ALTER TABLE `book_publisher` DISABLE KEYS */;
+INSERT INTO `book_publisher` VALUES (1,1),(1,2);
+/*!40000 ALTER TABLE `book_publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

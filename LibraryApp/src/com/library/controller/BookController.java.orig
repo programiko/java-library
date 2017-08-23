@@ -29,6 +29,11 @@ public class BookController {
 		Book book = new Book();
     	model.addAttribute("books", book);
     	model.addAttribute("listBooks", bookService.getBooks());
+<<<<<<< HEAD
+    	
+=======
+    	//model.addAttribute("listPublishers", publisherService.getPublisher());
+>>>>>>> 413c810936c484c32a1f7b104e49266070cd675c
         return "books";
     }
 	

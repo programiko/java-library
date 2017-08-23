@@ -32,9 +32,13 @@ public class Publisher{
 	
 	@Column(name = "phone")
 	private String phone;
+<<<<<<< HEAD
 
+=======
+	
 	@ManyToMany(mappedBy = "publishers", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},fetch=FetchType.EAGER)
 	private Set<Book> books = new HashSet<Book>(0);
+>>>>>>> 413c810936c484c32a1f7b104e49266070cd675c
 	
 	public Publisher() {}
 	
@@ -77,15 +81,20 @@ public class Publisher{
 		this.phone = phone;
 	}
 
-	public List<Book> getBooks() {
+	
+<<<<<<< HEAD
+	
+
+
+=======
 	public Set<Book> getBooks() {
 		return books;
 	}
 	public void setBooks(Set<Book> books) {
-
 		this.books = books;
 	}
 	
+>>>>>>> 413c810936c484c32a1f7b104e49266070cd675c
 	@Override
 	public String toString() {
 		return "Publishers [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";
