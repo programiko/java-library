@@ -1,6 +1,5 @@
 package com.library.model;
 
-import java.util.List;
 import java.util.Set;
 
 
@@ -58,7 +57,7 @@ public class Book{
 	private Set<Publisher> publishers;
 	
 	@OneToMany(mappedBy="book", cascade=CascadeType.ALL)
-	private List<Debits> debit;	
+	private Set<Debits> debit;	
 	
 	
 	
@@ -89,11 +88,11 @@ public class Book{
 		this.bookId = bookId;
 	}
 	
-	public List<Debits> getDebit() {
+	public Set<Debits> getDebit() {
 		return debit;
 	}
 
-	public void setDebit(List<Debits> debit) {
+	public void setDebit(Set<Debits> debit) {
 		this.debit = debit;
 	}
 
