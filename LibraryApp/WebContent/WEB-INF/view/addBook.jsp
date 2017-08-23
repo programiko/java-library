@@ -39,37 +39,36 @@
 					</table>
 					<hr>
 					<!-- Author info -->
-					Author info
+					<table>
+						<tbody>
+							<c:forEach var="author" items="${book.authors}" varStatus="status">
+								<tr>
+									<td><label>${status.count}. </label></td>
+									<td>Author Name: </td>
+									<td><input name="authors[${status.index}].authorsName" value="${author.authorsName}"/></td>
+									<td>Author Surname: </td>
+									<td><input name="authors[${status.index}].authorsSurname" value="${author.authorsSurname}"/></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 					
 					<hr>
 					<table>
 						<tbody>
-							<tr>
-								<td>Publisher Name: </td>
-								<td>
-									<spring:bind path="book.publisher">
-										<form:input path="publisher.name"/>
-									</spring:bind>
-								</td>
-							</tr>	
-							<tr>
-								<td>Publisher Address: </td>
-								<td>
-									<spring:bind path="book.publisher">
-										<form:input path="publisher.address"/>
-									</spring:bind>
-								</td>
-							</tr>
-							<tr>
-								<td>Publisher Phone: </td>
-								<td>
-									<spring:bind path="book.publisher">
-										<form:input path="publisher.phone"/>
-									</spring:bind>
-								</td>
-							</tr>
+							<c:forEach var="publisher" items="${book.publishers}" varStatus="status">
+								<tr>
+									<td><label>${status.count}. </label></td>
+									<td>Publisher Name: </td>
+									<td><input name="publishers[${status.index}].name" value="${publisher.name}"/></td>
+									<td>Publisher Address: </td>
+									<td><input name="publishers[${status.index}].address" value="${publisher.address}"/></td>
+									<td>Publisher Phone: </td>
+									<td><input name="publishers[${status.index}].phone" value="${publisher.phone}"/></td>
+								</tr>
+							</c:forEach>
 						</tbody>
-					</table>
+					</table> 
 					<hr>
 				<input type="submit" value="Save" class="add-button"/>				
 			</form:form>

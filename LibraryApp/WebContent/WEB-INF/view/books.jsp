@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-		import = "com.library.model.Publisher"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 	<head>
@@ -51,12 +50,21 @@
                 <tr>
                     <td>${book.bookId}</td>
                     <td>${book.bookTitle}</td>
-                    <td>dodati autora</td>
-                    <c:if test="${!empty book.publishers}">
-            		<c:forEach var="publ" items="${book.publishers}">
-                    <td>${publ.name}</td>
-                    </c:forEach>
-       				</c:if>
+                    <td>
+                    	<c:if test="${!empty book.authors}">
+		            		<c:forEach var="auto" items="${book.authors}">
+		                    	${auto.authorsName} 
+		                    	${auto.authorsSurname}
+		                    </c:forEach>
+	       				</c:if>
+                    </td>
+                    <td>
+	                    <c:if test="${!empty book.publishers}">
+		            		<c:forEach var="publ" items="${book.publishers}">
+		                    	${publ.name}
+		                    </c:forEach>
+	       				</c:if>
+       				</td>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
                     <td>${book.numberOfRenting}</td>

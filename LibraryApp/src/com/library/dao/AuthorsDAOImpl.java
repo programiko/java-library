@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.library.model.Authors;
-import com.library.model.Member;
 
 @Repository
 public class AuthorsDAOImpl implements AuthorsDAO{

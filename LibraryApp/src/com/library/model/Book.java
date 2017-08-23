@@ -50,12 +50,13 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
-	 @ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
-	 @JoinTable(name="affiliations", 
-	 joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), 
-	 inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
+	@JoinTable(name="affiliations", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
 	private List<Authors> authors = new ArrayList<>();
 
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
+	@JoinTable(name="book_publisher", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
+	private Set<Publisher> publishers;
 	
 	@OneToMany(mappedBy="book", cascade=CascadeType.ALL)
 	private List<Debits> debit;	
@@ -80,11 +81,6 @@ public class Book{
     
 	//getters and setters    
 
-    
-    
-	//getters and setters
-    
-    
 	public int getBookId() {
 		return bookId;
 	}
@@ -162,8 +158,11 @@ public class Book{
 	public List<Authors> getAuthors() {
 		return authors;
 	}
-
 	
+	public void setAuthors(List<Authors> authors) {
+		this.authors = authors;
+	}
+
 	public Set<Publisher> getPublishers() {
 		return publishers;
 	}
@@ -171,14 +170,6 @@ public class Book{
 		this.publishers = publishers;
 	}
 
-	
-	
-	
-	
-  
- 
-   
-	
 	//toString() method
 	
 
@@ -187,7 +178,7 @@ public class Book{
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", numberOfPages=" + numberOfPages
 				+ ", numberOfCopies=" + numberOfCopies + ", numberOfRenting=" + numberOfRenting
 				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRaiting=" + bookRating + ", bookLocation="
-				+ bookLocation + publishers.toString() +"]";
+				+ bookLocation + "publishers=" + publishers.toString() +"]";
 	}
 	
 	
