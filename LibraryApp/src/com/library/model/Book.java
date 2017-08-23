@@ -64,7 +64,7 @@ public class Book {
 	@ManyToMany(cascade = { 
 		    CascadeType.PERSIST, 
 		    CascadeType.MERGE
-		})
+		}, fetch= FetchType.EAGER)
 		@JoinTable(name = "affiliations",
 		    joinColumns = @JoinColumn(name = "book_id"),
 		    inverseJoinColumns = @JoinColumn(name = "author_id")
@@ -76,8 +76,17 @@ public class Book {
 	@JoinTable(name = "book_publisher", joinColumns = @JoinColumn(name = "book_id", referencedColumnName="id"), inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName="id"))
 	private Set<Publisher> publishers = new HashSet<Publisher>();
 	
+	
 		
 	
+	public Set<Publisher> getPublishers() {
+		return publishers;
+	}
+
+	public void setPublishers(Set<Publisher> publishers) {
+		this.publishers = publishers;
+	}
+
 	//constructors
 	public Book() {
 	}
@@ -195,55 +204,19 @@ public List<Debits> getDebit() {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
-
 	//toString() method
-	
+
 	@Override
 	public String toString() {
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", numberOfPages=" + numberOfPages
 				+ ", numberOfCopies=" + numberOfCopies + ", numberOfRenting=" + numberOfRenting
-				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRaiting=" + bookRating + ", bookLocation="
-				+ bookLocation + "]";
+				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRating=" + bookRating + ", bookLocation="
+				+ bookLocation + ", publisher=" + publisher + ", debit=" + debit + ", category=" + category + publishers + publishers.toString() + authors + authors.toString() +"]";
 	}
-	
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
 	
 	
 	

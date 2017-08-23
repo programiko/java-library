@@ -3,8 +3,10 @@ package com.library.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,8 +36,10 @@ public class Authors{
 		this.authorsSurname = authorsSurname;
 	}
 
-	@ManyToMany(mappedBy = "authors")
-	private Set<Book> books = new HashSet<Book>();
+	@ManyToMany(mappedBy = "authors", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},fetch=FetchType.EAGER)
+	private Set<Book> books = new HashSet<Book>(0);
+	
+	
 	public int getAuthorsId() {
 		return authorsId;
 	}

@@ -37,8 +37,9 @@
             <th width="8%">Action</th>
         </tr>        
         <c:if test="${!empty listBooks}">
-            <c:forEach var="book" items="${listBooks}">
-          <c:forEach var="book1" items="${book1}">
+            <c:forEach var="books" items="${listBooks}">
+           
+        
         		<!-- Create an update and delete link with book id  -->
        			<c:url var="updateLink" value="/book/showFormForUpdate">
        				<c:param name="bookId" value="${book.bookId}"/>
@@ -47,42 +48,39 @@
        				<c:param name="bookId" value="${book.bookId}"/>
        			</c:url>
                 
-               <!--  <tr>
-                    <td>${book.bookId}</td>
-                    <td>${book.bookTitle}</td>
-                   	<td>	${book1}				</td>
-                    <td>${book.publisher.name}</td>
-                    <td>${book.category.name}</td>
-                    <td>${book.numberOfPages}</td>
-                    <td>${book.numberOfCopies}</td>
-                    <td>${book.numberOfRenting}</td>
-                    <td>${book.numberOfRentedBook}</td>
-                    <td>${book.bookRating}</td>
-                    <td>${book.bookLocation}</td>
-                     -->
-                      <td>${book.bookId}</td>
-                    <td>${book.bookTitle}</td>
-                    <td>dodati autora</td>
-                    <c:if test="${!empty book.publishers}">
-            		<c:forEach var="publ" items="${book.publishers}">
-                    <td>${publ.name}</td>
-                    </c:forEach>
-       				</c:if>
-                    <td>${book.numberOfPages}</td>
-                    <td>${book.numberOfCopies}</td>
-                    <td>${book.numberOfRenting}</td>
-                    <td>${book.numberOfRentedBook}</td>
-                    <td>${book.bookRating}</td>
-                    <td>${book.bookLocation}</td>
+            		<c:if test="${!empty books.authors}">
+            		<c:forEach var="auth" items="${books.authors}">
+                      <td>${books.bookId}</td>
+                    <td>${books.bookTitle}</td>
+                    <c:if test="${!empty books.authors}">
+            		<c:forEach var="auth" items="${books.authors}">
+                     <td>${auth.name} </td>
+                     </c:forEach>
+           			 </c:if>
+                     <c:if test="${!empty books.publishers}">
+            		<c:forEach var="pub" items="${books.publishers}">
+                    <td>${pub.name}</td>
+                     </c:forEach>
+           			 </c:if>
+       				<td>${category.name }</td>
+                    <td>${books.numberOfPages}</td>
+                    <td>${books.numberOfCopies}</td>
+                    <td>${books.numberOfRenting}</td>
+                    <td>${books.numberOfRentedBook}</td>
+                    <td>${books.bookRating}</td>
+                    <td>${books.bookLocation}</td>
                     <td><a href="${updateLink}">Update</a> | 
                     	<a href="${deleteLink}"
                     	   onclick="if(!(confirm('Are you sure you want to delete this book?'))) return false"
                     	>Delete</a></td>
                 </tr>
-            </c:forEach>
-              </c:forEach>
             
-        </c:if>
+            
+              </c:forEach>
+              
+                 </c:if>
+                 </c:forEach>
+                  </c:if>
     </table>
     <div>
 		<p><a href="${pageContext.request.contextPath}/">Back to Home page</a></p>

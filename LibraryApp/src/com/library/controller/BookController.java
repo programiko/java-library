@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.library.dao.AuthorsDAO;
 import com.library.model.Authors;
 import com.library.model.Book;
+import com.library.model.Publisher;
+import com.library.service.AuthorsService;
 import com.library.service.BookService;
 import com.library.service.PublisherService;
 
@@ -26,13 +28,19 @@ public class BookController {
 	private BookService bookService;
 	@Autowired
 	private PublisherService publisherService;
+
+	@Autowired
+	private AuthorsService authorService;
 	
 	@GetMapping("/books")
     public String listBooks(Model model) {
     	
     	model.addAttribute("books", new Book());
+    	model.addAttribute("pub", new Publisher());
+    	model.addAttribute("auth", new Authors());
     	model.addAttribute("listBooks", bookService.getBooks());
     	model.addAttribute("listPublishers", publisherService.getPublisher());
+    	model.addAttribute("listAuthors", authorService.getAuthors());
         return "books";
     }
 	
