@@ -1,7 +1,7 @@
 package com.library.model;
 
-import java.util.Set;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -51,18 +51,18 @@ public class Book{
 	
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
 	@JoinTable(name="affiliations", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
-	private Set<Authors> authors;
+	private List<Authors> authors = new ArrayList<Authors>();
 
-	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
+	@ManyToMany(cascade=CascadeType.ALL)  
 	@JoinTable(name="book_publisher", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
-	private Set<Publisher> publishers;
+	private List<Publisher> publishers;
 	
 	@ManyToOne(cascade= CascadeType.ALL)
 	@JoinColumn(name="category_id")
 	private Category category;
 	
 	@OneToMany(mappedBy="book", cascade=CascadeType.ALL)
-	private Set<Debits> debit;	
+	private List<Debits> debit;	
 	
 	
 	
@@ -93,11 +93,11 @@ public class Book{
 		this.bookId = bookId;
 	}
 	
-	public Set<Debits> getDebit() {
+	public List<Debits> getDebit() {
 		return debit;
 	}
 
-	public void setDebit(Set<Debits> debit) {
+	public void setDebit(List<Debits> debit) {
 		this.debit = debit;
 	}
 
@@ -158,24 +158,20 @@ public class Book{
 	}
 	
 	
-	public Set<Authors> getAuthors() {
+	public List<Authors> getAuthors() {
 		return authors;
 	}
 	
-	public void setAuthors(Set<Authors> authors) {
+	public void setAuthors(List<Authors> authors) {
 		this.authors = authors;
 	}
 
-	public Set<Publisher> getPublishers() {
+	public List<Publisher> getPublishers() {
 		return publishers;
 	}
-	public void setPublishers(Set<Publisher> publishers) {
+	public void setPublishers(List<Publisher> publishers) {
 		this.publishers = publishers;
 	}
-	
-
-	//toString() method
-	
 
 	public Category getCategory() {
 		return category;
@@ -184,6 +180,10 @@ public class Book{
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
+	//toString() method
+	
+
 
 	@Override
 	public String toString() {

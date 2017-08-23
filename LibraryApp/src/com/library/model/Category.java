@@ -1,7 +1,6 @@
 package com.library.model;
 
-import java.util.Set;
-
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +25,7 @@ public class Category {
 	String description;
 	
 	@OneToMany(mappedBy="category",cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH,CascadeType.REFRESH})	
-	private Set<Book> books;
+	private List<Book> books;
 	
 	public int getId() {
 		return id;
@@ -47,10 +46,10 @@ public class Category {
 		this.description = description;
 	}
 	
-	public Set<Book> getBooks() {
+	public List<Book> getBooks() {
 		return books;
 	}
-	public void setBooks(Set<Book> books) {
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 	public Category(int id, String name, String description) {

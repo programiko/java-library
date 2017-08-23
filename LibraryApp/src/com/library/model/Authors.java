@@ -1,7 +1,6 @@
 package com.library.model;
 
-
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +29,7 @@ public class Authors{
 	private String authorsSurname;
 	
 	@ManyToMany(mappedBy="authors") 
-	private Set<Book> books;
+	private List<Book> books;
 	
 	public Authors(int authorsId, String authorsName, String authorsSurname) {
 		super();
@@ -82,12 +81,12 @@ public class Authors{
 	}
 
 
-	public Set<Book> getBooks() {
+	public List<Book> getBooks() {
 		return books;
 	}
 
 
-	public void setBooks(Set<Book> books) {
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 	

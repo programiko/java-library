@@ -30,8 +30,9 @@ public class BookController {
 	
 	@GetMapping("/showFormForAdd")
     public String showFormForAdd(Model model) {
-    	
+    			
     	model.addAttribute("book", new Book());
+    	
     	
     	return "addBook";
     }
