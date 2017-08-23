@@ -57,7 +57,7 @@ public class Book{
 	@JoinTable(name="book_publisher", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
 	private Set<Publisher> publishers;
 	
-	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@ManyToOne(cascade= CascadeType.ALL)
 	@JoinColumn(name="category_id")
 	private Category category;
 	
@@ -172,9 +172,18 @@ public class Book{
 	public void setPublishers(Set<Publisher> publishers) {
 		this.publishers = publishers;
 	}
+	
 
 	//toString() method
 	
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
 	@Override
 	public String toString() {

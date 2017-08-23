@@ -38,6 +38,10 @@
 <br><br>
 
 <a href="${pageContext.request.contextPath}/author/authors">Admin - Authors</a>
+
+<br><br>
+<a href="${pageContext.request.contextPath}/category/categories">Category page</a>
+
 </body>
 
 </html>

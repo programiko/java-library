@@ -66,7 +66,7 @@
 		                    </c:forEach>
 	       				</c:if>
        				</td>
-       				<td>${book.category}</td>
+       				<td>${book.category.name}</td>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
                     <td>${book.numberOfRenting}</td>
