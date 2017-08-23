@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -55,6 +56,10 @@ public class Book{
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
 	@JoinTable(name="book_publisher", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
 	private Set<Publisher> publishers;
+	
+	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinColumn(name="category_id")
+	private Category category;
 	
 	@OneToMany(mappedBy="book", cascade=CascadeType.ALL)
 	private Set<Debits> debit;	
