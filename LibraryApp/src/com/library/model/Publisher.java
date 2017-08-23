@@ -29,9 +29,7 @@ public class Publisher {
 	
 	@Column(name = "phone")
 	private String phone;
-	
-	@OneToMany(mappedBy="publisher",cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH,CascadeType.REFRESH})	
-	private List<Book> books;
+
 	
 	public Publisher() {}
 	
@@ -74,21 +72,8 @@ public class Publisher {
 		this.phone = phone;
 	}
 	
-	public List<Book> getBooks() {
-		return books;
-	}
-
-	public void setBooks(List<Book> books) {
-		this.books = books;
-	}
 	
-	public void add(Book tempBook) {
-		if(books == null) {
-			books = new ArrayList<>();	
-		}
-		books.add(tempBook);
-		tempBook.setPublisher(this);
-	}
+
 
 	@Override
 	public String toString() {

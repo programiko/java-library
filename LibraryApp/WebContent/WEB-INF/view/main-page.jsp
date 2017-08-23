@@ -35,7 +35,9 @@
 <br><br>
 
 <a href="${pageContext.request.contextPath}/book/books">Admin - Books</a>
+<br><br>
 
+<a href="${pageContext.request.contextPath}/author/authors">Admin - Authors</a>
 </body>
 
 </html>

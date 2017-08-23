@@ -1,6 +1,9 @@
 package com.library.model;
 
+
+import java.util.ArrayList;
 import java.util.List;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,7 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -46,11 +50,14 @@ public class Book {
 	@Column(name="location")
 	private String bookLocation;
 	
-	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinColumn(name="publisher_id")
-	private Publisher publisher;
+	 @ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
+	 @JoinTable(name="affiliations", 
+	 joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), 
+	 inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
+	private List<Authors> authors = new ArrayList<>();
+
 	
-	@OneToMany(mappedBy="book", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="book", cascade=CascadeType.ALL)
 	private List<Debits> debit;	
 	
 	
@@ -149,14 +156,19 @@ public List<Debits> getDebit() {
 		this.bookLocation = bookLocation;
 	}
 
-	public Publisher getPublisher() {
-		return publisher;
+	
+	public List<Authors> getAuthors() {
+		return authors;
 	}
 
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
+	public void setAuthors(List<Authors> authors) {
+		this.authors = authors;
 	}
-
+	
+  
+ 
+   
+	
 	//toString() method
 	
 	@Override
@@ -166,46 +178,6 @@ public List<Debits> getDebit() {
 				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRaiting=" + bookRating + ", bookLocation="
 				+ bookLocation + "]";
 	}
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

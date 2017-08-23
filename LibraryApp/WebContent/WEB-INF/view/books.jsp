@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -21,7 +22,8 @@
     	   class="add-button"/>
     	      
     <!-- Member table -->    
-    <table class="tg">
+<table class="tg">
+
         <tr>
             <th width="3%">Book ID</th>
             <th width="8%">Book Title</th>
@@ -49,8 +51,12 @@
                 <tr>
                     <td>${book.bookId}</td>
                     <td>${book.bookTitle}</td>
+                    <td>    
+      			<c:forEach items="${book.authors}" var="entry">
+      				 ${entry.authorsName}<br>
+       				${entry.authorsSurname}<br>
+    			</c:forEach></td>
                     <td></td>
-                    <td>${book.publisher.name}</td>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
                     <td>${book.numberOfRenting}</td>
@@ -64,6 +70,7 @@
                 </tr>
             </c:forEach>
         </c:if>
+
     </table>
     <div>
 		<p><a href="${pageContext.request.contextPath}/">Back to Home page</a></p>

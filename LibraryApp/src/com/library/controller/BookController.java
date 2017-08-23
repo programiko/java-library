@@ -24,6 +24,7 @@ public class BookController {
     	
     	model.addAttribute("books", new Book());
     	model.addAttribute("listBooks", bookService.getBooks());
+    	
         return "books";
     }
 	
