@@ -23,6 +23,7 @@
 
 <br><br>
 
+<<<<<<< HEAD
 <a href="${pageContext.request.contextPath}/category/categories">Category page</a>
 <br><br>
 
@@ -40,9 +41,23 @@
 <br><br>
 
 <a href="${pageContext.request.contextPath}/author/authors">Admin - Books</a>
+=======
+<!-- Link >> publisher.jsp -->
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
+
+<a href="${pageContext.request.contextPath}/publisher/publishers">Publisher page</a>
 
 
+<br><br>
 
+<a href="${pageContext.request.contextPath}/debit/debits">Admin - Debit</a>
+
+<br><br>
+
+<a href="${pageContext.request.contextPath}/book/books">Admin - Books</a>
+<br><br>
+
+<a href="${pageContext.request.contextPath}/author/authors">Admin - Authors</a>
 </body>
 
 </html>

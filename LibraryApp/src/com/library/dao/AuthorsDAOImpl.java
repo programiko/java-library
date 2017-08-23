@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.library.model.Authors;
+<<<<<<< HEAD
 import com.library.model.Member;
+=======
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 
 @Repository
 public class AuthorsDAOImpl implements AuthorsDAO{
@@ -62,6 +65,7 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 		
 			
 		}
+<<<<<<< HEAD
 
 		@Override
 		public Authors getAuthorByName(String name) {
@@ -74,5 +78,7 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			
 			return authors;
 		}
+=======
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 	
 }

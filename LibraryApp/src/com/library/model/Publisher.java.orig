@@ -1,8 +1,12 @@
 package com.library.model;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+=======
+import java.util.HashSet;
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,11 +17,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+<<<<<<< HEAD
+import javax.persistence.OneToMany;
+=======
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 import javax.persistence.Table;
 
 @Entity
 @Table(name="publishers")
+<<<<<<< HEAD
 public class Publisher {
+=======
+public class Publisher{
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -32,10 +44,21 @@ public class Publisher {
 	
 	@Column(name = "phone")
 	private String phone;
+<<<<<<< HEAD
 	
+	/*@OneToMany(mappedBy="publisher",cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH,CascadeType.REFRESH})	
+	private List<Book> books;*/
 	@ManyToMany(mappedBy = "publishers", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},fetch=FetchType.EAGER)
 	private Set<Book> books = new HashSet<Book>(0);
 	
+
+
+=======
+
+	@ManyToMany(mappedBy = "publishers", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},fetch=FetchType.EAGER)
+	private Set<Book> books = new HashSet<Book>(0);
+	
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 	public Publisher() {}
 	
 	public Publisher(String name, String address, String phone) {
@@ -80,6 +103,25 @@ public class Publisher {
 	public Set<Book> getBooks() {
 		return books;
 	}
+<<<<<<< HEAD
+
+	public void setBooks(Set<Book> books) {
+		this.books = books;
+	}
+
+	@Override
+	public String toString() {
+		return "Publisher [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";
+	}
+	
+	
+
+	
+	
+
+	
+	
+=======
 	public void setBooks(Set<Book> books) {
 
 		this.books = books;
@@ -91,4 +133,5 @@ public class Publisher {
 	}
 	
 	
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 }

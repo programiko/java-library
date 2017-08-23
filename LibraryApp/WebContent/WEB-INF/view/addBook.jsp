@@ -39,11 +39,28 @@
 					</table>
 					<hr>
 					<!-- Author info -->
+<<<<<<< HEAD
 					Author info
+=======
+					<table>
+						<tbody>
+							<c:forEach var="author" items="${book.authors}" varStatus="status">
+								<tr>
+									<td><label>${status.count}. </label></td>
+									<td>Author Name: </td>
+									<td><input name="authors[${status.index}].authorsName" value="${author.authorsName}"/></td>
+									<td>Author Surname: </td>
+									<td><input name="authors[${status.index}].authorsSurname" value="${author.authorsSurname}"/></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 					
 					<hr>
 					<table>
 						<tbody>
+<<<<<<< HEAD
 							<tr>
 								<td>Publisher Name: </td>
 								<td>
@@ -70,6 +87,21 @@
 							</tr>
 						</tbody>
 					</table>
+=======
+							<c:forEach var="publisher" items="${book.publishers}" varStatus="status">
+								<tr>
+									<td><label>${status.count}. </label></td>
+									<td>Publisher Name: </td>
+									<td><input name="publishers[${status.index}].name" value="${publisher.name}"/></td>
+									<td>Publisher Address: </td>
+									<td><input name="publishers[${status.index}].address" value="${publisher.address}"/></td>
+									<td>Publisher Phone: </td>
+									<td><input name="publishers[${status.index}].phone" value="${publisher.phone}"/></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table> 
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 					<hr>
 				<input type="submit" value="Save" class="add-button"/>				
 			</form:form>

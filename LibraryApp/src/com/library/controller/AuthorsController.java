@@ -7,11 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.library.model.Authors;
 import com.library.model.Member;
+=======
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.library.model.Authors;
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 import com.library.service.AuthorsService;
 
 @Controller  

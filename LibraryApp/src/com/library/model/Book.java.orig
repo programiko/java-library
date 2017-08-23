@@ -1,10 +1,17 @@
 package com.library.model;
 
+<<<<<<< HEAD
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+=======
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,12 +22,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+<<<<<<< HEAD
+import javax.persistence.ManyToOne;
+=======
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="books")
+<<<<<<< HEAD
+public class Book {
+=======
 public class Book{
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 
 	
 	//table columns
@@ -50,6 +65,7 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
+<<<<<<< HEAD
 	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name="publisher_id")
 	private Publisher publisher;
@@ -71,6 +87,26 @@ public class Book{
 		)
 		private Set<Authors> authors = new HashSet<Authors>();
 	
+	
+	@ManyToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.EAGER)
+	@JoinTable(name = "book_publisher", joinColumns = @JoinColumn(name = "book_id", referencedColumnName="id"), inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName="id"))
+	private Set<Publisher> publishers = new HashSet<Publisher>();
+	
+	
+		
+	
+	public Set<Publisher> getPublishers() {
+		return publishers;
+	}
+
+	public void setPublishers(Set<Publisher> publishers) {
+		this.publishers = publishers;
+	}
+
+=======
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
+	@JoinTable(name="affiliations", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
+	private List<Authors> authors = new ArrayList<>();
 
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
 	@JoinTable(name="book_publisher", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
@@ -80,18 +116,13 @@ public class Book{
 	private List<Debits> debit;	
 	
 	
-	public Set<Publisher> getPublishers() {
-		return publishers;
-	}
-
-	public void setPublishers(Set<Publisher> publishers) {
-		this.publishers = publishers;
-	}
 	
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 	//constructors
 	public Book() {
 	}
 		
+<<<<<<< HEAD
     public Set<Authors> getAuthors() {
 		return authors;
 	}
@@ -100,7 +131,10 @@ public class Book{
 		this.authors = authors;
 	}
 
+	public Book(String bookTitle, int numberOfPages, int numberOfCopies, int numberOfRenting, int numberOfRentedBook,
+=======
     public Book(String bookTitle, int numberOfPages, int numberOfCopies, int numberOfRenting, int numberOfRentedBook,
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 			float bookRating, String bookLocation) {
 		super();
 		this.bookTitle = bookTitle;
@@ -111,14 +145,24 @@ public class Book{
 		this.bookRating = bookRating;
 		this.bookLocation = bookLocation;
 	}
+<<<<<<< HEAD
+
+    
+    
+	//getters and setters
+    
+    
+=======
     
 	//getters and setters    
 
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 	public int getBookId() {
 		return bookId;
 	}
 
 
+<<<<<<< HEAD
 	public Category getCategory() {
 		return category;
 	}
@@ -127,11 +171,17 @@ public class Book{
 		this.category = category;
 	}
 
+=======
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 	public void setBookId(int bookId) {
 		this.bookId = bookId;
 	}
 	
+<<<<<<< HEAD
+public List<Debits> getDebit() {
+=======
 	public List<Debits> getDebit() {
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 		return debit;
 	}
 
@@ -194,12 +244,21 @@ public class Book{
 	public void setBookLocation(String bookLocation) {
 		this.bookLocation = bookLocation;
 	}
+<<<<<<< HEAD
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+	//toString() method
+=======
 	
 	
 	public List<Authors> getAuthors() {
 		return authors;
-	public Publisher getPublisher() {
-		return publisher;
 	}
 	
 	public void setAuthors(List<Authors> authors) {
@@ -215,11 +274,21 @@ public class Book{
 
 	//toString() method
 	
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 
 	@Override
 	public String toString() {
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", numberOfPages=" + numberOfPages
 				+ ", numberOfCopies=" + numberOfCopies + ", numberOfRenting=" + numberOfRenting
+<<<<<<< HEAD
+				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRating=" + bookRating + ", bookLocation="
+				+ bookLocation + ", publisher=" + publisher + ", debit=" + debit + ", category=" + category + publishers + publishers.toString() + authors + authors.toString() +"]";
+	}
+
+	
+
+
+=======
 				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRaiting=" + bookRating + ", bookLocation="
 				+ bookLocation + "publishers=" + publishers.toString() +"]";
 	}
@@ -263,6 +332,7 @@ public class Book{
 	
 	
 	
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 	
 	
 	

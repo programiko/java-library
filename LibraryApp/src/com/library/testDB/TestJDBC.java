@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 
 public class TestJDBC {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		String jdbcUrl = "jdbc:mysql://localhost:3306/db_library?useSSL=false";

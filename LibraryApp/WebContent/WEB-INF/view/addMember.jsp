@@ -53,7 +53,7 @@
 				</table>				
 			</form:form>
 			<div>
-				<p><a href="${pageContext.request.contextPath}/admin/members">Back to members</a></p>
+				<p><a href="${pageContext.request.contextPath}/member/members">Back to members</a></p>
 			</div>
 		</div>
 	</body>

@@ -4,7 +4,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+<<<<<<< HEAD
 import org.hibernate.query.Query;
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 import org.springframework.stereotype.Repository;
 
 import com.library.model.Administrator;
@@ -12,12 +16,27 @@ import com.library.model.Administrator;
 @Repository
 public class AdministratorDAOImpl implements AdministratorDAO {
 	
+	@Autowired
     private SessionFactory sessionFactory;
     
+<<<<<<< HEAD
     public void setSessionFactory(SessionFactory sf) {
         sessionFactory = sf;
     }
     
+=======
+    @Override
+	public void addAdministrator(Administrator p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateAdministrator(Administrator p) {
+		// TODO Auto-generated method stub
+		
+	}
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 	
 	@SuppressWarnings("unchecked")
 	@Override

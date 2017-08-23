@@ -13,9 +13,12 @@ public interface AuthorsDAO {
 	    public List<Authors> getAuthors();
 	 
 	    public Authors getAuthorsById(int id);
+<<<<<<< HEAD
 	    
 	    
 	    public Authors getAuthorByName(String name);
+=======
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 	 
 	    public void removeAuthors(int id);
 

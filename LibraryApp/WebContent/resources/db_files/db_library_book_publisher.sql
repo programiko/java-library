@@ -38,6 +38,10 @@ CREATE TABLE `book_publisher` (
 
 LOCK TABLES `book_publisher` WRITE;
 /*!40000 ALTER TABLE `book_publisher` DISABLE KEYS */;
+<<<<<<< HEAD
+=======
+INSERT INTO `book_publisher` VALUES (1,1),(1,2);
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 /*!40000 ALTER TABLE `book_publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +54,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2017-08-22 16:17:50
+=======
+-- Dump completed on 2017-08-22  9:44:00
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76

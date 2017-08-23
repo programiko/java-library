@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.library.model.Publisher;
+<<<<<<< HEAD
+=======
+import com.library.service.BookService;
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 import com.library.service.PublisherService;
 
 
@@ -24,6 +28,13 @@ public class PublisherController {
 	//inject a publisher service
 	@Autowired
 	private PublisherService publisherService;
+<<<<<<< HEAD
+=======
+	
+	@SuppressWarnings("unused")
+	@Autowired
+	private BookService bookService;
+>>>>>>> 8f49d91b3bed8624f4f2613cb3ee718b70145e76
 
 	
 	@GetMapping("/publishers")
