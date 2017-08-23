@@ -1,10 +1,7 @@
 package com.library.model;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
-
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +30,7 @@ public class Authors{
 	private String authorsSurname;
 	
 	@ManyToMany(mappedBy="authors") 
-	private List<Book> books= new ArrayList<>();
+	private Set<Book> books;
 	
 	public Authors(int authorsId, String authorsName, String authorsSurname) {
 		super();
@@ -85,12 +82,12 @@ public class Authors{
 	}
 
 
-	public List<Book> getBooks() {
+	public Set<Book> getBooks() {
 		return books;
 	}
 
 
-	public void setBooks(List<Book> books) {
+	public void setBooks(Set<Book> books) {
 		this.books = books;
 	}
 	

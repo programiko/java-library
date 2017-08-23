@@ -1,6 +1,5 @@
 package com.library.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -52,7 +51,7 @@ public class Book{
 	
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
 	@JoinTable(name="affiliations", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
-	private List<Authors> authors = new ArrayList<>();
+	private Set<Authors> authors;
 
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
 	@JoinTable(name="book_publisher", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
@@ -155,11 +154,11 @@ public class Book{
 	}
 	
 	
-	public List<Authors> getAuthors() {
+	public Set<Authors> getAuthors() {
 		return authors;
 	}
 	
-	public void setAuthors(List<Authors> authors) {
+	public void setAuthors(Set<Authors> authors) {
 		this.authors = authors;
 	}
 
