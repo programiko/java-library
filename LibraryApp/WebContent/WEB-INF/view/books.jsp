@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<html>
 	<head>
 		<title>Book List</title>
 		<link type="text/css"
@@ -28,6 +28,7 @@
             <th width="8%">Book Title</th>
             <th width="8%">Book Author</th>
             <th width="8%">Book Publisher</th>
+            <th width="8%">Book Category</th>
             <th width="8%">Number Of Pages</th>  
             <th width="8%">Number Of Copies</th>
             <th width="8%">Number Of Renting</th>
@@ -65,6 +66,7 @@
 		                    </c:forEach>
 	       				</c:if>
        				</td>
+       				<td>${book.category}</td>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
                     <td>${book.numberOfRenting}</td>
