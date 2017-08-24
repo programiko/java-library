@@ -42,6 +42,8 @@
 <br><br>
 <a href="${pageContext.request.contextPath}/category/categories">Category page</a>
 
+
+<h1>${admin}</h1>
 </body>
 
 </html>

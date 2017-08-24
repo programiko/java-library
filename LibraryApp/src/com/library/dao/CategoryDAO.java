@@ -2,7 +2,7 @@ package com.library.dao;
 
 import java.util.List;
 
-import com.library.model.Administrator;
+
 import com.library.model.Category;
 
 public interface CategoryDAO {
