@@ -78,6 +78,47 @@
     <!-- Add support for reading web resources: css, etc. -->
 
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
-    
 
+	
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

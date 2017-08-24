@@ -3,12 +3,16 @@
 
 <body>
 
-<h2>Library - Home Page</h2>
+<h2>Library - Admin Page</h2>
 
 <hr>
 
 <p>Simulate login form with links below:</p>
 
+<br><br>
+<div>
+		<p><a href="${pageContext.request.contextPath}/">Back to Start page</a></p>
+</div>
 <br><br>
 
 <a href="${pageContext.request.contextPath}/admin/administrators">Admin - Administrators</a>

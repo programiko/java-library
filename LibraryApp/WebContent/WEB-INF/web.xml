@@ -13,6 +13,7 @@
     <load-on-startup>1</load-on-startup>  
   </servlet>
   
+  
   <!-- URL mapping for Spring MVC Dispatcher Servlet -->
   <servlet-mapping>
 	<servlet-name>dispatcher</servlet-name>
@@ -25,4 +26,6 @@
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
+  
 </web-app>

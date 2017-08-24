@@ -83,7 +83,7 @@
 
     </table>
     <div>
-		<p><a href="${pageContext.request.contextPath}/">Back to Home page</a></p>
+		<p><a href="${pageContext.request.contextPath }/main-page">Back to Home page</a></p>
 	</div>
 		</body>	
 </html>

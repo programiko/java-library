@@ -73,8 +73,21 @@
 						<td>${debit.note}</td>
 						<td>${debit.book.bookId}</td>
 						<td>${debit.book.bookTitle}</td>
-						<td></td>
-						<td>${debit.book.publisher.name}</td>
+						<td>
+							<c:if test="${!empty debit.book.authors}">
+			            		<c:forEach var="auto" items="${debit.book.authors}">
+			                    	${auto.authorsName} 
+			                    	${auto.authorsSurname}
+			                    </c:forEach>
+		       				</c:if>
+	       				</td>
+						<td>
+							<c:if test="${!empty debit.book.publishers}">
+			            		<c:forEach var="publ" items="${debit.book.publishers}">
+			                    	${publ.name}
+			                    </c:forEach>
+			                 </c:if>
+						</td>
 						<td><a>Return</a></td>
 					</tr>
 				</c:forEach>
@@ -82,8 +95,7 @@
 		</table>
 		<div>
 			<p>
-				<a href="${pageContext.request.contextPath}/member/members">Back
-					to members</a>
+				<a href="${pageContext.request.contextPath}/member/members">Back to members</a>
 			</p>
 		</div>
 	</div>

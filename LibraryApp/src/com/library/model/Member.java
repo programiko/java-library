@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name="members")
 public class Member {
@@ -41,7 +43,7 @@ public class Member {
 	@Column(name="class_squad")
 	private String memberClass;
 	
-	@OneToMany(mappedBy="member", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="member", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Debits> debits;
 		
 	//constructors
