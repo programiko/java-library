@@ -78,7 +78,7 @@ public class BookController {
 	    	
 			Book book = new Book();
 	    	model.addAttribute("books", book);
-	    	model.addAttribute("listBooks", bookService.getBooksForAuthor(publisherId));
+	    	model.addAttribute("listBooks", bookService.getBooksForPublisher(publisherId));
 	        return "books";
 	    }
 		

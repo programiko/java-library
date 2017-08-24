@@ -22,8 +22,7 @@
             <th width="10%">Category ID</th>
             <th width="10%">Category Name</th>
             <th width="10%">Category description</th>
-            <th width="10%">Update</th>
-            <th width="10%">Delete</th>
+            <th width="10%">Action</th>
         </tr>
         <c:if test="${!empty listCategories}">
             <c:forEach items="${listCategories}" var="category">

@@ -16,7 +16,7 @@ class="add-button"/>
 
 <!-- --------------------------------------------------------------------------------------------- -->
 <table class="tg" >
- <tr>    <th width="100" >Id</th>
+ <tr>    
  			<th width="10%">ID</th>
             <th width="10%">Name</th>
             <th width="10%">Address</th>  
