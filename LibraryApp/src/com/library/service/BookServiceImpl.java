@@ -39,4 +39,23 @@ public class BookServiceImpl implements BookService {
 		bookDAO.removeBook(id);
 	}
 
+	@Override
+	@Transactional
+	public List<Book> getBooksForAuthor(int id) {
+		return bookDAO.getBooksForAuthor(id);
+	}
+
+	@Override
+	@Transactional
+	public List<Book> getBooksForPublisher(int id) {
+		// TODO Auto-generated method stub
+		return bookDAO.getBooksForPublisher(id);
+	}
+
+	@Override
+	@Transactional
+	public List<Book> getBooksForCategory(int id) {
+		// TODO Auto-generated method stub
+		return bookDAO.getBooksForCategory(id);
+	}
 }

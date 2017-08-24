@@ -62,7 +62,7 @@
             <th width="120">Authors Name</th>
             <th width="120">Authors Surname</th>
             
-            <th width="120">Action</th>
+            <th width="160">Action</th>
         </tr>
         <c:if test="${!empty listAuthors}">
             <c:forEach var="authors" items="${listAuthors}">
@@ -74,6 +74,11 @@
        			<c:url var="deleteLink" value="/author/delete">
        				<c:param name="authorsId" value="${authors.authorsId}"/>
        			</c:url>
+       			
+       			<!-- Book Link -->
+       			<c:url var="bookLink" value="/book/booksOfAutor">
+       				<c:param name="authorId" value="${authors.authorsId}"/>
+       			</c:url>
                 <tr>
                     <td>${authors.authorsId}</td>
                     <td>${authors.authorsName}</td>
@@ -81,7 +86,10 @@
                      <td><a href="${updateLink}">Update</a> | 
                     	<a href="${deleteLink}" 
                     	onclick="if(!(confirm('Are you sure you want to delete this Authors?'))) return false"
-                    	>Delete</a></td>
+                    	>Delete</a>
+                    	|
+                    	<a href="${bookLink}">Books</a>
+                    	</td>
                 </tr>
             </c:forEach>
         </c:if>

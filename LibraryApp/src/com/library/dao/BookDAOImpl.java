@@ -59,5 +59,39 @@ public class BookDAOImpl implements BookDAO {
 		
 		session.delete(book);
 	}
+	
+	
+	@Override
+	public List<Book> getBooksForAuthor(int id) {
+
+		Session session = sessionFactory.getCurrentSession();
+		Query<Book> theQuery = session.createQuery("select b from Book b join b.authors a where a.authorsId = :idA",Book.class);
+		theQuery.setParameter("idA", id);
+		List<Book> books = theQuery.getResultList();
+
+		return books;
+	}
+	
+	@Override
+	public List<Book> getBooksForPublisher(int id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Query<Book> theQuery = session.createQuery("select b from Book b join b.publishers p where p.id = :idA",Book.class);
+		theQuery.setParameter("idA", id);
+		List<Book> books = theQuery.getResultList();
+
+		return books;
+	}
+
+	@Override
+	public List<Book> getBooksForCategory(int id) {
+
+		Session session = sessionFactory.getCurrentSession();
+		Query<Book> theQuery = session.createQuery("select b from Book b join b.category p where p.id = :idA",Book.class);
+		theQuery.setParameter("idA", id);
+		List<Book> books = theQuery.getResultList();
+
+		return books;
+	}
 
 }

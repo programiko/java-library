@@ -49,11 +49,11 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
-	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)  
 	@JoinTable(name="affiliations", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
 	private List<Authors> authors = new ArrayList<Authors>();
 
-	@ManyToMany(cascade=CascadeType.ALL)  
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)  
 	@JoinTable(name="book_publisher", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
 	private List<Publisher> publishers;
 	

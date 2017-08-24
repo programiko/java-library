@@ -22,25 +22,33 @@
             <th width="80">Category ID</th>
             <th width="120">Category Name</th>
             <th width="120">Category description</th>
-            <th width="60">Update</th>
-            <th width="60">Delete</th>
+            <th width="160">Action</th>
+
         </tr>
         <c:if test="${!empty listCategories}">
             <c:forEach items="${listCategories}" var="category">
-           <c:url var="updateLink" value="/category/UpdatingForm">
-       				<c:param name="updateCategory" value="${category.id}"/>
-       			</c:url> 
-       			<c:url var="deleteLink" value="/category/DeletingForm">
-       				<c:param name="deleteCategory" value="${category.id}"/>
-       			</c:url>     
+         <!-- Update Link -->
+        <c:url var="updateLink" value="/category/UpdatingForm">
+       		<c:param name="updateCategory" value="${category.id}"/>
+       	</c:url> 
+       	<!-- Delete Link -->
+       	<c:url var="deleteLink" value="/category/DeletingForm">
+       		<c:param name="deleteCategory" value="${category.id}"/>
+       	</c:url>  
+       	<!-- Book Link -->
+       	<c:url var="bookLink" value="/book/booksOfCategory">
+       		<c:param name="categoryId" value="${category.id}"/>
+       	</c:url>      
                 <tr>
                     <td>${category.id}</td>
                     <td>${category.name}</td>
                     <td>${category.description}</td>
-                    <td><a href="${updateLink}">Update</a> </td> 
-                    <td><a href="${deleteLink}" 
+                    <td><a href="${updateLink}">Update</a>|
+                    <a href="${deleteLink}" 
                     	onclick="if(!(confirm('Are you sure you want to delete this category?'))) return false"
-                    	>Delete</a></td>
+                    	>Delete</a>|
+                    	<a href="${bookLink}">Books</a>
+                    	</td>
                 </tr>
             </c:forEach>
         </c:if>

@@ -13,5 +13,11 @@ public interface BookDAO {
     public Book getBookById(int id);
  
     public void removeBook(int id);
+    
+    public List<Book> getBooksForAuthor(int id);
+    
+    public List<Book> getBooksForPublisher(int id);
+    
+    public List<Book> getBooksForCategory(int id);
 
 }

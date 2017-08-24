@@ -1,6 +1,6 @@
 package com.library.controller;
 
-import org.hibernate.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.library.model.Category;
 import com.library.service.CategoryService;
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
-import sun.util.resources.cldr.teo.CalendarData_teo_UG;
 
 @Controller
 @RequestMapping("/category")
@@ -43,7 +40,6 @@ public class CategoryController {
 		return "ShowCategory";
 	}
 	@GetMapping("/DeletingForm")
-	
 	public String deletingCategory (@RequestParam("deleteCategory") int id, Model model) {
 		
 		Category category = new Category();

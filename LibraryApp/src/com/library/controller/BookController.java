@@ -63,6 +63,32 @@ public class BookController {
 	    	return "redirect:/book/books";
 	    }
 
+		@GetMapping("/booksOfAutor")
+	    public String listBooksforAuthor(@RequestParam("authorId") int authorId, Model model) {
+	    	
+			Book book = new Book();
+	    	model.addAttribute("books", book);
+	    	model.addAttribute("listBooks", bookService.getBooksForAuthor(authorId));
+	        return "books";
+	    }
+		
+		@GetMapping("/booksOfPublisher")
+	    public String listBooksforPublisher(@RequestParam("publisherId") int publisherId, Model model) {
+	    	
+			Book book = new Book();
+	    	model.addAttribute("books", book);
+	    	model.addAttribute("listBooks", bookService.getBooksForAuthor(publisherId));
+	        return "books";
+	    }
+		
+		@GetMapping("/booksOfCategory")
+	    public String listBooksforCategory(@RequestParam("categoryId") int categoryId, Model model) {
+	    	
+			Book book = new Book();
+	    	model.addAttribute("books", book);
+	    	model.addAttribute("listBooks", bookService.getBooksForCategory(categoryId));
+	        return "books";
+	    }
 }
 
 
