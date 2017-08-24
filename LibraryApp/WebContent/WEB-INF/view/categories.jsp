@@ -7,54 +7,9 @@
 		<title>Category List</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<style type="text/css">
-		.tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-			border-color: #ccc;
-		}
-		
-		.tg td {
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			padding: 10px 5px;
-			border-style: solid;
-			border-width: 1px;
-			overflow: hidden;
-			word-break: normal;
-			border-color: #ccc;
-			color: #333;
-			background-color: #fff;
-		}
-		
-		.tg th {
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			padding: 10px 5px;
-			border-style: solid;
-			border-width: 1px;
-			overflow: hidden;
-			word-break: normal;
-			border-color: #ccc;
-			color: #333;
-			background-color: #8FBC8F;
-		}
-		
-		.tg .tg-4eph {
-			background-color: #f9f9f9
-		}
-		.add-button {
-			border: 1px solid #666; 
-			border-radius: 5px; 
-			padding: 4px; 
-			font-size: 12px;
-			font-weight: bold;
-			width: 120px; 
-			padding: 5px 10px; 		
-			margin-bottom: 15px;
-		}
-		</style>
+	<link type="text/css"
+		rel="stylesheet"
+		href="${pageContext.request.contextPath}/resources/css/style.css" />
 </head>
 <body>
  <input type="button" 
@@ -64,35 +19,42 @@
 
 <table class="tg">
         <tr>
-            <th width="80">Category ID</th>
-            <th width="120">Category Name</th>
-            <th width="120">Category description</th>
-            <th width="60">Update</th>
-            <th width="60">Delete</th>
+            <th width="10%">Category ID</th>
+            <th width="10%">Category Name</th>
+            <th width="10%">Category description</th>
+            <th width="10%">Action</th>
         </tr>
         <c:if test="${!empty listCategories}">
             <c:forEach items="${listCategories}" var="category">
-           <c:url var="updateLink" value="/category/UpdatingForm">
-       				<c:param name="updateCategory" value="${category.id}"/>
-       			</c:url> 
-       			<c:url var="deleteLink" value="/category/DeletingForm">
-       				<c:param name="deleteCategory" value="${category.id}"/>
-       			</c:url>     
+         <!-- Update Link -->
+        <c:url var="updateLink" value="/category/UpdatingForm">
+       		<c:param name="updateCategory" value="${category.id}"/>
+       	</c:url> 
+       	<!-- Delete Link -->
+       	<c:url var="deleteLink" value="/category/DeletingForm">
+       		<c:param name="deleteCategory" value="${category.id}"/>
+       	</c:url>  
+       	<!-- Book Link -->
+       	<c:url var="bookLink" value="/book/booksOfCategory">
+       		<c:param name="categoryId" value="${category.id}"/>
+       	</c:url>      
                 <tr>
                     <td>${category.id}</td>
                     <td>${category.name}</td>
                     <td>${category.description}</td>
-                    <td><a href="${updateLink}">Update</a> </td> 
-                    <td><a href="${deleteLink}" 
+                    <td><a href="${updateLink}">Update</a>|
+                    <a href="${deleteLink}" 
                     	onclick="if(!(confirm('Are you sure you want to delete this category?'))) return false"
-                    	>Delete</a></td>
+                    	>Delete</a>|
+                    	<a href="${bookLink}">Books</a>
+                    	</td>
                 </tr>
             </c:forEach>
         </c:if>
     </table>
-         <p>
-			<a href="${pageContext.request.contextPath}">Back to List</a>
-		</p>
+    <div>
+		<p><a href="${pageContext.request.contextPath }/main-page">Back to Home page</a></p>
+	</div>
 
 </body>
 </html>

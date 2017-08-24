@@ -1,15 +1,22 @@
 package com.library.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name="publishers")
-public class Publisher {
+public class Publisher{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -24,8 +31,18 @@ public class Publisher {
 	
 	@Column(name = "phone")
 	private String phone;
+
+	@ManyToMany(mappedBy = "publishers", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Book> books;
 	
 	public Publisher() {}
+	
+	public Publisher(String name, String address, String phone) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+	}
 
 	public int getId() {
 		return id;
@@ -59,6 +76,14 @@ public class Publisher {
 		this.phone = phone;
 	}
 
+	public List<Book> getBooks() {
+		return books;
+	}
+	public void setBooks(List<Book> books) {
+
+		this.books = books;
+	}
+	
 	@Override
 	public String toString() {
 		return "Publishers [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";

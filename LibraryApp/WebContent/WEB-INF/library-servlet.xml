@@ -51,8 +51,11 @@
 		   <props>
 		      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 		      <prop key="hibernate.show_sql">true</prop>
+		      <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
 		   </props>
+		   
 		</property>
+		
    </bean>
     	  
        <!-- Inject the transaction manager -->
@@ -67,12 +70,55 @@
 	<!-- if you declare something as property that means it is going to inject 
 	the instance by using setter method and you have to have setter method for that particular reference-->
 	
-	<!-- Inject the instance to customerDAO reference with adding sessionFactory -->
-    <bean id="administratorDAO" class="com.library.dao.AdministratorDAOImpl">
+	<!-- Inject the instance to customerDAO reference with adding sessionFactory 
+    <<bean id="administratorDAO" class="com.library.dao.AdministratorDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+    </bean> -->
    
     <!-- Add support for reading web resources: css, etc. -->
+
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
 
+	
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

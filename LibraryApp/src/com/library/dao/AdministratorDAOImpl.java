@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.library.model.Administrator;
@@ -12,12 +12,10 @@ import com.library.model.Administrator;
 @Repository
 public class AdministratorDAOImpl implements AdministratorDAO {
 	
+	@Autowired
     private SessionFactory sessionFactory;
     
-    public void setSessionFactory(SessionFactory sf) {
-        sessionFactory = sf;
-    }
-    
+    @Override
 	
 	@SuppressWarnings("unchecked")
 	@Override

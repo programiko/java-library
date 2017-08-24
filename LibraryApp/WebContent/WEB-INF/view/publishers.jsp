@@ -15,19 +15,20 @@ href="${pageContext.request.contextPath}/resources/css/style.css" />
 class="add-button"/>
 
 <!-- --------------------------------------------------------------------------------------------- -->
-<table class="tg">
+<table class="tg" >
  <tr>    
-            <th width="170">Name</th>
-            <th width="190">Address</th>  
-            <th width="120">Phone</th>
-            <th width="120">Action</th>
+ 			<th width="10%">ID</th>
+            <th width="10%">Name</th>
+            <th width="10%">Address</th>  
+            <th width="10%">Phone</th>
+            <th width="10%">Action</th>
         </tr> 
 
-<c:forEach var="tempPublisher" items="${publisher }">
+<c:forEach var="tempPublisher" items="${publisher}">
 
 <!-- Update -->
 <c:url var="updateLink" value="/publisher/showFormForUpdatePublisher">
-<c:param name="id" value="${tempPublisher.id }"/>
+<c:param name="id" value="${tempPublisher.id}"/>
 </c:url>
 
 <!-- Delete -->
@@ -35,7 +36,12 @@ class="add-button"/>
 <c:param name="id" value="${tempPublisher.id }"/>
 </c:url>
 
+<!-- Book Link -->
+<c:url var="bookLink" value="/book/booksOfPublisher">
+<c:param name="publisherId" value="${tempPublisher.id}"/>
+</c:url>
 <tr>
+<td>${tempPublisher.id }</td>
 <td>${tempPublisher.name }</td>
 <td>${tempPublisher.address }</td>
 <td>${tempPublisher.phone }</td>
@@ -46,13 +52,16 @@ class="add-button"/>
 <a href="${deleteLink }" 
 onclick="if (!(confirm('Are you sure you want to delete this PUBLISHER?'))) return false"
 >Delete</a>
+|
+<a href="${bookLink}">Books</a>
+                    
 </td>
 </tr>
 </c:forEach>
 
 </table>
-<p>
-<a href="${pageContext.request.contextPath }/">Back to Home page</a>
-</p>
+<div>
+	<p><a href="${pageContext.request.contextPath }/main-page">Back to Home page</a></p>
+</div>
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.library.model.Publisher;
 
 
@@ -60,20 +61,16 @@ public class PublisherDAOImpl implements PublisherDAO {
 	}
 
 	
+
 	@Override
 	public void removePublisher(int id) {
 		
 		//get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		// create a query for delete from Publisher 
-		Query theQuery = currentSession.createQuery("delete from Publisher where id=:id");
-	
-		// execute query 
-		theQuery.setParameter("id", id);
+		Publisher publisher = currentSession.get(Publisher.class, id);
 		
-		// execute query 
-		theQuery.executeUpdate();
+		currentSession.delete(publisher);
 
 	}
 

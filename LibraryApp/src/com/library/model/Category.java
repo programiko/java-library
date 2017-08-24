@@ -1,11 +1,17 @@
 package com.library.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 @Entity 
 @Table (name = "categories")
@@ -20,6 +26,10 @@ public class Category {
 	String name;
 	@Column(name="description")
 	String description;
+	
+	@OneToMany(mappedBy="category",cascade=CascadeType.ALL)	
+	private List<Book> books;
+	
 	public int getId() {
 		return id;
 	}
@@ -38,6 +48,13 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public List<Book> getBooks() {
+		return books;
+	}
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
 	public Category(int id, String name, String description) {
 		super();
 		this.id = id;
@@ -48,5 +65,6 @@ public class Category {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 }

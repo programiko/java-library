@@ -41,7 +41,7 @@ public class MemberController {
     	
     	memberService.addMember(theMember);
     	
-    	return "redirect:/admin/members";
+    	return "redirect:/member/members";
     }
 
     @GetMapping("/showFormForUpdate")
@@ -54,12 +54,22 @@ public class MemberController {
     	return "addMember";
     }
     
-    @GetMapping("/delete")
+    @GetMapping("/deleteMember")
     public String deleteMember(@RequestParam("memberId") int memberId, Model model) {
     	
     	memberService.removeMember(memberId);
     	
-    	return "redirect:/admin/members";
+    	return "redirect:/member/members";
+    }
+    
+    @GetMapping("/viewProfile")
+    public String viewProfile(@RequestParam("memberId") int memberId, Model model) {
+    	
+    	Member theMember = memberService.getMemberById(memberId);
+    	
+    	model.addAttribute("member", theMember);
+    	
+    	return "memberProfile";
     }
     
 }

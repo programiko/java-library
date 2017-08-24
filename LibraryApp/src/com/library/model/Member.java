@@ -1,16 +1,25 @@
 package com.library.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name="members")
 public class Member {
 	
+	
+	//table columns
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
@@ -33,11 +42,13 @@ public class Member {
 	
 	@Column(name="class_squad")
 	private String memberClass;
-
 	
-	public Member() {
-	}
+	@OneToMany(mappedBy="member", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Debits> debits;
 		
+	//constructors
+	public Member() {
+	}		
 		
 	public Member(String memberName, String memberSurename, String memberAddress, String memberPhone,
 			int memberActivity, String memberClass) {
@@ -49,8 +60,7 @@ public class Member {
 		this.memberClass = memberClass;
 	}
 
-
-
+	//getters/setters
 	public int getMemberId() {
 		return memberId;
 	}
@@ -107,6 +117,15 @@ public class Member {
 		this.memberSurename = memberSurename;
 	}
 
+	public List<Debits> getDebits() {
+		return debits;
+	}
+
+	public void setDebits(List<Debits> debits) {
+		this.debits = debits;
+	}
+
+	//toString()
 	@Override
 	public String toString() {
 		return "Member [memberId=" + memberId + ", memberName=" + memberName + ", memberSurename=" + memberSurename
