@@ -21,9 +21,9 @@
 	</div>
 
 	<div id="container">
-		<h3>Save Administrator</h3>
+		<h3>Check Administrator</h3>
 	
-		<form:form action="saveAdministrator" modelAttribute="administrator" method="POST">
+		<form:form action="checkAdmin" modelAttribute="checkingAdministrator" method="POST">
 		
 			
 			<table>
@@ -46,7 +46,7 @@
 					
 					<tr>
 						<td><label></label></td>
-						<td><input type="submit" value="Save" class="save" /></td>
+						<td><input type="submit" value="Check" class="check" /></td>
 					</tr>
 
 				

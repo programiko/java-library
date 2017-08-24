@@ -56,6 +56,7 @@
 								</c:forEach>
 							</c:if>
 							<c:if test="${empty book.authors}">
+							<form:hidden path="author.authorsId"/>
 								<td>Author Name: </td>
 								<td><input value="${author.authorsName}" name="authors[0].authorsName"/></td>
 								<td>Author Surname: </td>
@@ -72,6 +73,7 @@
 								<c:forEach var="publisher" items="${book.publishers}" varStatus="status">
 								<form:hidden path="publishers[${status.index}].id"/>
 									<tr>
+									
 										<td><label>${status.count}. </label></td>
 										<td>Publisher Name: </td>
 										<td><input type="text" value="${publisher.name}" name="publishers[${status.index}].name"/></td>
@@ -83,6 +85,7 @@
 								</c:forEach>
 							</c:if>
 							<c:if test="${empty book.publishers}">
+							<form:hidden path="publisher.id"/>
 								<td>Publisher Name: </td>
 								<td><input value="${publisher.name}" name="publishers[0].name"/></td>
 								<td>Publisher Address: </td>
@@ -98,7 +101,7 @@
 					
 					<table>
 						<tbody>
-							<tr>
+							<tr><form:hidden path="category.id"/>
 								<td>Category: </td>
 								<td><form:input path="category.name"/></td>
 								<td>Category Description: </td>

@@ -1,5 +1,6 @@
 package com.library.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -32,7 +33,7 @@ public class Authors{
 	private String authorsSurname;
 	
 	@ManyToMany(mappedBy="authors", fetch = FetchType.LAZY, cascade=CascadeType.ALL) 
-	private List<Book> books;
+	private List<Book> books = new ArrayList<Book>();  
 	
 	public Authors(int authorsId, String authorsName, String authorsSurname) {
 		super();

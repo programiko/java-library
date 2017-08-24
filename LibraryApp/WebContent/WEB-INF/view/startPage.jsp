@@ -12,7 +12,7 @@
 	<body>	
 	<div style="float: left"><h1>LIBRARY</h1> </div>
     <div align="right">
-    	<!-- <form:form action="/main-page" method="GET" modelAttribute="listAdministrators"> -->
+    	 <form:form action="/main-page" method="POST" modelAttribute="checkingAdministrator"> 
     		<table>
     			<tr>
     				<td><label>Username: </label></td>
@@ -22,14 +22,11 @@
     				<td><label>Password: </label></td>
     				<td><input type="password" name="password"/></td>
     			</tr>
-    			<tr>
-    				<td></td>
-    				<td align="right"><a href="${pageContext.request.contextPath}/main-page"><button>LOG IN</button></a></td>
-    			</tr>
+    			
     		</table>
     		
-    		 <!--<input type="submit" value="LOG IN"/>
-   		</form:form> -->
+    		 <input type="submit" value="LOG IN"/>
+   		</form:form> 
     </div>
     
     <br>
