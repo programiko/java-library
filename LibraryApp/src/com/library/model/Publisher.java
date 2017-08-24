@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name="publishers")
 public class Publisher{
@@ -30,7 +32,7 @@ public class Publisher{
 	@Column(name = "phone")
 	private String phone;
 
-	@ManyToMany(mappedBy = "publishers", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@ManyToMany(mappedBy = "publishers", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Book> books;
 	
 	public Publisher() {}

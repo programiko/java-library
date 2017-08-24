@@ -4,24 +4,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<title>Book List</title>
+		<title>LIBRARY</title>
 		<link type="text/css"
 		rel="stylesheet"
 		href="${pageContext.request.contextPath}/resources/css/style.css" />
 	</head>
-	<body>
-		<h1>List Books</h1> 
-    <br>
-    <h3>Book List</h3>
+	<body>	
+	<div style="float: left"><h1>LIBRARY</h1> </div>
+    <div align="right">
+    	<!-- <form:form action="/main-page" method="GET" modelAttribute="listAdministrators"> -->
+    		<table>
+    			<tr>
+    				<td><label>Username: </label></td>
+    				<td><input type="text" name="username"/></td>
+    			</tr>
+    			<tr>
+    				<td><label>Password: </label></td>
+    				<td><input type="password" name="password"/></td>
+    			</tr>
+    			<tr>
+    				<td></td>
+    				<td align="right"><a href="${pageContext.request.contextPath}/main-page"><button>LOG IN</button></a></td>
+    			</tr>
+    		</table>
+    		
+    		 <!--<input type="submit" value="LOG IN"/>
+   		</form:form> -->
+    </div>
     
-    <!-- add book button -->
-    <input type="button" 
-    	   value="Add Book" 
-    	   onclick="window.location.href='showFormForAdd'; return false;" 
-    	   class="add-button"/>
-    	      
+    <br>
+            	      
+    <div>
+    	<label>Search: </label>
+    	<input type="text" name="search" placeholder="Search" size="50"/>
+    </div>
+    
+    
+    <br><br>
     <!-- Member table -->    
-<table class="tg">
+	<table class="tg">
 
         <tr>
             <th width="3%">Book ID</th>
@@ -31,23 +52,10 @@
             <th width="8%">Book Category</th>
             <th width="8%">Number Of Pages</th>  
             <th width="8%">Number Of Copies</th>
-            <th width="8%">Number Of Renting</th>
-            <th width="3%">Number Of Rented Books</th>
             <th width="3%">Book Rating</th>
-            <th width="8%">Book Location</th>
-            <th width="8%">Action</th>
         </tr>        
         <c:if test="${!empty listBooks}">
-            <c:forEach var="book" items="${listBooks}">
-         
-        		<!-- Create an update and delete link with book id  -->
-       			<c:url var="updateLink" value="/book/showFormForUpdate">
-       				<c:param name="bookId" value="${book.bookId}"/>
-       			</c:url>       			
-       			<c:url var="deleteLink" value="/book/deleteBook">
-       				<c:param name="bookId" value="${book.bookId}"/>
-       			</c:url>
-                
+            <c:forEach var="book" items="${listBooks}">          
                 <tr>
                     <td>${book.bookId}</td>
                     <td>${book.bookTitle}</td>
@@ -69,21 +77,10 @@
        				<td>${book.category.name}</td>
                     <td>${book.numberOfPages}</td>
                     <td>${book.numberOfCopies}</td>
-                    <td>${book.numberOfRenting}</td>
-                    <td>${book.numberOfRentedBook}</td>
                     <td>${book.bookRating}</td>
-                    <td>${book.bookLocation}</td>
-                    <td><a href="${updateLink}">Update</a> | 
-                    	<a href="${deleteLink}"
-                    	   onclick="if(!(confirm('Are you sure you want to delete this book?'))) return false"
-                    	>Delete</a></td>
-                </tr>
             </c:forEach>
         </c:if>
 
     </table>
-    <div>
-		<p><a href="${pageContext.request.contextPath }/main-page">Back to Home page</a></p>
-	</div>
 		</body>	
 </html>

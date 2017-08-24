@@ -17,6 +17,7 @@
 				
 				<!-- associate this data with member id -->
 				<form:hidden path="bookId"/>
+				<form:hidden path="category.id"/>
 				
 				<!-- Book info -->
 				<table>
@@ -44,6 +45,7 @@
 						<tbody>
 							<c:if test="${!empty book.authors}">
 								<c:forEach var="author" items="${book.authors}" varStatus="status">
+									<form:hidden path="authors[${status.index}].authorsId"/>
 									<tr>
 										<td><label>${status.count}. </label></td>
 										<td>Author Name: </td>
@@ -68,6 +70,7 @@
 						<tbody>
 							<c:if test="${!empty book.publishers}">
 								<c:forEach var="publisher" items="${book.publishers}" varStatus="status">
+								<form:hidden path="publishers[${status.index}].id"/>
 									<tr>
 										<td><label>${status.count}. </label></td>
 										<td>Publisher Name: </td>
@@ -92,6 +95,7 @@
 					<hr>
 					
 					<!-- Category info -->
+					
 					<table>
 						<tbody>
 							<tr>

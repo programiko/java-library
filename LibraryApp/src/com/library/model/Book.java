@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name="books")
 public class Book{
@@ -49,19 +51,19 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
-	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
+	@ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinTable(name="affiliations", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
 	private List<Authors> authors = new ArrayList<Authors>();
 
-	@ManyToMany(cascade=CascadeType.ALL)  
+	@ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinTable(name="book_publisher", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
 	private List<Publisher> publishers;
 	
-	@ManyToOne(cascade= CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="category_id")
 	private Category category;
 	
-	@OneToMany(mappedBy="book", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="book")
 	private List<Debits> debit;	
 	
 	

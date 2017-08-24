@@ -2,15 +2,18 @@ package com.library.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name="authors")
@@ -28,7 +31,7 @@ public class Authors{
 	@Column(name="surename")
 	private String authorsSurname;
 	
-	@ManyToMany(mappedBy="authors") 
+	@ManyToMany(mappedBy="authors", fetch = FetchType.LAZY, cascade=CascadeType.ALL) 
 	private List<Book> books;
 	
 	public Authors(int authorsId, String authorsName, String authorsSurname) {

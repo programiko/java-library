@@ -24,6 +24,7 @@ public class BookDAOImpl implements BookDAO {
 		session.saveOrUpdate(theBook);
 	}
 
+
 	@Override
 	public List<Book> getBooks() {
 		
@@ -33,10 +34,7 @@ public class BookDAOImpl implements BookDAO {
 		
 		List<Book> books = theQuery.getResultList();
 		
-		for(Book b: books) {
-			System.out.println("Books list: " + b + "\n");
-		}
-		
+				
 		return books;
 	}
 

@@ -19,11 +19,11 @@
 
 <table class="tg">
         <tr>
-            <th width="80">Category ID</th>
-            <th width="120">Category Name</th>
-            <th width="120">Category description</th>
-            <th width="60">Update</th>
-            <th width="60">Delete</th>
+            <th width="10%">Category ID</th>
+            <th width="10%">Category Name</th>
+            <th width="10%">Category description</th>
+            <th width="10%">Update</th>
+            <th width="10%">Delete</th>
         </tr>
         <c:if test="${!empty listCategories}">
             <c:forEach items="${listCategories}" var="category">
@@ -45,9 +45,9 @@
             </c:forEach>
         </c:if>
     </table>
-         <p>
-			<a href="${pageContext.request.contextPath}">Back to List</a>
-		</p>
+    <div>
+		<p><a href="${pageContext.request.contextPath }/main-page">Back to Home page</a></p>
+	</div>
 
 </body>
 </html>

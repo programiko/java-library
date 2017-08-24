@@ -58,11 +58,10 @@
     <br><br>
     <table class="tg">
         <tr>
-            <th width="80">Authors ID</th>
-            <th width="120">Authors Name</th>
-            <th width="120">Authors Surname</th>
-            
-            <th width="120">Action</th>
+            <th width="10%">Authors ID</th>
+            <th width="10%">Authors Name</th>
+            <th width="10%">Authors Surname</th>            
+            <th width="10%">Action</th>
         </tr>
         <c:if test="${!empty listAuthors}">
             <c:forEach var="authors" items="${listAuthors}">
@@ -86,6 +85,10 @@
             </c:forEach>
         </c:if>
     </table>
+    
+    <div>
+		<p><a href="${pageContext.request.contextPath }/main-page">Back to Home page</a></p>
+	</div>
  
 </body>
 </html>
