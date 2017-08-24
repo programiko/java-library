@@ -2,102 +2,69 @@ package com.library.dao;
 
 import java.util.List;
 
+
+
 import org.hibernate.Session;
+
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
+
+import org.springframework.transaction.annotation.Transactional;
+
+
 
 import com.library.model.Administrator;
 
 @Repository
 public class AdministratorDAOImpl implements AdministratorDAO {
-	
+
 	@Autowired
     private SessionFactory sessionFactory;
-    
 
-	
+    @Override
+	public void addAdministrator(Administrator p) {
+
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void updateAdministrator(Administrator p) {
+
+		// TODO Auto-generated method stub
+	}
+
 	@SuppressWarnings("unchecked")
+	@Transactional
 	@Override
 	public List<Administrator> getAdministrators() {
+
         Session session = sessionFactory.getCurrentSession();
-        List<Administrator> administratorList = session.createQuery("from Administrator order by username").list();
+        List<Administrator> administratorList = session.createQuery("from Administrator").list();
         for (Administrator a : administratorList) {
-        	System.out.println("Administrator List :" + a);
+        	System.out.println("Administrator List::" + a);
         }
         return administratorList;
 	}
 
 	@Override
-	public List<Administrator> getAdministratorById(int id) {
-	
-		Session session = sessionFactory.getCurrentSession();
-		Query query = null;
-		if (id != 0) {
-		query = session.createQuery("from Administrator a where a.id = :id", Administrator.class);
-		query.setParameter("id", id);
-		query.uniqueResult();
-		
-		}else {
-			
-			query = session.createQuery("from Administrator ", Administrator.class);
-		}
-			List <Administrator> admins = query.getResultList();	
-		
-		return admins;
+	public Administrator getAdministratorById(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public void removeAdministrator(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		Administrator admin = session.get(Administrator.class, id );
-		
-		session.remove(admin);
-		
-		
+		// TODO Auto-generated method stub
+
 	}
 
-	@Override
-	public Administrator updateAdministrator(int id) {
-	
-		Session session = sessionFactory.getCurrentSession();
-		
-		Administrator admin = session.get(Administrator.class, id);
-		
-		return admin;
-		
-	}
-
-
-	@Override
-	public void addAdministrator(Administrator admin) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(admin);
-		
-	
-		
-	}
-
-
-	@Override
-	public Administrator getById(int id) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		
-		Administrator admin = new Administrator();
-		
-		session.load(Administrator.class, id);
-		
-		
-		
-		return admin;
-	}
-
-
-	
  
 
+
+
  
+
 }
