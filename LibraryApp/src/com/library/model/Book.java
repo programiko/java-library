@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,19 +53,24 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinTable(name="affiliations", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinTable(name="affiliations", 
+				joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), 
+				inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
 	private List<Authors> authors = new ArrayList<Authors>();
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinTable(name="book_publisher", joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
+	@ManyToMany(fetch = FetchType.LAZY, cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinTable(name="book_publisher", 
+				joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), 
+				inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
 	private List<Publisher> publishers;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="category_id")
 	private Category category;
 	
-	@OneToMany(mappedBy="book")
+	@OneToMany(cascade=CascadeType.ALL)	
+	@JoinColumn(name="book_id")
 	private List<Debits> debit;	
 	
 	

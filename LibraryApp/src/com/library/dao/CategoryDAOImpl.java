@@ -60,7 +60,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 		Category category = session.get(Category.class, id);
 		
-		session.remove(category);
+		session.delete(category);
 		
 		
 

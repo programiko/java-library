@@ -2,6 +2,7 @@ package com.library.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -24,7 +25,6 @@ public class BookDAOImpl implements BookDAO {
 		session.saveOrUpdate(theBook);
 	}
 
-
 	@Override
 	public List<Book> getBooks() {
 		
@@ -34,6 +34,9 @@ public class BookDAOImpl implements BookDAO {
 		
 		List<Book> books = theQuery.getResultList();
 		
+//		Criteria criteria = session.createCriteria(Book.class);
+//		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+//		List<Book> books = (List<Book>) criteria.list();
 				
 		return books;
 	}
