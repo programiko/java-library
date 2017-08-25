@@ -6,55 +6,54 @@
 	<head>
 		<title>Save Member</title>
 		<link type="text/css"
-		rel="stylesheet"
-		href="${pageContext.request.contextPath}/resources/css/style.css" />
+			rel="stylesheet"
+			href="${pageContext.request.contextPath}/resources/css/style.css" />
 	</head>
 	<body>
-		<div>
+		<div style="float: left">
 			<h2>Save Member</h2>
 		</div>
-		<div>
+		<div style="float: right">
+			<a href="${pageContext.request.contextPath}/member/members"><button class="add-button">Members</button></a>
+		</div>
+		<br><br><br><br><hr>
+		<div align="center">
 			<form:form action="saveMember" modelAttribute="member" method="POST">
 				
 				<!-- associate this data with member id -->
 				<form:hidden path="memberId"/>
-				
-				<table>
+				<h3>Member info </h3>
+				<table class="tg">
 					<tbody>
 						<tr>
-							<td>Name: </td>
-							<td><form:input path="memberName"/></td>
+							<th>Name: </th>
+							<td><form:input path="memberName" size="50"/></td>
 						</tr>	
 						<tr>
-							<td>Surname: </td>
-							<td><form:input path="memberSurename"/></td>
+							<th>Surname: </th>
+							<td><form:input path="memberSurename" size="50"/></td>
 						</tr>	
 						<tr>
-							<td>Address: </td>
-							<td><form:input path="memberAddress"/></td>
+							<th>Address: </th>
+							<td><form:input path="memberAddress" size="50"/></td>
 						</tr>	
 						<tr>
-							<td>Phone: </td>
-							<td><form:input path="memberPhone"/></td>
+							<th>Phone: </th>
+							<td><form:input path="memberPhone" size="50"/></td>
 						</tr>	
 						<tr>
-							<td>Active: </td>
-							<td><form:input path="memberActivity"/></td>
+							<th>Active: </th>
+							<td><form:input path="memberActivity" size="50"/></td>
 						</tr>	
 						<tr>
-							<td>Class: </td>
-							<td><form:input path="memberClass"/></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><input type="submit" value="Save" class="add-button"/></td>
+							<th>Class: </th>
+							<td><form:input path="memberClass" size="50"/></td>
 						</tr>
 					</tbody>
-				</table>				
+				</table>
+				<br>
+				<input type="submit" value="Save" class="add-button"/>					
 			</form:form>
-			<div>
-				<p><a href="${pageContext.request.contextPath}/member/members">Back to members</a></p>
-			</div>
 		</div>
 	</body>
 </html>

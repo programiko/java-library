@@ -3,45 +3,44 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Publisher</title>
-</head>
-<body>
-
-<div id="container">
-<h3>Save publisher</h3>
-
-<form:form action="addPublisher" modelAttribute="publisher" method="POST">
-<form:hidden path="id"/>
-<table>
-<tbody>
-<tr>
-<td><label>Name:</label></td>
-<td><form:input path="name"/></td>
-</tr>
-<tr>
-<td><label>Address:</label></td>
-<td><form:input path="address"/></td>
-</tr>
-<tr>
-<td><label>Phone:</label></td>
-<td><form:input path="phone"/></td>
-</tr>
-<tr>
-<td><label></label></td>
-<td><input type="submit" value="Save" class="save"/></td>
-</tr>
-</tbody>
-</table>
-
-</form:form>
-<div style="clear; both"></div>
-
-<!-- Link >> publishers.jsp -->
-<p>
-<a href="${pageContext.request.contextPath }/publisher/publishers">Back to Publishers list</a>
-</p>
-</div>
-</body>
+	<head>
+		<title>Add Publisher</title>
+		<link type="text/css"
+			rel="stylesheet"
+			href="${pageContext.request.contextPath}/resources/css/style.css" />
+	</head>
+	<body>
+	
+		<div style="float: left">
+			<h3>Save Publisher</h3>
+		</div>
+		<div style="float: right">
+			<a href="${pageContext.request.contextPath}/publisher/publishers"><button class="add-button">Publishers</button></a>
+		</div>
+		<br><br><br><br><hr>
+		<div  align="center">
+			<form:form action="addPublisher" modelAttribute="publisher" method="POST">
+				<form:hidden path="id"/>
+				<h3>Publisher info </h3>
+				<table class="tg">
+					<tbody>
+						<tr>
+							<th>Name: </th>
+							<td><form:input path="name" size="50"/></td>
+						</tr>
+						<tr>
+							<th>Address: </th>
+							<td><form:input path="address" size="50"/></td>
+						</tr>
+						<tr>
+							<th>Phone: </th>
+							<td><form:input path="phone" size="50"/></td>
+						</tr>
+					</tbody>
+				</table>	
+				<br>
+				<input type="submit" value="Save" class="save"/>		
+			</form:form>
+		</div>
+	</body>
 </html>

@@ -34,7 +34,7 @@ CREATE TABLE `debits` (
   KEY `fk_book` (`book_id`),
   CONSTRAINT `fk_book` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`),
   CONSTRAINT `fk_member` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `debits` (
 
 LOCK TABLES `debits` WRITE;
 /*!40000 ALTER TABLE `debits` DISABLE KEYS */;
-INSERT INTO `debits` VALUES (1,'2017-07-27 22:00:00','2017-08-26 22:00:00','zaduzio knjigu dana…',1,1);
+INSERT INTO `debits` VALUES (1,'2017-08-24 22:00:00','2017-09-23 22:00:00','zaduzio knjigu dana…',3,2),(2,'2017-08-24 22:00:00','2017-09-23 22:00:00','zaduzio knjigu dana…',5,7),(3,'2017-08-24 22:00:00','2017-09-23 22:00:00','zaduzio knjigu dana…',7,10),(4,'2017-08-24 22:00:00','2017-09-23 22:00:00','zaduzio knjigu dana…',3,8),(5,'2017-08-24 22:00:00','2017-09-23 22:00:00','zaduzio knjigu dana…',1,2),(6,'2017-08-24 22:00:00','2017-09-23 22:00:00','zaduzio knjigu dana…',6,2),(7,'2017-08-24 22:00:00','2017-09-23 22:00:00','zaduzio knjigu dana…',7,3),(8,'2017-08-24 22:00:00','2017-09-23 22:00:00','zaduzio knjigu dana…',4,11),(9,'2017-08-24 22:00:00','2017-09-23 22:00:00','zaduzio knjigu dana…',5,11),(10,'2017-08-24 22:00:00','2017-09-23 22:00:00','zaduzio knjigu dana…',2,11);
 /*!40000 ALTER TABLE `debits` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-22  9:44:00
+-- Dump completed on 2017-08-25 12:21:05

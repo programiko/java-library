@@ -1,52 +1,24 @@
 <!DOCTYPE html>
 <html>
-
-<body>
-
-<h2>Library - Admin Page</h2>
-
-<hr>
-
-<p>Simulate login form with links below:</p>
-
-<br><br>
-<div>
-		<p><a href="${pageContext.request.contextPath}/">Back to Start page</a></p>
-</div>
-<br><br>
-
-<a href="${pageContext.request.contextPath}/admin/administrators">Admin - Administrators</a>
-
-<br><br>
-
-<a href="${pageContext.request.contextPath}/member/members">Admin - Members</a>
-
-<br><br>
-
-<a href="url">Regular user page</a>
-
-<br><br>
-
-<!-- Link >> publisher.jsp -->
-
-<a href="${pageContext.request.contextPath}/publisher/publishers">Publisher page</a>
-
-<a href="${pageContext.request.contextPath}/category/categories">Category page</a>
-
-<br><br>
-
-<a href="${pageContext.request.contextPath}/debit/debits">Admin - Debit</a>
-
-<br><br>
-
-<a href="${pageContext.request.contextPath}/book/books">Admin - Books</a>
-<br><br>
-
-<a href="${pageContext.request.contextPath}/author/authors">Admin - Authors</a>
-
-<br><br>
-<a href="${pageContext.request.contextPath}/category/categories">Category page</a>
-
-</body>
+	<head>
+		<link type="text/css"
+		rel="stylesheet"
+		href="${pageContext.request.contextPath}/resources/css/style.css" />
+	</head>
+	
+	<body>
+	
+		<div style="float: left"><h2>LIBRARY (Name of administrator)</h2></div>
+		
+		<div style="float: right">
+			<a href="${pageContext.request.contextPath}/main-page"><button class="add-button">LOG OUT</button></a>
+			<a href="${pageContext.request.contextPath}/admin/administrators"><button class="add-button">Administrators</button></a>
+		</div>
+		
+		
+		<br><br><br><br><br><hr><br>
+		<%@include file="navigation.jsp" %>
+	
+	</body>
 
 </html>

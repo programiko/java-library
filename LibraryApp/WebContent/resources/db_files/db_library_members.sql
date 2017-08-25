@@ -31,7 +31,7 @@ CREATE TABLE `members` (
   `active` tinyint(1) NOT NULL,
   `class_squad` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES (1,'Milomir','Vicentijevic','Hajduk Stanka br.25 ','011/2455-456',1,'IV 3'),(2,'Hranislav','Navojec','Hajduk Veljka br.56','032/ 5534-234',1,'VI 2');
+INSERT INTO `members` VALUES (1,'Milomir','Vicentijevic','Hajduk Stanka br.25 ','011/2455-456',1,'IV 3'),(2,'Hranislav','Navojec','Hajduk Veljka br.56','032/5534-234',1,'VI 2'),(3,'Diana','Pavlovic','Cara Lazara br. 56','031/567-345',0,'III3'),(4,'Marko','Lu&#269;i&#263;','Olge Grbic br. 17','063/3451908',0,'IV2'),(5,'Radenko','Nikoli&#263;','Sesta Licka br. 16','060/3409876',0,'IV2'),(6,'Ana','Golubovi&#263;','Kneza Viseslava br. 98','066/456321',0,'II4'),(7,'Danilo','Jeknic','Dimitrija Tucovica br. 21','065/6754321',0,'III1');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-22  9:44:01
+-- Dump completed on 2017-08-25 12:21:06

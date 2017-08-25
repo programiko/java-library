@@ -5,55 +5,39 @@
 <html>
 	<head>
 		<title>Save Authors</title>
-		<style type="text/css">
-		.add-button {
-			border: 1px solid #666; 
-			border-radius: 5px; 
-			padding: 4px; 
-			font-size: 12px;
-			font-weight: bold;
-			width: 120px; 
-			padding: 5px 10px; 		
-			margin-bottom: 15px;
-		}
-		</style>
-
-</head>
-<body>
-			<div id="wrapper">
-				<div id = "header">
-						<h3>Authors List</h3>
-						<br>
-						<div id = "container">
-						<h4> Save Authors </h4>
-
-				<form:form action = "saveAuthors" modelAttribute="authors" method="POST">
-				
-				<form:hidden path="authorsId"/>
-				<table>
-				<tbody>
-				
-				<tr>
-					<td><label>Authors name</label>
-					<td><form:input path="authorsName"/>
-					
-					<td><label>Authors surname</label>
-					<td><form:input path = "authorsSurname"/>
-					
-					</tr>
-				</tbody>
-					
-				</table>
-<input type="submit" value="Save" class ="add-button"/>
-	</form:form>
-	
-<div>
-	<p><a href="${pageContext.request.contextPath}/author/authors">Back to authors</a></p>
-			</div>
-		
-			</div>
+		<link type="text/css"
+			rel="stylesheet"
+			href="${pageContext.request.contextPath}/resources/css/style.css" />
+	</head>
+	<body>
+		<div style="float: left">
+			<h2> Save Author </h2>
 		</div>
-	</div>
+		<div style="float: right">
+			<a href="${pageContext.request.contextPath}/author/authors"><button class="add-button">Authors</button></a>
+		</div>
+		<br><br><br><br><hr>
+		<div  align="center">
+			<form:form action = "saveAuthors" modelAttribute="authors" method="POST">	
+				<form:hidden path="authorsId"/>
+				<h3>Author info </h3>
+				<table class="tg">
+					<tbody>					
+						<tr>
+							<th>Name: </th>
+							<td><form:input path="authorsName" size="50"/></td>
+						</tr>	
+						<tr>	
+							<th>Surname: </th>
+							<td><form:input path = "authorsSurname" size="50"/></td>	
+						</tr>
+					</tbody>						
+				</table>
+				<br>
+				<input type="submit" value="Save" class ="add-button" size="50"/>
+			</form:form>
+		
+		</div>
 	</body>
 
 </html>

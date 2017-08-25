@@ -28,7 +28,7 @@ CREATE TABLE `publishers` (
   `address` varchar(50) NOT NULL,
   `phone` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `publishers` (
 
 LOCK TABLES `publishers` WRITE;
 /*!40000 ALTER TABLE `publishers` DISABLE KEYS */;
-INSERT INTO `publishers` VALUES (1,'Zavod za udzbenike','Obilicev venac br. 5','011/2638-405'),(3,'Vulkan','Kralja Petra 12, Beograd','011/5329-871'),(5,'Mikro Knjiga','Svetog Save 66, Beograd','011/5438-765');
+INSERT INTO `publishers` VALUES (1,'Mikro Knjiga','Svetog Save 66, Beograd','011/3456-765'),(2,'Vulkan','Kralja Petra 12, Beograd','011/5329-871'),(3,'Epoha','MIentija Popovica 12 Beograd','011/8973-785'),(4,'Legenda Cacak','Generala Stepe 34 Cacak','032/8547-302'),(5,'Matica srpska','Zivojina Misica 12 Novi Sad','021/345-6789'),(6,'Kompjuter biblioteka','Petra Celovica 54 Beograd','011/5438-765'),(7,'Politika ','Bulevar oslobodjenja 3 Beograd','011/325-9784'),(8,'Laguna','Albanskih heroja 67 Beograd','011/654-987'),(9,'Klett','1300 kaplara bb Beograd','011/873-6500'),(10,'Pcelica','Svetog Save 26, Cacak','032/567-098');
 /*!40000 ALTER TABLE `publishers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-22  9:44:00
+-- Dump completed on 2017-08-25 12:21:05

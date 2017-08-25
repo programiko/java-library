@@ -24,7 +24,7 @@
     			</tr>
     			<tr>
     				<td></td>
-    				<td align="right"><a href="${pageContext.request.contextPath}/main-page"><button>LOG IN</button></a></td>
+    				<td align="right"><a href="${pageContext.request.contextPath}/main-page"><button class="add-button">LOG IN</button></a></td>
     			</tr>
     		</table>
     		
@@ -32,55 +32,67 @@
    		</form:form> -->
     </div>
     
-    <br>
-            	      
-    <div>
-    	<label>Search: </label>
-    	<input type="text" name="search" placeholder="Search" size="50"/>
+    <br><br><br>
+
+    <!-- Books table --> 
+    <div style=" float: left; width: 65%;"> 
+    	<br>	 
+	    <label>Search: </label>
+	    <input type="text" name="search" placeholder="Search" size="50"/> 
+	    <br><br>
+		<table class="tg" style="align-content: center">
+	
+	        <tr>
+	            <th width="8%">Book Title</th>
+	            <th width="8%">Book Author</th>
+	            <th width="8%">Book Publisher</th>
+	            <th width="8%">Book Category</th>
+	            <th width="8%">Number Of Pages</th>  
+	            <th width="8%">Number Of Copies</th>
+	            <th width="3%">Book Rating</th>
+	        </tr>        
+	        <c:if test="${!empty listBooks}">
+	            <c:forEach var="book" items="${listBooks}">          
+	                <tr>
+	                    <td>${book.bookTitle}</td>
+	                    <td>
+	                    	<c:if test="${!empty book.authors}">
+			            		<c:forEach var="auto" items="${book.authors}">
+			                    	${auto.authorsName} 
+			                    	${auto.authorsSurname}
+			                    </c:forEach>
+		       				</c:if>
+	                    </td>
+	                    <td>
+		                    <c:if test="${!empty book.publishers}">
+			            		<c:forEach var="publ" items="${book.publishers}">
+			                    	${publ.name}
+			                    </c:forEach>
+		       				</c:if>
+	       				</td>
+	       				<td>${book.category.name}</td>
+	                    <td>${book.numberOfPages}</td>
+	                    <td>${book.numberOfCopies}</td>
+	                    <td>${book.bookRating}</td>
+	            </c:forEach>
+	        </c:if>
+	
+	    </table> 
     </div>
-    
-    
-    <br><br>
-    <!-- Member table -->    
-	<table class="tg">
-
-        <tr>
-            <th width="3%">Book ID</th>
-            <th width="8%">Book Title</th>
-            <th width="8%">Book Author</th>
-            <th width="8%">Book Publisher</th>
-            <th width="8%">Book Category</th>
-            <th width="8%">Number Of Pages</th>  
-            <th width="8%">Number Of Copies</th>
-            <th width="3%">Book Rating</th>
-        </tr>        
-        <c:if test="${!empty listBooks}">
-            <c:forEach var="book" items="${listBooks}">          
-                <tr>
-                    <td>${book.bookId}</td>
-                    <td>${book.bookTitle}</td>
-                    <td>
-                    	<c:if test="${!empty book.authors}">
-		            		<c:forEach var="auto" items="${book.authors}">
-		                    	${auto.authorsName} 
-		                    	${auto.authorsSurname}
-		                    </c:forEach>
-	       				</c:if>
-                    </td>
-                    <td>
-	                    <c:if test="${!empty book.publishers}">
-		            		<c:forEach var="publ" items="${book.publishers}">
-		                    	${publ.name}
-		                    </c:forEach>
-	       				</c:if>
-       				</td>
-       				<td>${book.category.name}</td>
-                    <td>${book.numberOfPages}</td>
-                    <td>${book.numberOfCopies}</td>
-                    <td>${book.bookRating}</td>
-            </c:forEach>
-        </c:if>
-
-    </table>
-		</body>	
+    <div style=" float: right; width: 25%; align-content: center">
+    	<h3>Highest rated</h3>
+	    <table class="tg" style="">	
+	        <tr>
+	            <th width="8%">Book Title</th>
+	            <th width="8%">Book Category</th>
+	            <th width="3%">Book Rating</th>
+	        </tr>                 
+	        <tr>
+	            <td>${book.bookTitle}</td>
+	       		<td>${book.category.name}</td>
+	            <td>${book.bookRating}</td>
+	        </tr>
+	    </table>
+	  </div>
+    </body>	
 </html>

@@ -4,64 +4,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
-<head>
-	<title>Save Category</title>
-
-</head>
-
-<body>
+	<head>
+		<title>Save Category</title>
+		<link type="text/css"
+				rel="stylesheet"
+				href="${pageContext.request.contextPath}/resources/css/style.css" />
+	</head>
 	
-	<div id="wrapper">
-		<div id="header">
-			<h2>Category Page</h2>
+	<body>
+		<div style="float: left">
+			<h3>Save Category</h3>
 		</div>
-	</div>
-
-	<div id="container">
-		<h3>Save Category</h3>
-	
-		<form:form action="saveCategory" modelAttribute="category" method="POST">
-		
-			
-			<table>
-			
-				<tbody>
-					<tr>
+		<div style="float: right">
+			<a href="${pageContext.request.contextPath}/category/categories"><button class="add-button">Categories</button></a>
+		</div>
+		<br><br><br><br><hr>
+		<div align="center">
+			<form:form action="saveCategory" modelAttribute="category" method="POST">
+				<form:hidden path="id"/>
+				<h3>Category info </h3>
+				<table class="tg">
+					<tbody>
+						<tr>
+							<th>Name:</th>
+							<td><form:input path="name" size="50"/></td>
+						</tr>
 					
-						<form:hidden path="id"/>
-					
-					</tr>
-					<tr>
-						<td><label>Name:</label></td>
-						<td><form:input path="name" /></td>
-					</tr>
-				
-					<tr>
-						<td><label>Description:</label></td>
-						<td><form:input path="description" /></td>
-					</tr>
-					
-					<tr>
-						<td><label></label></td>
-						<td><input type="submit" value="Save" class="save" /></td>
-					</tr>
-
-				
-				</tbody>
-			</table>
-		
-		
-		</form:form>
+						<tr>
+							<th>Description:</th>
+							<td><form:input path="description" size="50"/></td>
+						</tr>
+					</tbody>
+				</table>
+				<br>
+				<input type="submit" value="Save" class="save" />			
+			</form:form>		
+		</div>
 	
-		<div style="clear; both;"></div>
-		
-		<p>
-			<a href="${pageContext.request.contextPath}/category/categories">Back to List</a>
-		</p>
-	
-	</div>
-
-</body>
+	</body>
 
 </html>
 

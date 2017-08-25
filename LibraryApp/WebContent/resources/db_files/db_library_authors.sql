@@ -27,7 +27,7 @@ CREATE TABLE `authors` (
   `name` varchar(20) NOT NULL,
   `surename` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `authors` (
 
 LOCK TABLES `authors` WRITE;
 /*!40000 ALTER TABLE `authors` DISABLE KEYS */;
-INSERT INTO `authors` VALUES (1,'Yakov','Fain'),(2,'Mesa','Selimovic');
+INSERT INTO `authors` VALUES (1,'Ivo','Andric'),(2,'Mesa','Selimovic'),(3,'Homer',''),(4,'Branislav','Nusic'),(5,'Branko','Copic'),(6,'Vinston','Cercil'),(7,'Fjodor','Dostojevski'),(8,'Tomas ','Man'),(9,'Dzon R.R','Tolkin'),(10,'Vilijam','Sekspir'),(11,'James','Talbot'),(12,'Justin','McLean');
 /*!40000 ALTER TABLE `authors` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-22  9:44:01
+-- Dump completed on 2017-08-25 12:21:06
