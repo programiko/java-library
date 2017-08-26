@@ -12,7 +12,7 @@ public interface CategoryService {
  
     public List<Category> getCategory();
  
-    public List<Category> getCategory(int id);
+    public Category  getCategoryById(int id);
  
     public void removeCategory(int id);
     

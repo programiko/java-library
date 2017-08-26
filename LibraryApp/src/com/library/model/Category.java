@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -28,8 +27,7 @@ public class Category {
 	@Column(name="description")
 	String description;
 	
-	@OneToMany(cascade=CascadeType.REMOVE)	
-	@JoinColumn(name="category_id")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="category")	
 	private List<Book> books;
 	
 	public int getId() {
@@ -66,6 +64,10 @@ public class Category {
 	public Category() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", description=" + description + "]";
 	}
 	
 	

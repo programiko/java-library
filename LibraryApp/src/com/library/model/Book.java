@@ -51,19 +51,19 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="affiliations", 
-				joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), 
-				inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))   
+				joinColumns=@JoinColumn(name="book_id"), 
+				inverseJoinColumns=@JoinColumn(name="author_id"))
 	private List<Authors> authors = new ArrayList<Authors>();
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="book_publisher", 
-				joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), 
-				inverseJoinColumns=@JoinColumn(name="publisher_id", referencedColumnName = "id"))   
+				joinColumns=@JoinColumn(name="book_id"), 
+				inverseJoinColumns=@JoinColumn(name="publisher_id"))   
 	private List<Publisher> publishers;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="category_id")
 	private Category category;
 	
@@ -197,7 +197,8 @@ public class Book{
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", numberOfPages=" + numberOfPages
 				+ ", numberOfCopies=" + numberOfCopies + ", numberOfRenting=" + numberOfRenting
 				+ ", numberOfRentedBook=" + numberOfRentedBook + ", bookRaiting=" + bookRating + ", bookLocation="
-				+ bookLocation + "publishers=" + publishers.toString() +"]";
+				+ bookLocation + ", publishers=" + publishers.toString() + "author=" + authors.toString()
+				+ ", category" + category +"]";
 	}
 	
 	

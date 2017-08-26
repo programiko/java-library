@@ -38,15 +38,15 @@ public class AuthorsServiceImpl implements AuthorsService{
 	}
 
 	@Override
-	public void updateAuthors(Authors theAuthors) {
-		// TODO Auto-generated method stub
-		
+	@Transactional
+	public List<Authors> getAuthors() {
+		return authorsDAO.getAuthors();
 	}
 
 	@Override
 	@Transactional
-	public List<Authors> getAuthors() {
-		return authorsDAO.getAuthors();
+	public void addAuthorsList(List<Authors> authors) {
+		authorsDAO.addAuthorsList(authors);
 	}
 	
 }

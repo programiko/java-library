@@ -43,4 +43,10 @@ public class PublisherServiceImpl implements PublisherService {
 
 	}
 
+	@Override
+	@Transactional
+	public void addPublisherList(List<Publisher> publishers) {
+		publisherDAO.addPublisherList(publishers);
+	}
+
 }

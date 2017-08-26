@@ -52,13 +52,20 @@
 		        <c:if test="${!empty listBooks}">
 		            <c:forEach var="book" items="${listBooks}">
 		         
-		        		<!-- Create an update and delete link with book id  -->
-		       			<c:url var="updateLink" value="/book/showFormForUpdate">
-		       				<c:param name="bookId" value="${book.bookId}"/>
-		       			</c:url>       			
-		       			<c:url var="deleteLink" value="/book/deleteBook">
-		       				<c:param name="bookId" value="${book.bookId}"/>
-		       			</c:url>
+		        		<!-- Create a update link with book id  -->
+						<c:url var="updateLink" value="/book/showFormForUpdate">
+							<c:param name="bookId" value="${book.bookId}"/>
+							<c:param name="id" value="${book.category.id}"/> 
+							<c:forEach var="auto" items="${book.authors}">
+				               <c:param name="authorsId" value="${auto.authorsId}"/>
+				            </c:forEach>
+				            <c:forEach var="publ" items="${book.publishers}">	             
+				               <c:param name="id" value="${publ.id}"/>
+				           </c:forEach>
+						</c:url>
+						<c:url var="deleteLink" value="/book/deleteBook">
+							<c:param name="bookId" value="${book.bookId}"/>
+						</c:url> 
 		                
 		                <tr>
 		                    <td>${book.bookId}</td>

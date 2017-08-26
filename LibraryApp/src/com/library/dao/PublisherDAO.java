@@ -15,5 +15,7 @@ public interface PublisherDAO {
     public Publisher getPublisherById(int id);
  
     public void removePublisher(int id);
+
+	public void addPublisherList(List<Publisher> publishers);
     
 }

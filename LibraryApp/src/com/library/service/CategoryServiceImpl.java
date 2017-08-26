@@ -34,9 +34,9 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	@Transactional
-	public List<Category> getCategory(int id) {
+	public Category  getCategoryById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return cateogoryDAO.getCategoryById(id);
 	}
 
 	@Override

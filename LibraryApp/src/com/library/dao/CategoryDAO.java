@@ -13,7 +13,7 @@ public interface CategoryDAO {
  
     public List<Category> getCategory();
  
-    public List<Category>  getCategoryById(int id);
+    public Category  getCategoryById(int id);
  
     public void removeCategory(int id);
     

@@ -23,12 +23,6 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 		}
 
 		@Override
-		public void updateAuthors(Authors theAuthors) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
 		public List<Authors> getAuthors() {
 			Session session = sessionFactory.getCurrentSession();
 			Query<Authors> theQuery = session.createQuery("from Authors", Authors.class);
@@ -60,6 +54,14 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			session.delete(authors);
 		
 			
+		}
+
+		@Override
+		public void addAuthorsList(List<Authors> authors) {
+			Session session = sessionFactory.getCurrentSession();
+			for(Authors a: authors) {
+				session.saveOrUpdate(a);
+			}
 		}
 	
 }

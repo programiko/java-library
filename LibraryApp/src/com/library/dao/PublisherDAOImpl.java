@@ -74,4 +74,22 @@ public class PublisherDAOImpl implements PublisherDAO {
 
 	}
 
+	@Override
+	public void addPublisherList(List<Publisher> publishers) {
+		//get the current hibernate session
+		Session session = sessionFactory.getCurrentSession();
+				
+		// execute query
+		for(Publisher p: publishers) {
+			session.saveOrUpdate(p);
+		}
+	}
+
 }
+
+
+
+
+
+
+

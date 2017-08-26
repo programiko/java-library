@@ -48,9 +48,13 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	@Override
-	public List<Category> getCategoryById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Category getCategoryById(int id) {
+
+		Session session = sessionFactory.getCurrentSession();
+		
+		Category category = session.get(Category.class, id);
+			
+		return category;
 	}
 
 	@Override
