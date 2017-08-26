@@ -28,7 +28,7 @@ public class Category {
 	@Column(name="description")
 	String description;
 	
-	@OneToMany(cascade=CascadeType.ALL)	
+	@OneToMany(cascade=CascadeType.REMOVE)	
 	@JoinColumn(name="category_id")
 	private List<Book> books;
 	

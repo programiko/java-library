@@ -4,10 +4,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +34,7 @@ public class Publisher{
 	@Column(name = "phone")
 	private String phone;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.REMOVE)
 	@JoinTable(name="book_publisher", 
 				joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id")) 
 	private List<Book> books;

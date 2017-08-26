@@ -4,10 +4,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +32,7 @@ public class Authors{
 	@Column(name="surename")
 	private String authorsSurname;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinTable(name="affiliations", 
 				joinColumns=@JoinColumn(name="book_id",referencedColumnName = "id"), 
 				inverseJoinColumns=@JoinColumn(name="author_id", referencedColumnName = "id"))  
