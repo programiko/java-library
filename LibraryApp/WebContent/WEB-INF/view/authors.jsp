@@ -32,7 +32,6 @@
 		<div style=" float: left; width: 80%; margin: 0 10% 10% 10%"> 	 
 		    <table class="tg">
 		        <tr>
-		            <th width="10%">Authors ID</th>
 		            <th width="10%">Authors Name</th>
 		            <th width="10%">Authors Surname</th> 
 					<th width="10%">View books</th>          
@@ -54,7 +53,6 @@
 		       				<c:param name="authorId" value="${authors.authorsId}"/>
 		       			</c:url>
 		                <tr>
-		                    <td>${authors.authorsId}</td>
 		                    <td>${authors.authorsName}</td>
 		                    <td>${authors.authorsSurname}</td>
 		                    <td><a href="${bookLink}">Books</a></td>

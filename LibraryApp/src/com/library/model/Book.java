@@ -70,8 +70,7 @@ public class Book{
 	@OneToMany(cascade=CascadeType.ALL)	
 	@JoinColumn(name="book_id")
 	private List<Debits> debit;	
-	
-	
+	 
 	
 	//constructors
 	public Book() {
@@ -187,11 +186,9 @@ public class Book{
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
+
+
 	//toString() method
-	
-
-
 	@Override
 	public String toString() {
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", numberOfPages=" + numberOfPages

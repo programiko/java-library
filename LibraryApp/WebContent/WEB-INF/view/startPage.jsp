@@ -47,9 +47,9 @@
 	            <th width="8%">Book Author</th>
 	            <th width="8%">Book Publisher</th>
 	            <th width="8%">Book Category</th>
-	            <th width="8%">Number Of Pages</th>  
-	            <th width="8%">Number Of Copies</th>
-	            <th width="3%">Book Rating</th>
+	            <th width="8%">Number Of Pages</th>
+	            <th width="3%">Book Rating</th>  
+	            <th width="8%">Available</th>
 	        </tr>        
 	        <c:if test="${!empty listBooks}">
 	            <c:forEach var="book" items="${listBooks}">          
@@ -72,8 +72,15 @@
 	       				</td>
 	       				<td>${book.category.name}</td>
 	                    <td>${book.numberOfPages}</td>
-	                    <td>${book.numberOfCopies}</td>
 	                    <td>${book.bookRating}</td>
+	                    <td>
+	                    	<c:if test="${(book.numberOfCopies - book.numberOfRentedBook) > 0}">
+	                    		Available
+	                   		</c:if>
+	                   		<c:if test="${(book.numberOfCopies - book.numberOfRentedBook) <= 0}">
+	                    		Not available
+	                   		</c:if>
+	                    </td>
 	            </c:forEach>
 	        </c:if>
 	

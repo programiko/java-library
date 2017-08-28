@@ -1,5 +1,7 @@
 package com.library.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.library.model.Book;
+import com.library.model.Debits;
 import com.library.model.Member;
+import com.library.service.BookService;
+import com.library.service.DebitsService;
 import com.library.service.MemberService;
 
 @Controller
@@ -17,7 +23,11 @@ import com.library.service.MemberService;
 public class MemberController {
 	
 	@Autowired
-	private MemberService memberService;	
+	private MemberService memberService;
+	@Autowired
+	private BookService bookService;
+	@Autowired
+	private DebitsService debitService;
 	
 	@GetMapping("/members")
     public String listMembers(Model model) {
@@ -62,8 +72,49 @@ public class MemberController {
     	return "redirect:/member/members";
     }
     
-    @GetMapping("/viewProfile")
-    public String viewProfile(@RequestParam("memberId") int memberId, Model model) {
+    @GetMapping("/returnBook")
+    public String returnBook(@RequestParam("memberId") int memberId, Model model) {
+    	
+    	Member theMember = memberService.getMemberById(memberId); 	
+    	
+    	model.addAttribute("member", theMember);
+    	
+    	return "memberProfile";
+    }
+    
+    @GetMapping("/returnLink")
+    public String returnLink(@RequestParam("memberId") int memberId,
+								@RequestParam("debitsId") int debitsId,	 
+								Model model) {
+    	
+    	Member theMember = memberService.getMemberById(memberId);
+    	Debits debit = debitService.getDebitById(debitsId);
+    	Book book = debit.getBook();
+    	System.out.println(book);
+    	book.setNumberOfCopies(book.getNumberOfCopies() + 1);
+    	debitService.removeDebit(debitsId);   	
+    	
+    	model.addAttribute("member", theMember);
+    	
+    	return "memberProfile";
+    }
+    
+    @GetMapping("/rentBook")
+    public String rentBook(@RequestParam("memberId") int memberId,
+    						Model model) {
+    	
+    	Member theMember = memberService.getMemberById(memberId);
+    	List<Book> listBooks = bookService.getBooks();
+    	
+    	model.addAttribute("member", theMember);
+    	model.addAttribute("listBooks", listBooks);
+    	
+    	
+    	return "rentBooks";
+    }
+    
+    @GetMapping("/rent")
+    public String rent(@RequestParam("memberId") int memberId, Model model) {
     	
     	Member theMember = memberService.getMemberById(memberId);
     	
@@ -71,6 +122,7 @@ public class MemberController {
     	
     	return "memberProfile";
     }
+    
     
 }
 

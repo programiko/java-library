@@ -11,7 +11,7 @@
 		<div style="float: left"><h2>LIBRARY (Name of administrator)</h2></div>
 		
 		<div style="float: right">
-			<a href="${pageContext.request.contextPath}/main-page"><button class="add-button">LOG OUT</button></a>
+			<a href="${pageContext.request.contextPath}/"><button class="add-button">LOG OUT</button></a>
 			<a href="${pageContext.request.contextPath}/admin/administrators"><button class="add-button">Administrators</button></a>
 		</div>
 		
