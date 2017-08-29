@@ -39,4 +39,18 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.removeMember(id);
 	}
 
+	@Override
+	@Transactional
+	public List<String> searchAutocomplete(String nameMember) {
+	
+		return memberDAO.searchAutocomplete(nameMember);
+	}
+
+	@Override
+	@Transactional
+	public List<Member> searchMemberByName(String nameMember) {
+
+		return memberDAO.searchMemberByName(nameMember);
+	}
+
 }

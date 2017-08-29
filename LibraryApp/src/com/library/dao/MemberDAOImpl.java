@@ -60,4 +60,24 @@ public class MemberDAOImpl implements MemberDAO {
 		session.delete(member);
 	}
 
+	@Override
+	public List<String> searchAutocomplete(String nameMember) {
+
+		Session session = sessionFactory.getCurrentSession();
+		Query<String> theQuery = session.createQuery("select concat(memberName, ' ',memberSurename) from Member where memberName like :n or memberSurename like :n",String.class);
+		theQuery.setParameter("n", nameMember + "%");
+		List<String> str = theQuery.list();
+		return str;
+	}
+
+	@Override
+	public List<Member> searchMemberByName(String nameMember) {
+	
+		Session session = sessionFactory.getCurrentSession();
+		Query<Member> theQuery = session.createQuery("from Member where memberName like :n",Member.class);
+		theQuery.setParameter("n", nameMember + "%");
+		List<Member> memberList = theQuery.list();
+		return memberList;
+	}
+
 }

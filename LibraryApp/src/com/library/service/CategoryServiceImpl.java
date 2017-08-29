@@ -54,4 +54,18 @@ public class CategoryServiceImpl implements CategoryService {
 		return 	cateogoryDAO.updateCategory(id);
 	}
 
+	@Override
+	@Transactional
+	public List<String> searchAutocomplete(String nameCategory) {
+		// TODO Auto-generated method stub
+		return cateogoryDAO.searchAutocomplete(nameCategory);
+	}
+
+	@Override
+	@Transactional
+	public List<Category> searchCategoryByName(String nameCategory) {
+		// TODO Auto-generated method stub
+		return cateogoryDAO.searchCategoryByName(nameCategory);
+	}
+
 }

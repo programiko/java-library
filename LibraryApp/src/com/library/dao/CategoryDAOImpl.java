@@ -3,6 +3,7 @@ package com.library.dao;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -65,9 +66,27 @@ public class CategoryDAOImpl implements CategoryDAO {
 		Category category = session.get(Category.class, id);
 		
 		session.delete(category);
-		
-		
 
+	}
+
+	@Override
+	public List<String> searchAutocomplete(String nameCategory) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Query<String> theQuery = session.createQuery("select name from Category where name like :n",String.class);
+		theQuery.setParameter("n", nameCategory + "%");
+		List<String> str = theQuery.list();
+		return str;
+	}
+
+	@Override
+	public List<Category> searchCategoryByName(String nameCategory) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Query<Category> theQuery = session.createQuery("from Category where name like :n",Category.class);
+		theQuery.setParameter("n", nameCategory + "%");
+		List<Category> categoryList = theQuery.list();
+		return categoryList;
 	}
 
 }

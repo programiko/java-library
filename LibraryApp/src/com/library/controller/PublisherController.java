@@ -1,6 +1,10 @@
 package com.library.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.Gson;
 import com.library.model.Publisher;
 import com.library.service.BookService;
 import com.library.service.PublisherService;
@@ -88,5 +93,22 @@ public class PublisherController {
 		
 		//stay on same page
 		return "redirect:/publisher/publishers";
+	}
+	
+	@GetMapping("/search")
+	void search(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		String term = request.getParameter("term");
+		String searchList = new Gson().toJson(publisherService.searchAutocomplete(term));
+		
+			response.getWriter().write(searchList);
+	}
+	
+	@PostMapping("/searchByName")
+	public String searchByName(@RequestParam("search") String str, Model model) {
+		
+		model.addAttribute("publisher", publisherService.searchPublisherByName(str));
+		return "publishers";
 	}
 }

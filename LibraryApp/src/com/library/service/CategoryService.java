@@ -18,4 +18,8 @@ public interface CategoryService {
     
     public Category updateCategory(int id);
     
+    public List<String> searchAutocomplete(String nameCategory);
+    
+    public List<Category> searchCategoryByName(String nameCategory);
+    
 }

@@ -17,5 +17,8 @@ public interface CategoryDAO {
  
     public void removeCategory(int id);
     
- 
+    public List<String> searchAutocomplete(String nameCategory);
+    
+    public List<Category> searchCategoryByName(String nameCategory);
+    
 }

@@ -2,6 +2,7 @@ package com.library.dao;
 
 import java.util.List;
 
+
 import com.library.model.Publisher;
 
 
@@ -17,5 +18,9 @@ public interface PublisherDAO {
     public void removePublisher(int id);
 
 	public void addPublisherList(List<Publisher> publishers);
+	
+	public List<String> searchAutocomplete(String namePublisher);
+	
+	public List<Publisher> searchPublisherByName(String namePublisher);
     
 }

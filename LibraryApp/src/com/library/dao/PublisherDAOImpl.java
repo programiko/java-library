@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.library.model.Publisher;
 
 
@@ -84,6 +83,25 @@ public class PublisherDAOImpl implements PublisherDAO {
 			session.saveOrUpdate(p);
 		}
 	}
+	
+	@Override
+	public List<String> searchAutocomplete(String namePublisher) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<String> theQuery = session.createQuery("select name from Publisher where name like :n",String.class);
+		theQuery.setParameter("n", namePublisher + "%");
+		List<String> str = theQuery.list();
+		return str;
+	}
+
+	@Override
+	public List<Publisher> searchPublisherByName(String namePublisher) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<Publisher> theQuery = session.createQuery("from Publisher where name like :n",Publisher.class);
+		theQuery.setParameter("n", namePublisher + "%");
+		List<Publisher> publisherList = theQuery.list();
+		return publisherList;
+	}
+
 
 }
 

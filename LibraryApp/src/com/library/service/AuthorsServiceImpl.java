@@ -48,5 +48,19 @@ public class AuthorsServiceImpl implements AuthorsService{
 	public void addAuthorsList(List<Authors> authors) {
 		authorsDAO.addAuthorsList(authors);
 	}
+
+	@Override
+	@Transactional
+	public List<String> searchAutocomplete(String nameAuthors) {
+	
+		return authorsDAO.searchAutocomplete(nameAuthors);
+	}
+
+	@Override
+	@Transactional
+	public List<Authors> searchAuthorsByName(String nameAuthors) {
+
+		return authorsDAO.searchAuthorsByName(nameAuthors);
+	}
 	
 }

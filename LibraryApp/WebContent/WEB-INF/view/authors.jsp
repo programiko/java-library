@@ -1,4 +1,4 @@
-<%@ page contentType = "text/html; charset = UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -10,6 +10,50 @@
 		<link type="text/css"
 				rel="stylesheet"
 				href="${pageContext.request.contextPath}/resources/css/style.css" />
+				
+				 <!-- JavaScript -->
+			  
+	 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.js"></script>
+			  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
+			<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
+	 
+
+	 
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$(function() {
+			$("#search").autocomplete({
+
+				source : function(request, response) {
+					$.ajax({
+						url : "${pageContext.request.contextPath}/author/search",
+						type : "GET",
+						data : {
+							term : request.term
+						},
+						dataType : "json",
+						success : function(data) {
+							response(data);
+						}
+					});
+				}
+			});
+			
+			$('#search').bind('keyup', function(e) {
+
+			    if ( e.keyCode === 13 ) { // 13 is enter key
+			    	
+			    	$(this).closest('form').submit();
+			    }
+
+			});
+		});
+	});
+	</script>
+	
 	</head>
 	<body>
 	    <h1>Authors</h1>
@@ -25,7 +69,9 @@
 		
 		 <div>
 			<label>Search: </label>
-			<input type="text" name="search" placeholder="Search" size="50"/> 
+						<form:form action="searchByName" method="POST">
+			<input  name= "search" id="search" placeholder="Search" size="50"/> 
+	</form:form>
 			<br><br>
 	     </div>	 
 		
