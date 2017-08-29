@@ -66,7 +66,8 @@ public class MemberDAOImpl implements MemberDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Query<String> theQuery = session.createQuery("select concat(memberName, ' ',memberSurename) from Member where memberName like :n or memberSurename like :n",String.class);
 		theQuery.setParameter("n", nameMember + "%");
-		List<String> str = theQuery.list();
+		List<String> str = theQuery.getResultList();
+
 		return str;
 	}
 

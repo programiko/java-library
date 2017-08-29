@@ -81,10 +81,15 @@ public class MemberController {
 	@GetMapping("/search")
 	void search(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		response.setContentType("application/json; charset=UTF-8");
+		
+		//new String(request.getParameter("term").getBytes("ISO-8859-1"),"UTF-8");
+				
 		String term = request.getParameter("term");
+	
 		String searchList = new Gson().toJson(memberService.searchAutocomplete(term));
-			response.getWriter().write(searchList);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+	response.getWriter().write(searchList);
 	}
 	
 	@PostMapping("/searchByName")

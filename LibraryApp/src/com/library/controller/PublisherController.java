@@ -101,7 +101,8 @@ public class PublisherController {
 		
 		String term = request.getParameter("term");
 		String searchList = new Gson().toJson(publisherService.searchAutocomplete(term));
-		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(searchList);
 	}
 	
