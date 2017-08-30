@@ -28,7 +28,6 @@
 		        </tr>        
 		        <c:if test="${!empty listBooks}">
 		            <c:forEach var="book" items="${listBooks}">
-		         
 		        		<!-- Create a rent link with book id  -->
 						<c:url var="rentLink" value="/member/rent">
 							<c:param name="memberId" value="${member.memberId}"/>
@@ -52,7 +51,9 @@
 			       				</c:if>
 		       				</td>
 		       				<td>${book.category.name}</td>
-		                    <td style="text-align: center;"><input type="checkbox" name="checkBook"></td>
+		                    <td style="text-align: center;">
+		                    	<input type="checkbox" name="bookForRent" value="${book.bookId}">${book.bookId}</input>
+		                    </td>
 		                </tr>
 		            </c:forEach>
 		        </c:if>		

@@ -2,6 +2,8 @@ package com.library.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -91,8 +93,18 @@ public class MemberController {
     	Debits debit = debitService.getDebitById(debitsId);
     	Book book = debit.getBook();
     	System.out.println(book);
+    	
+    	System.out.println("\n\n" + book.getBookTitle() + book.getNumberOfCopies());
     	book.setNumberOfCopies(book.getNumberOfCopies() + 1);
+    	System.out.println("\n\n" + book.getBookTitle() + book.getNumberOfCopies());
+    	
+    	System.out.println("\n\n" + book.getBookTitle() + book.getNumberOfRentedBook());
+    	book.setNumberOfRentedBook(book.getNumberOfRentedBook() - 1);
+    	System.out.println("\n\n" + book.getBookTitle() + book.getNumberOfRentedBook());
+    	
     	debitService.removeDebit(debitsId);   	
+    	
+    	bookService.addBook(book);
     	
     	model.addAttribute("member", theMember);
     	
@@ -114,15 +126,21 @@ public class MemberController {
     }
     
     @GetMapping("/rent")
-    public String rent(@RequestParam("memberId") int memberId, Model model) {
+    public String rent(@RequestParam("memberId") int memberId, 
+    					Model model, 
+    					HttpServletRequest request,
+    					HttpServletRequest response) {
     	
     	Member theMember = memberService.getMemberById(memberId);
+    	//List<Book> listBooks = bookService.getBooks();
+    	
+    	String[] ids = request.getParameterValues("bookForRent");
+    	System.out.println("\n" + ids); 
     	
     	model.addAttribute("member", theMember);
     	
     	return "memberProfile";
     }
-    
     
 }
 

@@ -70,10 +70,9 @@ public class Book{
 	@OneToMany(cascade=CascadeType.ALL)	
 	@JoinColumn(name="book_id")
 	private List<Debits> debit;	
-	 
-	
+		 
 	//constructors
-	public Book() {
+ 	public Book() {
 	}
 		
     public Book(String bookTitle, int numberOfPages, int numberOfCopies, int numberOfRenting, int numberOfRentedBook,
@@ -93,7 +92,6 @@ public class Book{
 	public int getBookId() {
 		return bookId;
 	}
-
 
 	public void setBookId(int bookId) {
 		this.bookId = bookId;
@@ -163,7 +161,6 @@ public class Book{
 		this.bookLocation = bookLocation;
 	}
 	
-	
 	public List<Authors> getAuthors() {
 		return authors;
 	}
@@ -175,6 +172,7 @@ public class Book{
 	public List<Publisher> getPublishers() {
 		return publishers;
 	}
+	
 	public void setPublishers(List<Publisher> publishers) {
 		this.publishers = publishers;
 	}

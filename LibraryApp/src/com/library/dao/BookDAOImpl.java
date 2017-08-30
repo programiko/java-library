@@ -32,10 +32,6 @@ public class BookDAOImpl implements BookDAO {
 		Query<Book> theQuery = session.createQuery("from Book", Book.class);
 		
 		List<Book> books = theQuery.getResultList();
-		
-//		Criteria criteria = session.createCriteria(Book.class);
-//		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-//		List<Book> books = (List<Book>) criteria.list();
 				
 		return books;
 	}
@@ -59,8 +55,7 @@ public class BookDAOImpl implements BookDAO {
 		
 		session.delete(book);
 	}
-	
-	
+		
 	@Override
 	public List<Book> getBooksForAuthor(int id) {
 
@@ -94,4 +89,5 @@ public class BookDAOImpl implements BookDAO {
 		return books;
 	}
 
+	
 }
