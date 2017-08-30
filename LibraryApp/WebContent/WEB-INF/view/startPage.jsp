@@ -73,14 +73,12 @@
 	       				<td>${book.category.name}</td>
 	                    <td>${book.numberOfPages}</td>
 	                    <td>${book.bookRating}</td>
-	                    <td>
-	                    	<c:if test="${(book.numberOfCopies - book.numberOfRentedBook) > 0}">
-	                    		Available
-	                   		</c:if>
-	                   		<c:if test="${(book.numberOfCopies - book.numberOfRentedBook) <= 0}">
-	                    		Not available
-	                   		</c:if>
-	                    </td>
+	                    <c:if test="${book.numberOfCopies > 0}">
+			               <td>Available</td>
+			            </c:if>
+			            <c:if test="${book.numberOfCopies <= 0}">
+			            	<td style="color: red">Not available</td>
+			            </c:if>
 	            </c:forEach>
 	        </c:if>
 	

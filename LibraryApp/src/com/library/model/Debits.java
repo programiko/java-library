@@ -55,6 +55,14 @@ public class Debits {
 	}
 	
 	
+	
+	public Debits(Date dateOfDebit, String note, Book book) {
+		super();
+		this.dateOfDebit = dateOfDebit;
+		this.note = note;
+		this.book = book;
+	}
+
 	//getters/setters
 	public Book getBook() {
 		return book;

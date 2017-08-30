@@ -9,14 +9,13 @@
 	href="${pageContext.request.contextPath}/resources/css/style.css" />
 </head>
 <body>
-	<div>
+	<div>		
 		<div  style="float: left">
-			<h2>Member: ${member.memberName} ${member.memberSurename}</h2>
+			<h2>Member: ${member.memberName} ${member.memberSurename} ${member.memberClass}</h2>
 		</div>
-		<div style="float: right">
-			<a href="${pageContext.request.contextPath}/member/members"><button class="add-button">Members</button></a>
-		</div>
-		<br><br><br><br><hr>
+		<br><br><br><br><hr><br>
+		<%@include file="navigation.jsp" %>
+		<br><br><hr><br>
 		<table class="tg">
 			<tr>
 				<th>ID:</th>

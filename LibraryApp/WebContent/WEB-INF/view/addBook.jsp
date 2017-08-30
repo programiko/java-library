@@ -14,10 +14,9 @@
 		<div style="float: left">
 			<h2>Save Book</h2>
 		</div>
-		<div style="float: right">
-				<a href="${pageContext.request.contextPath}/book/books"><button class="add-button">Books</button></a>
-		</div>
-		<br><br><br><br><hr>
+		<br><br><br><br><hr><br>
+		<%@include file="navigation.jsp" %>
+		<br><br><hr><br><br><br>
 		<div align="center">
 			<form:form action="saveBook" modelAttribute="book" method="POST">	
 					<form:hidden path="bookId"/>

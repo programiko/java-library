@@ -1,5 +1,9 @@
 package com.library.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,16 +17,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.library.model.Authors;
 import com.library.model.Book;
 import com.library.model.Debits;
 import com.library.model.Member;
+import com.library.service.AuthorsService;
 import com.library.service.BookService;
 import com.library.service.DebitsService;
 import com.library.service.MemberService;
 
+@SuppressWarnings("serial")
 @Controller
 @RequestMapping("/member")
-public class MemberController {
+public class MemberController{
 	
 	@Autowired
 	private MemberService memberService;
@@ -30,6 +37,8 @@ public class MemberController {
 	private BookService bookService;
 	@Autowired
 	private DebitsService debitService;
+	
+	
 	
 	@GetMapping("/members")
     public String listMembers(Model model) {
@@ -128,19 +137,49 @@ public class MemberController {
     @GetMapping("/rent")
     public String rent(@RequestParam("memberId") int memberId, 
     					Model model, 
-    					HttpServletRequest request,
-    					HttpServletRequest response) {
+    					HttpServletRequest request) {
     	
+
     	Member theMember = memberService.getMemberById(memberId);
-    	//List<Book> listBooks = bookService.getBooks();
+
+    	String[] ids = request.getParameterValues("bookForRent"); 
     	
-    	String[] ids = request.getParameterValues("bookForRent");
-    	System.out.println("\n" + ids); 
+    	if(ids != null) {
+    		Book book;
+        	List<Debits> debits = new ArrayList<Debits>();
+        	
+	    	for(int i = 0; i < ids.length; i++) {
+	    		book = bookService.getBookById(Integer.parseInt(ids[i]));
+	    		if(book.getNumberOfCopies() > 0) {
+		    		Debits debit = new Debits(new Date(), "You have rented book: " + book.getBookTitle(), book);
+		    		debits.add(debit);  
+		    		debitService.addDebit(debit);
+		    		debit.setMember(theMember);
+		    		
+		    		book.setNumberOfCopies(book.getNumberOfCopies() - 1);
+		    		book.setNumberOfRentedBook(book.getNumberOfRentedBook() + 1);
+		    		bookService.addBook(book);
+	    		}else {	
+	    			model.addAttribute("member", theMember);
+	        		return "memberProfile";
+	    		}
+	    	}
+	    	
+	    	theMember.setDebits(debits);
+	    	memberService.addMember(theMember);	    	
+	    	
+	    	model.addAttribute("member", theMember);
+	    	
+	    	return "memberProfile";
+	    	
+    	}else {
+    		model.addAttribute("member", theMember);
+    		return "memberProfile";
+    	}
     	
-    	model.addAttribute("member", theMember);
-    	
-    	return "memberProfile";
     }
+    
+    
     
 }
 
