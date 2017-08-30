@@ -51,19 +51,19 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name="affiliations", 
 				joinColumns=@JoinColumn(name="book_id"), 
 				inverseJoinColumns=@JoinColumn(name="author_id"))
 	private List<Authors> authors = new ArrayList<Authors>();
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name="book_publisher", 
 				joinColumns=@JoinColumn(name="book_id"), 
 				inverseJoinColumns=@JoinColumn(name="publisher_id"))   
 	private List<Publisher> publishers;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="category_id")
 	private Category category;
 	
