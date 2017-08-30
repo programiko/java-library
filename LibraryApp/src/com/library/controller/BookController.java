@@ -3,6 +3,8 @@ package com.library.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,9 +48,22 @@ public class BookController {
 	
 	@GetMapping("/showFormForAdd")
     public String showFormForAdd(Model model) {
-    			
-    	model.addAttribute("book", new Book());
-    	
+		Book theBook = new Book();
+		Category theCategory = new Category();
+		Publisher thePublisher = new Publisher();
+		Authors theAuthors = new Authors();
+		
+		List<Publisher> p = new ArrayList<Publisher>();
+		List<Authors> a = new ArrayList<Authors>();
+		p.add(thePublisher);
+		a.add(theAuthors);
+		
+		theBook.setAuthors(a);
+		theBook.setPublishers(p);
+		theBook.setCategory(theCategory);
+		
+		model.addAttribute("book", theBook);
+    	  	
     	
     	return "addBook";
     }
@@ -86,25 +101,11 @@ public class BookController {
 	    	List<Publisher> p = new ArrayList<Publisher>();
 	    	p.add(thePublisher);
 	    	
-	    	
-	    	
-	    	System.out.println("\n\nbegin book by id\n");
-	    	System.out.println(theBook);
-			System.out.println(theCategory);
-			System.out.println(thePublisher);
-			System.out.println(theAuthor);
-			
-			System.out.println("\n\nend book by id\n");
-	    	
 			theBook.setAuthors(a);
 			theBook.setPublishers(p);
 			theBook.setCategory(theCategory);
 			
 	    	model.addAttribute("book", theBook);
-	    	model.addAttribute("category", theCategory);
-	    	model.addAttribute("publisher", p);
-	    	model.addAttribute("author", a);
-	    	
 	    	return "addBook";
 	    }
 	    

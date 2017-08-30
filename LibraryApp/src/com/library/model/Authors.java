@@ -33,9 +33,8 @@ public class Authors{
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="authors") 
 	private List<Book> books;
 	
-	public Authors(int authorsId, String authorsName, String authorsSurname) {
+	public Authors(String authorsName, String authorsSurname) {
 		super();
-		this.authorsId = authorsId;
 		this.authorsName = authorsName;
 		this.authorsSurname = authorsSurname;
 	}

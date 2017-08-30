@@ -55,9 +55,8 @@ public class Category {
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
-	public Category(int id, String name, String description) {
+	public Category(String name, String description) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.description = description;
 	}

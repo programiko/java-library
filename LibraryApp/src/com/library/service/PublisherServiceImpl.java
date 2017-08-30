@@ -49,4 +49,10 @@ public class PublisherServiceImpl implements PublisherService {
 		publisherDAO.addPublisherList(publishers);
 	}
 
+	@Override
+	@Transactional
+	public Publisher findPublishersId(String str) {
+		return publisherDAO.findPublishersId(str);
+	}
+
 }

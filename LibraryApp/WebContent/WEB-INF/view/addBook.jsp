@@ -55,22 +55,22 @@
 										<form:hidden path="authors[${status.index}].authorsId"/>
 										<tr>
 											<th>Author Name: </th>
-											<td><input type="text" value="${author.authorsName}" name="authors[${status.index}].authorsName" size="50"/></td>
+											<td><form:input path="authors[${status.index}].authorsName" size="50"/></td>
 										</tr>
 										<tr>
 											<th>Author Surname: </th>
-											<td><input type="text" value="${author.authorsSurname}" name="authors[${status.index}].authorsSurname" size="50"/></td>
+											<td><form:input path="authors[${status.index}].authorsSurname" size="50"/></td>
 										</tr>
 									</c:forEach>
 								</c:if>
 								<c:if test="${empty book.authors}">
 									<tr>
 										<th>Author Name: </th>
-										<td><input value="${author.authorsName}" name="authors[0].authorsName" size="50"/></td>
+										<td><form:input path="authors[0].authorsName" size="50"/></td>
 									</tr>
 									<tr>
 										<th>Author Surname: </th>
-										<td><input value="${author.authorsSurname}" name="authors[0].authorsSurname" size="50"/></td>
+										<td><form:input path="authors[0].authorsSurname" size="50"/></td>
 									</tr>
 								</c:if>
 							</tbody>
@@ -86,30 +86,30 @@
 									<form:hidden path="publishers[${status.index}].id"/>
 										<tr>
 											<th>Publisher Name: </th>
-											<td><input type="text" value="${publisher.name}" name="publishers[${status.index}].name" size="50"/></td>
+											<td><form:input path="publishers[${status.index}].name" size="50"/></td>
 										</tr>
 										<tr>
 											<th>Publisher Address: </th>
-											<td><input type="text" value="${publisher.address}" name="publishers[${status.index}].address" size="50"/></td>
+											<td><form:input path="publishers[${status.index}].address" size="50"/></td>
 										</tr>
 										<tr>
 											<th>Publisher Phone: </th>
-											<td><input type="text" value="${publisher.phone}" name="publishers[${status.index}].phone"/></td>
+											<td><form:input path="publishers[${status.index}].phone"/></td>
 										</tr>
 									</c:forEach>
 								</c:if>
 								<c:if test="${empty book.publishers}">
 									<tr>
 										<th>Publisher Name: </th>
-										<td><input value="${publisher.name}" name="publishers[0].name" size="50"/></td>
+										<td><form:input path="publishers[0].name" size="50"/></td>
 									</tr>
 									<tr>
 										<th>Publisher Address: </th>
-										<td><input value="${publisher.address}" name="publishers[0].address" size="50"/></td>
+										<td><form:input path="publishers[0].address" size="50"/></td>
 									</tr>
 									<tr>
 										<th>Publisher Phone: </th>
-										<td><input value="${publisher.phone}" name="publishers[0].phone" size="50"/></td>
+										<td><form:input path="publishers[0].phone" size="50"/></td>
 									</tr>
 								</c:if>
 							</tbody>
