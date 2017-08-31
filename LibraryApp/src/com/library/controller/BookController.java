@@ -73,9 +73,9 @@ public class BookController {
 	
 	 	@GetMapping("/showFormForUpdate")
 	    public String showFormForUpdate(@RequestParam("bookId") int bookId, 
-										@RequestParam("id") int categoryId, 
-										@RequestParam("id") int publisherId,
+										@RequestParam("categoryId") int categoryId, 
 										@RequestParam("authorsId") int authorsId,
+										@RequestParam("publishersId") int publisherId,
 										Model model, 
 						    			HttpServletRequest req) {
 

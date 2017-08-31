@@ -54,14 +54,14 @@
 						<c:url var="updateLink" value="/book/showFormForUpdate">	
 							<c:param name="bookId" value="${book.bookId}"/>
 							
-							<c:param name="id" value="${book.category.id}"/>
+							<c:param name="categoryId" value="${book.category.id}"/>
 							 
 							<c:forEach var="auto" items="${book.authors}">
 				               <c:param name="authorsId" value="${auto.authorsId}"/>
 				            </c:forEach>
 				            
 				            <c:forEach var="publ" items="${book.publishers}">	             
-				               <c:param name="id" value="${publ.id}"/>
+				               <c:param name="publishersId" value="${publ.id}"/>
 				           </c:forEach>
 						</c:url>
 						
