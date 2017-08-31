@@ -18,6 +18,6 @@ public interface PublisherDAO {
 
 	public void addPublisherList(List<Publisher> publishers);
 	
-	public Publisher findPublishersId(String str);
+	public Publisher findPublisherByName(String str);
     
 }

@@ -48,14 +48,12 @@ public class BookServiceImpl implements BookService {
 	@Override
 	@Transactional
 	public List<Book> getBooksForPublisher(int id) {
-		// TODO Auto-generated method stub
 		return bookDAO.getBooksForPublisher(id);
 	}
 
 	@Override
 	@Transactional
 	public List<Book> getBooksForCategory(int id) {
-		// TODO Auto-generated method stub
 		return bookDAO.getBooksForCategory(id);
 	}
 }

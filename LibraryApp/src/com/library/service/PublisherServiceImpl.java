@@ -51,8 +51,8 @@ public class PublisherServiceImpl implements PublisherService {
 
 	@Override
 	@Transactional
-	public Publisher findPublishersId(String str) {
-		return publisherDAO.findPublishersId(str);
+	public Publisher findPublisherByName(String str) {
+		return publisherDAO.findPublisherByName(str);
 	}
 
 }

@@ -30,7 +30,7 @@ public class Authors{
 	@Column(name="surename")
 	private String authorsSurname;
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy="authors") 
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy="authors", cascade = CascadeType.REMOVE) 
 	private List<Book> books;
 	
 	public Authors(String authorsName, String authorsSurname) {

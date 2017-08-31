@@ -85,14 +85,14 @@ public class PublisherDAOImpl implements PublisherDAO {
 		}
 	}
 	
-	public Publisher findPublishersId(String str) {
+	public Publisher findPublisherByName(String str) {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
 		@SuppressWarnings("rawtypes")
-		Query theQuery = session.createQuery("from Publisher where name=:str", Publisher.class);
+		Query theQuery = session.createQuery("from Publisher where name like :str", Publisher.class);
+		theQuery.setParameter("str", str);
 		Publisher p = (Publisher) theQuery.uniqueResult();
-		System.out.println("\n\n" + p + "\n\n");
 		
 		return p;
 	}

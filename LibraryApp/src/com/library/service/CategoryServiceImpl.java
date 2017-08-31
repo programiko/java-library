@@ -54,4 +54,10 @@ public class CategoryServiceImpl implements CategoryService {
 		return 	cateogoryDAO.updateCategory(id);
 	}
 
+	@Override
+	@Transactional
+	public Category findCategoryByName(String str) {
+		return cateogoryDAO.findCategoryByName(str);
+	}
+
 }

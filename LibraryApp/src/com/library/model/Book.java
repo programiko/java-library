@@ -3,7 +3,6 @@ package com.library.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,23 +50,23 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="affiliations", 
 				joinColumns=@JoinColumn(name="book_id"), 
 				inverseJoinColumns=@JoinColumn(name="author_id"))
 	private List<Authors> authors = new ArrayList<Authors>();
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="book_publisher", 
 				joinColumns=@JoinColumn(name="book_id"), 
 				inverseJoinColumns=@JoinColumn(name="publisher_id"))   
 	private List<Publisher> publishers;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="category_id")
 	private Category category;
 	
-	@OneToMany(cascade=CascadeType.ALL)	
+	@OneToMany
 	@JoinColumn(name="book_id")
 	private List<Debits> debit;	
 		 

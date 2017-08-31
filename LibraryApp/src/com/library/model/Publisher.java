@@ -32,7 +32,7 @@ public class Publisher{
 	@Column(name = "phone")
 	private String phone;
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy="publishers")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy="publishers", cascade = CascadeType.REMOVE)
 	private List<Book> books;
 	
 	public Publisher() {}

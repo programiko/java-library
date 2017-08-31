@@ -3,6 +3,7 @@ package com.library.dao;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -68,6 +69,20 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 		
 
+	}
+
+	@Override
+	public Category findCategoryByName(String str) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		@SuppressWarnings("rawtypes")
+		Query theQuery = session.createQuery("from Category where name like :str", Category.class);
+		theQuery.setParameter("str", str);
+		Category c = (Category) theQuery.uniqueResult();
+		System.out.println("\n\n from dao:" + c + "\n\n");
+		System.out.println("\n\n from dao:" + str + "\n\n");
+		return c;
 	}
 
 }
