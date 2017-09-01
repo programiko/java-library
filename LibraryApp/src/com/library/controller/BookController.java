@@ -167,6 +167,7 @@ public class BookController {
 			String part1 = parts[0];
 		
 			model.addAttribute("listBooks", bookService.searchBooksByName(part1));
+			
 			return "books";
 			}else {
 		        model.addAttribute("listBooks", bookService.getBooks());

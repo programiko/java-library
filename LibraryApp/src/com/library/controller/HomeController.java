@@ -42,10 +42,11 @@ public class HomeController {
 		String part1 = parts[0];
 	
 		model.addAttribute("listBooks", bookService.searchBooksByName(part1));
+		model.addAttribute("topBooks", bookService.getTopBook());
 		return "startPage";
 		}else {
 	        model.addAttribute("listBooks", bookService.getBooks());
-	        
+			model.addAttribute("topBooks", bookService.getTopBook());
 	        return "startPage";
 		}	
 	}
