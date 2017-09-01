@@ -21,7 +21,7 @@ public class Publisher{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private int publisherId;
 	
 	@Column(name = "name")
 	private String name;
@@ -45,11 +45,11 @@ public class Publisher{
 	}
 
 	public int getId() {
-		return id;
+		return publisherId;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.publisherId = id;
 	}
 
 	public String getName() {
@@ -86,7 +86,7 @@ public class Publisher{
 	
 	@Override
 	public String toString() {
-		return "Publishers [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";
+		return "Publishers [id=" + publisherId + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";
 	}
 	
 	

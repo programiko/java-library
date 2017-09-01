@@ -188,10 +188,7 @@ public class BookController {
 			
 			bookService.addBook(theBook);
 			
-		}
-		//update metoda
-		// update book metoda
-		
+		}		
 		//update book metoda
 		public void updateBook(Book theBook) {
 			
