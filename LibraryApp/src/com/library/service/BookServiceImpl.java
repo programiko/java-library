@@ -73,5 +73,11 @@ public class BookServiceImpl implements BookService {
 		return bookDAO.searchBooksByName(nameBook);
 	}
 
+	@Override
+	@Transactional
+	public List<Book> getTopBook() {
+		return bookDAO.getTopBook();
+	}
+
 
 }

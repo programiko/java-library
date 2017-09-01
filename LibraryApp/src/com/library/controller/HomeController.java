@@ -24,7 +24,7 @@ public class HomeController {
     public String startPageBooks(Model model) {
     	
     	model.addAttribute("listBooks", bookService.getBooks());
-		model.addAttribute("listAdministrators", administratorDAO.getAdministrators());
+		model.addAttribute("topBooks", bookService.getTopBook());
     	
         return "startPage";
     }

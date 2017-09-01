@@ -24,5 +24,7 @@ public interface BookDAO {
     public List<String> searchAutocomplete(String nameBook);
     
     public List<Book> searchBooksByName(String nameBook);
+    
+    public List<Book> getTopBook();
 
 }

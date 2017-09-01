@@ -129,18 +129,20 @@
 	    </table> 
     </div>
     <div style=" float: right; width: 25%; align-content: center">
-    	<h3>Highest rated</h3>
+    	<h3>Highest rated - Top 5</h3>
 	    <table class="tg" style="">	
 	        <tr>
 	            <th width="8%">Book Title</th>
 	            <th width="8%">Book Category</th>
 	            <th width="3%">Book Rating</th>
-	        </tr>                 
+	        </tr>    
+	          <c:forEach var="book" items="${topBooks}" begin="0" end="4">             
 	        <tr>
 	            <td>${book.bookTitle}</td>
 	       		<td>${book.category.name}</td>
 	            <td>${book.bookRating}</td>
 	        </tr>
+	          </c:forEach>
 	    </table>
 	  </div>
     </body>	

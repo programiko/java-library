@@ -118,4 +118,15 @@ public class BookDAOImpl implements BookDAO {
 		return bookList;
 	}
 
+	@Override
+	public List<Book> getTopBook() {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Book> theQuery = session.createQuery("from Book order by bookRating DESC", Book.class);
+		
+		List<Book> books = theQuery.getResultList();
+				
+		return books;
+	}
+
 }
