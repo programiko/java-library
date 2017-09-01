@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,13 +11,17 @@
 	
 	<body>
 	
-		<div style="float: left"><h2>LIBRARY (Name of administrator)</h2></div>
-		
+		<c:if test="${!empty admin}">
+            <c:forEach items="${admin}" var="logginSucces">
+            </c:forEach>
+            </c:if>
+	
+		<div style="float: left"><h2>Libraries Panel </h2></div>
+	
 		<div style="float: right">
-			<a href="${pageContext.request.contextPath}/main-page"><button class="add-button">LOG OUT</button></a>
-			<a href="${pageContext.request.contextPath}/admin/administrators"><button class="add-button">Administrators</button></a>
+			<a href="${pageContext.request.contextPath}"><button class="add-button">LOG OUT</button></a>
 		</div>
-		
+	
 		
 		<br><br><br><br><br><hr><br>
 		<%@include file="navigation.jsp" %>

@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
+	
 		<title>LIBRARY</title>
 		<link type="text/css"
 		rel="stylesheet"
@@ -12,7 +13,7 @@
 	<body>	
 	<div style="float: left"><h1>LIBRARY</h1> </div>
     <div align="right">
-    	<!-- <form:form action="/main-page" method="GET" modelAttribute="listAdministrators"> -->
+    	<form:form action="admin/checkAdmin" method="POST" name="Form" >
     		<table>
     			<tr>
     				<td><label>Username: </label></td>
@@ -22,16 +23,18 @@
     				<td><label>Password: </label></td>
     				<td><input type="password" name="password"/></td>
     			</tr>
-    			<tr>
-    				<td></td>
-    				<td align="right"><a href="${pageContext.request.contextPath}/main-page"><button class="add-button">LOG IN</button></a></td>
-    			</tr>
     		</table>
     		
-    		 <!--<input type="submit" value="LOG IN"/>
-   		</form:form> -->
+    		 <input type="submit" value="LOG IN" name="formButton" id="forwardButton"/> 
+    		 
+   		</form:form> 
+   		
+   		 
     </div>
-    
+  
+  <div style="float: right ; width: 25% ; color:red"">
+  			${message}
+  </div>
     <br><br><br>
 
     <!-- Books table --> 

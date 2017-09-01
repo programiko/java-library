@@ -18,5 +18,8 @@ public interface AdministratorDAO {
     
     public Administrator getById(int id);
     
-    public boolean checkAdmin(String username, String password);
+	public boolean checkAdmin( String username, String password);
+	
+	public Administrator getSuper(String username);
+    
 }

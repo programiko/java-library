@@ -5,13 +5,14 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.library.model.Administrator;
 
 @Repository
 public class AdministratorDAOImpl implements AdministratorDAO {
-	
+	@Autowired
     private SessionFactory sessionFactory;
     
     public void setSessionFactory(SessionFactory sf) {
@@ -96,15 +97,13 @@ public class AdministratorDAOImpl implements AdministratorDAO {
 		return admin;
 	}
 
-
 	@Override
 	public boolean checkAdmin(String username, String password) {
-
 		boolean adminFound = false;
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query query = session.createQuery("from Administrator as a where a.username = ? and a.password = ?");
+		Query query = session.createQuery("from Administrator  where username = ? and password = ? ");
 		
 		query.setParameter(0, username);
 		query.setParameter(1, password);
@@ -118,6 +117,27 @@ public class AdministratorDAOImpl implements AdministratorDAO {
 		} 
 		return adminFound;
 	}
+
+
+	@Override
+	public Administrator getSuper(String username) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Administrator admin = new Administrator();
+		
+		Query query = session.createQuery("from Administrator ad where ad.username = :username");
+		
+		query.setParameter("username", "superuser");
+		
+		
+		List list = query.getResultList();
+		
+		
+		return admin;
+	}
+
+
 
 
 	

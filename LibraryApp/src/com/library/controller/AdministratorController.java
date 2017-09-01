@@ -2,6 +2,7 @@ package com.library.controller;
 
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.If;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.library.model.Administrator;
 import com.library.service.AdministratorService;
+import com.library.service.BookService;
+
 
 @Controller  
 @RequestMapping("/admin")
+
 public class AdministratorController {  
 	
 	@Autowired
 	private AdministratorService adminService;
+	
+	@Autowired BookService bookService;
 
     @RequestMapping(value = "/administrators", method = RequestMethod.GET)
     public String listAdministrators(Model model) {
@@ -35,7 +41,7 @@ public class AdministratorController {
     	
     	List<Administrator> admins = adminService.getAdministratorById(id);
     		
-    		model.addAttribute("admins", admins);
+    	model.addAttribute("admins", admins);
     	
     	return "AdminData";
     }
@@ -70,27 +76,37 @@ public class AdministratorController {
     	
     	return "redirect:/admin/administrators";
     }
-
-    @GetMapping("/showFormForCheck")
-    public String checkingAdmin(Model model) {
-    	
-    	model.addAttribute("checkingAdministrator", new Administrator());
-    	
-    	return "CheckAdmin";
-    }
-    @PostMapping("/checkAdmin")
-    public String checkAdministrator(@ModelAttribute("checkingAdministrator") Administrator admin, Model model) {
-    	
-    	boolean adminExist = adminService.adminCheck(admin.getUsername(), admin.getPassword());
-    	
-    	if (adminExist) {
+  
+    
+    @PostMapping("checkAdmin")
+    public String checkAdministrator(@RequestParam("username") String username,
+    								
+    								@RequestParam("formButton") String formButton,
     		
-    		model.addAttribute("logginSucces", admin);
-    		return "test";
+    								@RequestParam("password") String password,  Model model) {
+    	
+    	boolean adminExist = adminService.checkSuperAdmin( username, password);
+    	String message = "Can't logg in, wrong login parameters.";
+    	if (username.isEmpty() && password.isEmpty() && !formButton.isEmpty()) {
+    		model.addAttribute("listBooks", bookService.getBooks());
+    		return "userView";
     		
-    	}else {
-    		System.out.println("wdadwad");
-    	return "redirect:/admin/administrator";
+    	}else if(username.equals("superuser") && password.equals("54321")) {
+        		
+   
+    		return "redirect:/admin/administrators";
+    		
+    	}else if(adminExist) {
+    	
+    		return "main-page";
+    	
+    	}else  {
+    		model.addAttribute("message", message);
+    		return "startPage";
+    	}
+    	
     }
-    }
+    
+    
+ 
 }

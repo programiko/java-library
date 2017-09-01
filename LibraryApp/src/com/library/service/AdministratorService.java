@@ -19,6 +19,8 @@ public interface AdministratorService {
     
     public Administrator getById(int id);
     
-    public boolean adminCheck (String username, String password);
+    public boolean checkSuperAdmin (String username, String password);
+    
+    public Administrator getSuper(String username);
     
 }

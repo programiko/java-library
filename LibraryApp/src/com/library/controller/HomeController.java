@@ -14,15 +14,12 @@ public class HomeController {
 	@Autowired
 	private BookService bookService;
 	
-	
-	@Autowired
-	AdministratorDAO administratorDAO;
 
 	@GetMapping("/")
     public String startPageBooks(Model model) {
     	
     	model.addAttribute("listBooks", bookService.getBooks());
-		model.addAttribute("listAdministrators", administratorDAO.getAdministrators());
+
     	
         return "startPage";
     }

@@ -63,9 +63,16 @@ public class AdministratorServiceImpl implements AdministratorService {
 	
 	@Override
 	@Transactional
-	public boolean adminCheck(String username, String password) {
-		
+	public boolean checkSuperAdmin( String username, String password) {
+
 		return administratorDAO.checkAdmin(username, password);
+	}
+
+	@Override
+	@Transactional
+	public Administrator getSuper( String username) {
+
+		return administratorDAO.getSuper(username);
 	}
 
 }

@@ -64,6 +64,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
+	
     <!-- tx annotation driven scans registered spring beans for @Transactional -->
 	<tx:annotation-driven transaction-manager="myTransactionManager" />
 

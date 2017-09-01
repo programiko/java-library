@@ -11,27 +11,23 @@
 </head>
 <body>
     <h1>List of Administrators</h1>
- <!-- button: Add Administrator -->
-    
+
+     <div style="float: right ; width: 85%">
+			<a href="${pageContext.request.contextPath}"><button class="add-button">LOG OUT</button></a>
+	</div>
+      		 <!-- button: Add Administrator -->  		
     <input type="button" 
     	   value="Add Administrator" 
     	   onclick="window.location.href='showFormForAdd'; return false;" 
     	   class="add-button"/>
     	   
-    	   <input type="button" 
-    	   value="Check Administrator" 
-    	   onclick="window.location.href='showFormForCheck'; return false;" 
-    	   class="add-button"/>
-    
     <br>
-    <h3>Administrator List's</h3>
     <form:form action="search" method="POST" modelAttribute="searchAdmin">
                 Search for an Administrator: 
                 <input type="text" name="adminId" />
                 <input type="submit" value="Search" class="add-button" />
-            </form:form>
-            
-      		  			
+    </form:form>
+   	
             
     <table class="tg">
         <tr>
@@ -61,9 +57,9 @@
             </c:forEach>
         </c:if>
     </table>
+  
  <div>
-				<p>
-				<a href="${pageContext.request.contextPath}">Back to root page</a></p>
-			</div>
+<p><a href="${pageContext.request.contextPath}/main-page">Back to main page</a></p>
+</div>
 </body>
 </html>
