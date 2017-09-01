@@ -56,6 +56,7 @@
 			});
 		});
 	});
+
 	</script>
 	</head>
 	<body>
@@ -73,7 +74,7 @@
 			 
 			 <div>
 			    <label>Search: </label>
-						<form:form action="searchByName" method="POST">
+						<form:form action="searchByName" method="POST" >
 			<input  name= "search" id="search" placeholder="Search" size="50"/> 
 	</form:form>
 			    <br><br>

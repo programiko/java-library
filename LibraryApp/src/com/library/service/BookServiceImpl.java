@@ -58,4 +58,20 @@ public class BookServiceImpl implements BookService {
 		// TODO Auto-generated method stub
 		return bookDAO.getBooksForCategory(id);
 	}
+
+	@Override
+	@Transactional
+	public List<String> searchAutocomplete(String nameBook) {
+		// TODO Auto-generated method stub
+		return bookDAO.searchAutocomplete(nameBook);
+	}
+
+	@Override
+	@Transactional
+	public List<Book> searchBooksByName(String nameBook) {
+		// TODO Auto-generated method stub
+		return bookDAO.searchBooksByName(nameBook);
+	}
+
+
 }

@@ -75,7 +75,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<Member> searchMemberByName(String nameMember) {
 	
 		Session session = sessionFactory.getCurrentSession();
-		Query<Member> theQuery = session.createQuery("from Member where memberName like :n",Member.class);
+		Query<Member> theQuery = session.createQuery("from Member where memberName like :n or memberSurename like :n",Member.class);
 		theQuery.setParameter("n", nameMember + "%");
 		List<Member> memberList = theQuery.list();
 		return memberList;
