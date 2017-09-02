@@ -82,6 +82,7 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			Authors a = (Authors) theQuery.uniqueResult();
 			
 			return a;
+		}
 		@Override
 		public List<Authors> searchAuthorsByName(String nameAuthors) {
 			Session session = sessionFactory.getCurrentSession();
