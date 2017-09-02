@@ -9,6 +9,7 @@
 		<link type="text/css"
 			rel="stylesheet"
 			href="${pageContext.request.contextPath}/resources/css/style.css" />
+			
 	</head>
 	<body>
 		<div style="float: left">
@@ -49,7 +50,7 @@
 					<div>
 						<h3> Author info </h3>
 						<table class="tg">
-							<tbody>
+							<tbody id = "idAuthors">
 								<c:if test="${!empty book.authors}">
 									<c:forEach var="author" items="${book.authors}" varStatus="status">
 										<form:hidden path="authors[${status.index}].authorsId"/>
@@ -66,15 +67,16 @@
 								<c:if test="${empty book.authors}">
 									<tr>
 										<th>Author Name: </th>
-										<td><form:input path="authors[0].authorsName" size="50"/></td>
+										<td><input type="text" name="authors[0].authorsName" size="50"/></td>
 									</tr>
 									<tr>
 										<th>Author Surname: </th>
-										<td><form:input path="authors[0].authorsSurname" size="50"/></td>
+										<td><input type="text" name="authors[0].authorsSurname" size="50"/></td>
 									</tr>
 								</c:if>
 							</tbody>
 						</table>
+						<input type="button" onclick="addRowForAuthor()" value="Add Author" class="add-button"/>
 					</div>
 					<br> 		
 					<div>
@@ -132,8 +134,47 @@
 						</table>
 					</div>
 					<br>
+				<input type="hidden" name="numOfAuthors" value="0" id="numClick">
 				<input type="submit" value="Save" class="add-button"/>			
 			</form:form>			
 		</div>
+		<script>
+				var numOfAuthors = 0;
+				function addRowForAuthor() {
+					numOfAuthors++;
+					var authors = document.getElementById('idAuthors');
+					var size = 50;
+					
+					var tr1 = document.createElement("tr");
+					var th1 = document.createElement("th");
+					var td1 = document.createElement("td");
+					var input1 = document.createElement("input");					
+					
+					th1.innerHTML = "Authors Name: ";
+					input1.setAttribute("name", "authors[" + numOfAuthors + "].authorsName");
+					input1.setAttribute("size", size);
+					td1.appendChild(input1);					
+					tr1.appendChild(th1);
+					tr1.appendChild(td1);
+					authors.appendChild(tr1);
+
+					var tr2 = document.createElement("tr");
+					var th2 = document.createElement("th");
+					var td2 = document.createElement("td");
+					var input2 = document.createElement("input");					
+					
+					th2.innerHTML = "Authors Surname: ";
+					input2.setAttribute("name", "authors[" + numOfAuthors + "].authorsSurname");
+					input2.setAttribute("size", size);
+					td2.appendChild(input2);					
+					tr2.appendChild(th2);
+					tr2.appendChild(td2);
+					authors.appendChild(tr2);
+
+					document.getElementById('numClick').value = numOfAuthors;
+					
+					return authors;
+				}
+			</script>
 	</body>
 </html>

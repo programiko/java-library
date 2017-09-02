@@ -140,16 +140,21 @@ public class BookController {
 		
 		
 		//add book metoda
+		@SuppressWarnings("unused")
 		public void addBook(Book theBook, HttpServletRequest req) {
 			
 			
+			int numOfAuthors = Integer.parseInt(req.getParameter("numOfAuthors"));
+			System.out.println("\n\n" + numOfAuthors + "\n\n");
 			
 			List<Publisher> p = new ArrayList<Publisher>();		
 			List<Authors> a = new ArrayList<Authors>();
+			Authors theAuthors;
 			
 			Publisher thePublisher = publisherService.findPublisherByName(req.getParameter("publishers[0].name"));
 			Category theCategory = categoryService.findCategoryByName(req.getParameter("category.name"));
-			Authors theAuthors = authorsService.findAuthorByName(req.getParameter("authors[0].authorsName"));
+			
+			
 			
 			if(thePublisher == null) {
 				thePublisher = new Publisher(req.getParameter("publishers[0].name"), req.getParameter("publishers[0].address"), req.getParameter("publishers[0].phone"));
@@ -172,20 +177,13 @@ public class BookController {
 				System.out.println("\n\nfrom else: " + theCategory + "\n\n");
 				theBook.setCategory(theCategory);
 			}
-						
-			if(theAuthors == null) {
-				theAuthors = new Authors(req.getParameter("authors[0].authorsName"), req.getParameter("authors[0].authorsSurname"));
-				authorsService.addAuthors(theAuthors);
-				a.add(theAuthors);
-				System.out.println("\n\nfrom if: " + theAuthors + "\n\n");
-				theBook.setAuthors(a);
-			}else {	
-				authorsService.addAuthors(theAuthors);
-				a.add(theAuthors);
-				System.out.println("\n\nfrom else: " + theAuthors + "\n\n");
-				theBook.setAuthors(a);
-			}
 			
+			for(int i = 0; i < numOfAuthors; i ++) {
+					theAuthors = new Authors(req.getParameter("authors[" + i + "].authorsName"), req.getParameter("authors[" + i + "].authorsSurname"));
+					authorsService.addAuthors(theAuthors);
+					a.add(theAuthors);
+				}
+			theBook.setAuthors(a);
 			bookService.addBook(theBook);
 			
 		}		
