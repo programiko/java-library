@@ -15,10 +15,9 @@
 		<div style="float: left">
 			<h3>Save Category</h3>
 		</div>
-		<div style="float: right">
-			<a href="${pageContext.request.contextPath}/category/categories"><button class="add-button">Categories</button></a>
-		</div>
-		<br><br><br><br><hr>
+		<br><br><br><br><hr><br>
+		<%@include file="navigation.jsp" %>
+		<br><br><hr><br><br><br>
 		<div align="center">
 			<form:form action="saveCategory" modelAttribute="category" method="POST">
 				<form:hidden path="id"/>

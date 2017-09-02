@@ -55,6 +55,10 @@ public class AuthorsServiceImpl implements AuthorsService{
 	
 		return authorsDAO.searchAutocomplete(nameAuthors);
 	}
+	public Authors findAuthorByName(String str) {
+		return authorsDAO.findAuthorByName(str);
+	}
+	
 
 	@Override
 	@Transactional

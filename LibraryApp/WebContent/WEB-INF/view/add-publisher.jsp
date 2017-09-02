@@ -14,10 +14,9 @@
 		<div style="float: left">
 			<h3>Save Publisher</h3>
 		</div>
-		<div style="float: right">
-			<a href="${pageContext.request.contextPath}/publisher/publishers"><button class="add-button">Publishers</button></a>
-		</div>
-		<br><br><br><br><hr>
+		<br><br><br><br><hr><br>
+		<%@include file="navigation.jsp" %>
+		<br><br><hr><br><br><br>
 		<div  align="center">
 			<form:form action="addPublisher" modelAttribute="publisher" method="POST">
 				<form:hidden path="id"/>

@@ -53,8 +53,6 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			Authors authors = session.get(Authors.class, id);
 			
 			session.delete(authors);
-		
-			
 		}
 
 		@Override
@@ -75,6 +73,15 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			return str;
 		}
 
+		public Authors findAuthorByName(String str) {
+			Session session = sessionFactory.getCurrentSession();
+			
+			@SuppressWarnings("rawtypes")
+			Query theQuery = session.createQuery("from Authors where authorsName like :str", Authors.class);
+			theQuery.setParameter("str", str);
+			Authors a = (Authors) theQuery.uniqueResult();
+			
+			return a;
 		@Override
 		public List<Authors> searchAuthorsByName(String nameAuthors) {
 			Session session = sessionFactory.getCurrentSession();

@@ -9,14 +9,13 @@
 	href="${pageContext.request.contextPath}/resources/css/style.css" />
 </head>
 <body>
-	<div>
+	<div>		
 		<div  style="float: left">
-			<h2>Member: ${member.memberName} ${member.memberSurename}</h2>
+			<h2>Member: ${member.memberName} ${member.memberSurename} ${member.memberClass}</h2>
 		</div>
-		<div style="float: right">
-			<a href="${pageContext.request.contextPath}/member/members"><button class="add-button">Members</button></a>
-		</div>
-		<br><br><br><br><hr>
+		<br><br><br><br><hr><br>
+		<%@include file="navigation.jsp" %>
+		<br><br><hr><br>
 		<table class="tg">
 			<tr>
 				<th>ID:</th>
@@ -47,28 +46,22 @@
 				<td>${member.memberClass}</td>
 			</tr>
 		</table>
-
-		<c:url var="booksForRentForm" value="/admin/booksForRentForm">
-			<c:param name="memberId" value="${member.memberId}" />
-		</c:url>
-
-		<div>
-			<p>
-				<a href="${booksForRentForm}"><input type="button"
-					value="Rent Books" class="add-button"></a>
-			</p>
-
-		</div>
 		<!-- Debits table -->
-		<div style=" float: left; width: 80%; margin: 0 10% 10% 10%" align="center">  
-		
+		<div style=" float: left; width: 80%; margin: 0 10% 10% 10%" align="center"> 	
 			<h3>Debits </h3> 
 		    <table class="tg">
+		    
+		    	<!-- Create a rent link with book id  -->
+				<c:url var="returnLink" value="/member/returnLink">
+					<c:param name="memberId" value="${member.memberId}"/>					
+					<c:forEach var="debit" items="${member.debits}">
+						<c:param name="debitsId" value="${debit.debitsId}"/>
+					</c:forEach>
+				</c:url>
+				  
 				<tr>
-					<th width="5%">Debits ID</th>
 					<th width="10%">Date of debit</th>
 					<th width="10%">Note</th>
-					<th width="5%">Book ID</th>
 					<th width="10%">Book Title</th>
 					<th width="10%">Book Author</th>
 					<th width="10%">Book Publisher</th>
@@ -77,10 +70,8 @@
 				<c:if test="${!empty member.debits}">
 					<c:forEach var="debit" items="${member.debits}">
 						<tr>
-							<td>${debit.debitsId}</td>
 							<td>${debit.dateOfDebit}</td>
 							<td>${debit.note}</td>
-							<td>${debit.book.bookId}</td>
 							<td>${debit.book.bookTitle}</td>
 							<td>
 								<c:if test="${!empty debit.book.authors}">
@@ -97,7 +88,7 @@
 				                    </c:forEach>
 				                 </c:if>
 							</td>
-							<td><a>Return</a></td>
+							<td><a href="${returnLink}">Return</a></td>
 						</tr>
 					</c:forEach>
 				</c:if>

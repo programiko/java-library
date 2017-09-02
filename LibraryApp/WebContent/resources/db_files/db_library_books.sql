@@ -44,7 +44,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,'Derviš i smrt',386,5,0,5,0,'R2:L3:4',1),(2,'Na Drini cuprija',400,10,0,0,0,'R2:L3:3',1),(3,'Gospodar prstenova',850,15,0,0,0,'R3:L3:3',2),(4,'Ilijada i odiseja',200,20,0,0,0,'R3:D3:3',4),(5,'Dozivljaji Nikoletine Bursaca',120,20,0,0,0,'R5:D5:3',3),(6,'Sumnjivo Lice',250,13,0,0,0,'R1:D1:5',6),(7,'Istor. naroda eng. gov. pod.',650,2,0,0,0,'R5:D2:1',10),(8,'Zlocin i kazna',650,30,0,0,0,'R2:D1:3',1),(9,'Budenbrokovi',350,10,0,0,0,'R2:D1:5',1),(10,'Mletacki trgovac',350,10,0,0,0,'R4:D4:2',6),(11,'Prog. Android aplikacija',350,10,0,0,0,'R1:D3:2',11);
+INSERT INTO `books` VALUES (1,'Derviš i smrt',386,5,0,0,0,'R2:L3:4',1),(2,'Na Drini cuprija',400,10,0,3,0,'R2:L3:3',1),(3,'Gospodar prstenova',850,15,0,1,0,'R3:L3:3',2),(4,'Ilijada i odiseja',200,20,0,0,0,'R3:D3:3',4),(5,'Dozivljaji Nikoletine Bursaca',120,20,0,0,0,'R5:D5:3',3),(6,'Sumnjivo Lice',250,13,0,0,0,'R1:D1:5',6),(7,'Istor. naroda eng. gov. pod.',650,2,0,1,0,'R5:D2:1',10),(8,'Zlocin i kazna',650,30,0,1,0,'R2:D1:3',1),(9,'Budenbrokovi',350,10,0,0,0,'R2:D1:5',1),(10,'Mletacki trgovac',350,10,0,1,0,'R4:D4:2',6),(11,'Prog. Android aplikacija',350,10,0,3,0,'R1:D3:2',11);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

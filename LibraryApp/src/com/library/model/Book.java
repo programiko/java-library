@@ -51,30 +51,28 @@ public class Book{
 	@Column(name="location")
 	private String bookLocation;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(name="affiliations", 
 				joinColumns=@JoinColumn(name="book_id"), 
 				inverseJoinColumns=@JoinColumn(name="author_id"))
 	private List<Authors> authors = new ArrayList<Authors>();
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(name="book_publisher", 
 				joinColumns=@JoinColumn(name="book_id"), 
 				inverseJoinColumns=@JoinColumn(name="publisher_id"))   
 	private List<Publisher> publishers;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name="category_id")
 	private Category category;
 	
-	@OneToMany(cascade=CascadeType.ALL)	
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="book_id")
 	private List<Debits> debit;	
-	
-	
-	
+		 
 	//constructors
-	public Book() {
+ 	public Book() {
 	}
 		
     public Book(String bookTitle, int numberOfPages, int numberOfCopies, int numberOfRenting, int numberOfRentedBook,
@@ -94,7 +92,6 @@ public class Book{
 	public int getBookId() {
 		return bookId;
 	}
-
 
 	public void setBookId(int bookId) {
 		this.bookId = bookId;
@@ -164,7 +161,6 @@ public class Book{
 		this.bookLocation = bookLocation;
 	}
 	
-	
 	public List<Authors> getAuthors() {
 		return authors;
 	}
@@ -176,6 +172,7 @@ public class Book{
 	public List<Publisher> getPublishers() {
 		return publishers;
 	}
+	
 	public void setPublishers(List<Publisher> publishers) {
 		this.publishers = publishers;
 	}
@@ -187,11 +184,9 @@ public class Book{
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
+
+
 	//toString() method
-	
-
-
 	@Override
 	public String toString() {
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", numberOfPages=" + numberOfPages

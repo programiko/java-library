@@ -3,6 +3,9 @@ package com.library.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,18 +28,18 @@ import com.library.service.PublisherService;
 @RequestMapping("/book")
 public class BookController {
 
-	@Autowired
-	private BookService bookService;
-	@Autowired
-	private CategoryService categoryService;
-	@Autowired
-	private PublisherService publisherService;
-	@Autowired
-	AuthorsService authorsService;
+		@Autowired
+		private BookService bookService;
+		@Autowired
+		private CategoryService categoryService;
+		@Autowired
+		private PublisherService publisherService;
+		@Autowired
+		AuthorsService authorsService;
 	
 	
 	@GetMapping("/books")
-    public String listBooks(Model model) {
+    	public String listBooks(Model model) {
     	
 		Book book = new Book();
     	model.addAttribute("books", book);
@@ -45,35 +48,36 @@ public class BookController {
     }
 	
 	@GetMapping("/showFormForAdd")
-    public String showFormForAdd(Model model) {
-    			
-    	model.addAttribute("book", new Book());
-    	
-    	
+    	public String showFormForAdd(Model model, HttpServletRequest req, HttpServletResponse res) {
+		
+		Book theBook = new Book();	
+		
+		model.addAttribute("book", theBook);
+    	  	
     	return "addBook";
     }
 	
-	@PostMapping("/saveBook")
-    public String saveBook(@ModelAttribute("book") Book theBook) {
-		
-		
-		System.out.println(theBook);
-		
-		bookService.addBook(theBook);
-		categoryService.addCategory(theBook.getCategory());
-		authorsService.addAuthorsList(theBook.getAuthors());
-		publisherService.addPublisherList(theBook.getPublishers());
-		
+		@PostMapping("/saveBook")
+    	public String saveBook(@ModelAttribute("book") Book theBook, 
+    							@ModelAttribute("update") String update,
+				    			HttpServletRequest req) {
+			
+			if(update.equals("update")) {
+				updateBook(theBook);
+			}else {		
+				addBook(theBook, req);
+			}
     	
     	return "redirect:/book/books";
     }
 	
-	 @GetMapping("/showFormForUpdate")
+	 	@GetMapping("/showFormForUpdate")
 	    public String showFormForUpdate(@RequestParam("bookId") int bookId, 
-										@RequestParam("id") int categoryId, 
-										@RequestParam("id") int publisherId,
+										@RequestParam("categoryId") int categoryId, 
 										@RequestParam("authorsId") int authorsId,
-										Model model) {
+										@RequestParam("publishersId") int publisherId,
+										Model model, 
+						    			HttpServletRequest req) {
 
 	    	Book theBook = bookService.getBookById(bookId);
 	    	Category theCategory = categoryService.getCategoryById(categoryId);
@@ -86,24 +90,14 @@ public class BookController {
 	    	List<Publisher> p = new ArrayList<Publisher>();
 	    	p.add(thePublisher);
 	    	
-	    	
-	    	
-	    	System.out.println("\n\nbegin book by id\n");
-	    	System.out.println(theBook);
-			System.out.println(theCategory);
-			System.out.println(thePublisher);
-			System.out.println(theAuthor);
-			
-			System.out.println("\n\nend book by id\n");
-	    	
 			theBook.setAuthors(a);
 			theBook.setPublishers(p);
 			theBook.setCategory(theCategory);
 			
+			String update = req.getParameter("update");
+			
 	    	model.addAttribute("book", theBook);
-	    	model.addAttribute("category", theCategory);
-	    	model.addAttribute("publisher", p);
-	    	model.addAttribute("author", a);
+	    	model.addAttribute("update", update);
 	    	
 	    	return "addBook";
 	    }
@@ -142,6 +136,70 @@ public class BookController {
 	    	model.addAttribute("listBooks", bookService.getBooksForCategory(categoryId));
 	        return "books";
 	    }
+
+		
+		
+		//add book metoda
+		public void addBook(Book theBook, HttpServletRequest req) {
+			
+			
+			
+			List<Publisher> p = new ArrayList<Publisher>();		
+			List<Authors> a = new ArrayList<Authors>();
+			
+			Publisher thePublisher = publisherService.findPublisherByName(req.getParameter("publishers[0].name"));
+			Category theCategory = categoryService.findCategoryByName(req.getParameter("category.name"));
+			Authors theAuthors = authorsService.findAuthorByName(req.getParameter("authors[0].authorsName"));
+			
+			if(thePublisher == null) {
+				thePublisher = new Publisher(req.getParameter("publishers[0].name"), req.getParameter("publishers[0].address"), req.getParameter("publishers[0].phone"));
+				publisherService.addPublisher(thePublisher);
+				p.add(thePublisher);
+				theBook.setPublishers(p);
+			}else {	
+				publisherService.addPublisher(thePublisher);
+				p.add(thePublisher);
+				theBook.setPublishers(p);	
+			}	
+						
+			if(theCategory == null) {
+				theCategory = new Category(req.getParameter("category.name"), req.getParameter("category.description"));
+				categoryService.addCategory(theCategory);
+				System.out.println("\n\nfrom if: " + theCategory + "\n\n");
+				theBook.setCategory(theCategory);
+			}else {	
+				categoryService.addCategory(theCategory);
+				System.out.println("\n\nfrom else: " + theCategory + "\n\n");
+				theBook.setCategory(theCategory);
+			}
+						
+			if(theAuthors == null) {
+				theAuthors = new Authors(req.getParameter("authors[0].authorsName"), req.getParameter("authors[0].authorsSurname"));
+				authorsService.addAuthors(theAuthors);
+				a.add(theAuthors);
+				System.out.println("\n\nfrom if: " + theAuthors + "\n\n");
+				theBook.setAuthors(a);
+			}else {	
+				authorsService.addAuthors(theAuthors);
+				a.add(theAuthors);
+				System.out.println("\n\nfrom else: " + theAuthors + "\n\n");
+				theBook.setAuthors(a);
+			}
+			
+			bookService.addBook(theBook);
+			
+		}
+		//update metoda
+		// update book metoda
+		
+		//update book metoda
+		public void updateBook(Book theBook) {
+			
+			bookService.addBook(theBook);
+			categoryService.addCategory(theBook.getCategory());
+			authorsService.addAuthorsList(theBook.getAuthors());
+			publisherService.addPublisherList(theBook.getPublishers());			
+		}
 }
 
 

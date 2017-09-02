@@ -25,13 +25,10 @@
 		    <!-- Debits table -->    
 		    <table class="tg">
 		        <tr>
-		            <th width="3%">Debits ID</th>
 		            <th width="8%">Date of debit</th>  
 		            <th width="8%">Note</th>
-		            <th width="3%">Member Id</th>
 		            <th width="8%">Member Name</th>
 		            <th width="8%">Member Class</th>
-		            <th width="3%">Book Id</th>
 		            <th width="8%">Book Title</th>
 		            <th width="8%">Book Category</th>
 		            <th width="8%">Book Author</th>
@@ -41,16 +38,13 @@
 		        <c:if test="${!empty listDebits}">
 		            <c:forEach var="debit" items="${listDebits}">
 		                <tr>
-		                    <td>${debit.debitsId}</td>
 		                    <td>${debit.dateOfDebit}</td>
 		                    <td>${debit.note}</td>
-		                    <td>${debit.member.memberId}</td>
 		                    <td>
 		                    	${debit.member.memberName} 
 		                    	${debit.member.memberSurename}
 		                    </td>
 		                    <td>${debit.member.memberClass}</td>
-		                    <td>${debit.book.bookId}</td>
 		                    <td>${debit.book.bookTitle}</td>
 		                    <td>${debit.book.category.name}</td>
 		                    <td>

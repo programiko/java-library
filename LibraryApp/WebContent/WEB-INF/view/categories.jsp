@@ -76,7 +76,6 @@
 		 <div style=" float: left; width: 80%; margin: 0 10% 10% 10%">
 			<table class="tg">
 		        <tr>
-		            <th width="10%">Category ID</th>
 		            <th width="10%">Category Name</th>
 		            <th width="10%">Category description</th>
 				    <th width="10%">View books</th> 
@@ -97,7 +96,6 @@
 		       		<c:param name="categoryId" value="${category.id}"/>
 		       	</c:url>      
 		                <tr>
-		                    <td>${category.id}</td>
 		                    <td>${category.name}</td>
 		                    <td>${category.description}</td>
 							<td><a href="${bookLink}">Books</a></td>

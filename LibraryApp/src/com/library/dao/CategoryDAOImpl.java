@@ -89,4 +89,18 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return categoryList;
 	}
 
+	@Override
+	public Category findCategoryByName(String str) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		@SuppressWarnings("rawtypes")
+		Query theQuery = session.createQuery("from Category where name like :str", Category.class);
+		theQuery.setParameter("str", str);
+		Category c = (Category) theQuery.uniqueResult();
+		System.out.println("\n\n from dao:" + c + "\n\n");
+		System.out.println("\n\n from dao:" + str + "\n\n");
+		return c;
+	}
+
 }

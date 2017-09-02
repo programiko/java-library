@@ -1,4 +1,4 @@
-<div style="float: left">
+<div style="float: left;">
 	<a href="${pageContext.request.contextPath}/main-page"><button class="add-button">Home</button></a>			
 		
 	<a href="${pageContext.request.contextPath}/book/books"><button class="add-button">Books</button></a>

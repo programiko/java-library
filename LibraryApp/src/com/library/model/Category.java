@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class Category {
 	@Column(name="description")
 	String description;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="category")	
+	@OneToMany(mappedBy="category", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)	
 	private List<Book> books;
 	
 	public int getId() {
@@ -55,9 +56,8 @@ public class Category {
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
-	public Category(int id, String name, String description) {
+	public Category(String name, String description) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.description = description;
 	}

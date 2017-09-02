@@ -76,7 +76,6 @@
     	<div style=" float: left; width: 80%; margin: 0 10% 10% 10%">   
 		    <table class="tg">
 		        <tr>
-		            <th width="5%">Member ID</th>
 		            <th width="15%">Member Name</th>
 		            <th width="15%">Member Surname</th>  
 		            <th width="15%">Member Address</th>
@@ -96,20 +95,25 @@
 		       			<c:url var="deleteLink" value="/member/deleteMember">
 		       				<c:param name="memberId" value="${member.memberId}"/>
 		       			</c:url>
-		       			<!-- Create an view profile link with member id -->
-		       			<c:url var="viewProfile" value="/member/viewProfile">
+		       			<!-- Create an rent/return link with member id -->
+		       			<c:url var="returnBook" value="/member/returnBook">
+		       				<c:param name="memberId" value="${member.memberId}"/>
+		       			</c:url>
+		       			<c:url var="rentBook" value="/member/rentBook">
 		       				<c:param name="memberId" value="${member.memberId}"/>
 		       			</c:url>
 		                
 		                <tr>
-		                    <td>${member.memberId}</td>
 		                    <td>${member.memberName}</td>
 		                    <td>${member.memberSurename}</td>
 		                    <td>${member.memberAddress}</td>
 		                    <td>${member.memberPhone}</td>
 		                    <td>${member.memberActivity}</td>
 		                    <td>${member.memberClass}</td>
-		                    <td><a href="${viewProfile}">View Profile</a></td>
+		                    <td>
+		                    	<a href="${returnBook}">Return</a> | 
+		                    	<a href="${rentBook}">Rent</a>
+		                    </td>
 		                    <td><a href="${updateLink}">Update</a> | 
 		                    	<a href="${deleteLink}" 
 		                    	onclick="if(!(confirm('Are you sure you want to delete this MEMBER?'))) return false"

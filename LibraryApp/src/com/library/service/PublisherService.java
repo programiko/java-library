@@ -20,4 +20,5 @@ public interface PublisherService {
 	
 	public List<Publisher> searchPublisherByName(String namePublisher);
     
+	public Publisher findPublisherByName(String str);
 }

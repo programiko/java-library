@@ -60,6 +60,10 @@ public class CategoryServiceImpl implements CategoryService {
 		// TODO Auto-generated method stub
 		return cateogoryDAO.searchAutocomplete(nameCategory);
 	}
+	public Category findCategoryByName(String str) {
+		return cateogoryDAO.findCategoryByName(str);
+	}
+
 
 	@Override
 	@Transactional

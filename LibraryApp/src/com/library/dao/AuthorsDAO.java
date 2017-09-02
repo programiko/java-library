@@ -17,6 +17,8 @@ public interface AuthorsDAO {
 		public void addAuthorsList(List<Authors> authors);
 
 	    public List<String> searchAutocomplete(String nameAuthors);
+		public Authors findAuthorByName(String str);
+
 	    
 	    public List<Authors> searchAuthorsByName(String nameAuthors);
 

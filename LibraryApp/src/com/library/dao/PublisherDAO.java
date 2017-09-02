@@ -22,5 +22,7 @@ public interface PublisherDAO {
 	public List<String> searchAutocomplete(String namePublisher);
 	
 	public List<Publisher> searchPublisherByName(String namePublisher);
+	
+	public Publisher findPublisherByName(String str);
     
 }

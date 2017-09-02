@@ -75,7 +75,6 @@
 		<div style=" float: left; width: 80%; margin: 0 10% 10% 10%">		
 			<table class="tg" >
 				 <tr>    
-				 	<th width="10%">ID</th>
 				    <th width="10%">Name</th>
 				    <th width="10%">Address</th>  
 				    <th width="10%">Phone</th>
@@ -100,7 +99,6 @@
 					</c:url>
 					
 					<tr>
-						<td>${tempPublisher.id }</td>
 						<td>${tempPublisher.name }</td>
 						<td>${tempPublisher.address }</td>
 						<td>${tempPublisher.phone }</td>
