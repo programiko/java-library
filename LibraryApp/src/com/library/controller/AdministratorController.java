@@ -2,7 +2,6 @@ package com.library.controller;
 
 import java.util.List;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,16 +16,15 @@ import com.library.model.Administrator;
 import com.library.service.AdministratorService;
 import com.library.service.BookService;
 
-
 @Controller  
 @RequestMapping("/admin")
-
 public class AdministratorController {  
 	
 	@Autowired
 	private AdministratorService adminService;
 	
-	@Autowired BookService bookService;
+	@Autowired 
+	private BookService bookService;
 
     @RequestMapping(value = "/administrators", method = RequestMethod.GET)
     public String listAdministrators(Model model) {

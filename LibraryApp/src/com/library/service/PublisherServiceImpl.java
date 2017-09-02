@@ -54,7 +54,9 @@ public class PublisherServiceImpl implements PublisherService {
 	public Publisher findPublisherByName(String str) {
 		return publisherDAO.findPublisherByName(str);
 	}
-
+	
+	@Override
+	@Transactional
 	public List<String> searchAutocomplete(String namePublisher) {
 		// TODO Auto-generated method stub
 		return publisherDAO.searchAutocomplete(namePublisher);
@@ -67,4 +69,5 @@ public class PublisherServiceImpl implements PublisherService {
 		return publisherDAO.searchPublisherByName(namePublisher);
 	}
 
+	
 }

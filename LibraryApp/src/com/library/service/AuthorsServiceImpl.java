@@ -48,6 +48,12 @@ public class AuthorsServiceImpl implements AuthorsService{
 	public void addAuthorsList(List<Authors> authors) {
 		authorsDAO.addAuthorsList(authors);
 	}
+	
+	@Override
+	@Transactional
+	public Authors findAuthorByName(String str) {
+		return authorsDAO.findAuthorByName(str);
+	}
 
 	@Override
 	@Transactional
@@ -55,11 +61,7 @@ public class AuthorsServiceImpl implements AuthorsService{
 	
 		return authorsDAO.searchAutocomplete(nameAuthors);
 	}
-	public Authors findAuthorByName(String str) {
-		return authorsDAO.findAuthorByName(str);
-	}
 	
-
 	@Override
 	@Transactional
 	public List<Authors> searchAuthorsByName(String nameAuthors) {

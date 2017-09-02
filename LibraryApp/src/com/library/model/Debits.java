@@ -12,14 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name="debits")
 public class Debits {
 
 	//table columns
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
@@ -41,7 +38,6 @@ public class Debits {
 	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name="book_id")
 	private Book book;
-
 	
 	//constructors
 	public Debits() {
@@ -53,8 +49,6 @@ public class Debits {
 		this.returnDate = returnDate;
 		this.note = note;
 	}
-	
-	
 	
 	public Debits(Date dateOfDebit, String note, Book book) {
 		super();

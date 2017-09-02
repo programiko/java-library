@@ -13,12 +13,10 @@ import com.library.model.Publisher;
 @Repository
 public class PublisherDAOImpl implements PublisherDAO {
 	
-	// inject session factory
-	
+	// inject session factory	
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	
 	@Override
 	public List<Publisher> getPublisher() {
 		
@@ -102,7 +100,6 @@ public class PublisherDAOImpl implements PublisherDAO {
 		return publisherList;
 	}
 
-	
 	public Publisher findPublisherByName(String str) {
 		
 		Session session = sessionFactory.getCurrentSession();
@@ -116,10 +113,3 @@ public class PublisherDAOImpl implements PublisherDAO {
 	}
 
 }
-
-
-
-
-
-
-

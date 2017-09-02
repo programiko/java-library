@@ -16,9 +16,10 @@ public interface PublisherService {
 
 	public void addPublisherList(List<Publisher> publishers);  
 	
+	public Publisher findPublisherByName(String str);
+	
 	public List<String> searchAutocomplete(String namePublisher);
 	
 	public List<Publisher> searchPublisherByName(String namePublisher);
     
-	public Publisher findPublisherByName(String str);
 }

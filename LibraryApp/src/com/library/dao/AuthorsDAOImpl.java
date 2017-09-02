@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.library.model.Authors;
 
-
 @Repository
 public class AuthorsDAOImpl implements AuthorsDAO{
 
@@ -39,8 +38,7 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 		@Override
 		public Authors getAuthorsById(int id) {
 			//get the current hibernate session
-			Session session = sessionFactory.getCurrentSession();
-			
+			Session session = sessionFactory.getCurrentSession();		
 			//now retrive from database using the primary key
 			Authors authors = session.get(Authors.class, id);
 					return authors;
@@ -48,10 +46,8 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 
 		@Override
 		public void removeAuthors(int id) {
-			Session session = sessionFactory.getCurrentSession();
-			
-			Authors authors = session.get(Authors.class, id);
-			
+			Session session = sessionFactory.getCurrentSession();			
+			Authors authors = session.get(Authors.class, id);			
 			session.delete(authors);
 		}
 
@@ -61,6 +57,18 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			for(Authors a: authors) {
 				session.saveOrUpdate(a);
 			}
+		}
+		
+		@Override
+		public Authors findAuthorByName(String str) {
+			Session session = sessionFactory.getCurrentSession();
+			
+			@SuppressWarnings("rawtypes")
+			Query theQuery = session.createQuery("from Authors where authorsName like :str", Authors.class);
+			theQuery.setParameter("str", str);
+			Authors a = (Authors) theQuery.uniqueResult();
+			
+			return a;
 		}
 
 		@Override
@@ -72,17 +80,7 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			List<String> str = theQuery.list();
 			return str;
 		}
-
-		public Authors findAuthorByName(String str) {
-			Session session = sessionFactory.getCurrentSession();
-			
-			@SuppressWarnings("rawtypes")
-			Query theQuery = session.createQuery("from Authors where authorsName like :str", Authors.class);
-			theQuery.setParameter("str", str);
-			Authors a = (Authors) theQuery.uniqueResult();
-			
-			return a;
-		}
+		
 		@Override
 		public List<Authors> searchAuthorsByName(String nameAuthors) {
 			Session session = sessionFactory.getCurrentSession();

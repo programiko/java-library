@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name="publishers")
 public class Publisher{
@@ -43,7 +41,7 @@ public class Publisher{
 		this.address = address;
 		this.phone = phone;
 	}
-
+	
 	public int getId() {
 		return id;
 	}

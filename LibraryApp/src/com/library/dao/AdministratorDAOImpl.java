@@ -12,6 +12,7 @@ import com.library.model.Administrator;
 
 @Repository
 public class AdministratorDAOImpl implements AdministratorDAO {
+	
 	@Autowired
     private SessionFactory sessionFactory;
     
@@ -56,8 +57,6 @@ public class AdministratorDAOImpl implements AdministratorDAO {
 		Administrator admin = session.get(Administrator.class, id );
 		
 		session.remove(admin);
-		
-		
 	}
 
 	@Override
@@ -68,7 +67,6 @@ public class AdministratorDAOImpl implements AdministratorDAO {
 		Administrator admin = session.get(Administrator.class, id);
 		
 		return admin;
-		
 	}
 
 
@@ -76,23 +74,16 @@ public class AdministratorDAOImpl implements AdministratorDAO {
 	public void addAdministrator(Administrator admin) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(admin);
-		
-	
-		
+		session.saveOrUpdate(admin);		
 	}
 
 
 	@Override
 	public Administrator getById(int id) {
 		
-		Session session = sessionFactory.getCurrentSession();
-		
-		Administrator admin = new Administrator();
-		
-		session.load(Administrator.class, id);
-		
-		
+		Session session = sessionFactory.getCurrentSession();	
+		Administrator admin = new Administrator();	
+		session.load(Administrator.class, id);		
 		
 		return admin;
 	}
@@ -101,19 +92,15 @@ public class AdministratorDAOImpl implements AdministratorDAO {
 	public boolean checkAdmin(String username, String password) {
 		boolean adminFound = false;
 		
-		Session session = sessionFactory.getCurrentSession();
-		
-		Query query = session.createQuery("from Administrator  where username = ? and password = ? ");
-		
+		Session session = sessionFactory.getCurrentSession();		
+		Query query = session.createQuery("from Administrator  where username = ? and password = ? ");		
 		query.setParameter(0, username);
 		query.setParameter(1, password);
 		
 		List list = query.list();
 		
-		if ((list != null) && list.size() > 0 ) {
-			
-			adminFound = true;
-			
+		if ((list != null) && list.size() > 0 ) {		
+			adminFound = true;		
 		} 
 		return adminFound;
 	}
@@ -122,26 +109,14 @@ public class AdministratorDAOImpl implements AdministratorDAO {
 	@Override
 	public Administrator getSuper(String username) {
 		
-		Session session = sessionFactory.getCurrentSession();
-		
-		Administrator admin = new Administrator();
-		
-		Query query = session.createQuery("from Administrator ad where ad.username = :username");
-		
+		Session session = sessionFactory.getCurrentSession();	
+		Administrator admin = new Administrator();	
+		Query query = session.createQuery("from Administrator ad where ad.username = :username");		
 		query.setParameter("username", "superuser");
 		
-		
 		List list = query.getResultList();
-		
-		
+				
 		return admin;
 	}
 
-
-
-
-	
- 
-
- 
 }

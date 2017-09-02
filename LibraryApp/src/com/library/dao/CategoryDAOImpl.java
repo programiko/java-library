@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.library.model.Category;
+
 @Repository
 public class CategoryDAOImpl implements CategoryDAO {
 	
@@ -70,6 +71,20 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	@Override
+	public Category findCategoryByName(String str) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		@SuppressWarnings("rawtypes")
+		Query theQuery = session.createQuery("from Category where name like :str", Category.class);
+		theQuery.setParameter("str", str);
+		Category c = (Category) theQuery.uniqueResult();
+		System.out.println("\n\n from dao:" + c + "\n\n");
+		System.out.println("\n\n from dao:" + str + "\n\n");
+		return c;
+	}
+	
+	@Override
 	public List<String> searchAutocomplete(String nameCategory) {
 		
 		Session session = sessionFactory.getCurrentSession();
@@ -86,20 +101,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 		theQuery.setParameter("n", nameCategory + "%");
 		List<Category> categoryList = theQuery.list();
 		return categoryList;
-	}
-
-	@Override
-	public Category findCategoryByName(String str) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		
-		@SuppressWarnings("rawtypes")
-		Query theQuery = session.createQuery("from Category where name like :str", Category.class);
-		theQuery.setParameter("str", str);
-		Category c = (Category) theQuery.uniqueResult();
-		System.out.println("\n\n from dao:" + c + "\n\n");
-		System.out.println("\n\n from dao:" + str + "\n\n");
-		return c;
 	}
 
 }
