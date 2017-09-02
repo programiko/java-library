@@ -56,4 +56,26 @@ public class BookServiceImpl implements BookService {
 	public List<Book> getBooksForCategory(int id) {
 		return bookDAO.getBooksForCategory(id);
 	}
+
+	@Override
+	@Transactional
+	public List<String> searchAutocomplete(String nameBook) {
+		// TODO Auto-generated method stub
+		return bookDAO.searchAutocomplete(nameBook);
+	}
+
+	@Override
+	@Transactional
+	public List<Book> searchBooksByName(String nameBook) {
+		// TODO Auto-generated method stub
+		return bookDAO.searchBooksByName(nameBook);
+	}
+
+	@Override
+	@Transactional
+	public List<Book> getTopBook() {
+		return bookDAO.getTopBook();
+	}
+
+
 }

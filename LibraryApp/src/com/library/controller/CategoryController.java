@@ -81,7 +81,8 @@ public class CategoryController {
 
 		String term = request.getParameter("term");
 		String searchList = new Gson().toJson(categoryService.searchAutocomplete(term));
-		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(searchList);
 	}
 	

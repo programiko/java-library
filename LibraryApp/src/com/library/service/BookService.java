@@ -19,5 +19,11 @@ public interface BookService {
     public List<Book> getBooksForPublisher(int id);
     
     public List<Book> getBooksForCategory(int id);
+    
+    public List<String> searchAutocomplete(String nameBook);
+    
+    public List<Book> searchBooksByName(String nameBook);
+    
+    public List<Book> getTopBook();
 
 }

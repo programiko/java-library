@@ -73,9 +73,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public List<String> searchAutocomplete(String nameCategory) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		Query<String> theQuery = session.createQuery("select name from Category where name like :n",String.class);
-		theQuery.setParameter("n", nameCategory + "%");
-		List<String> str = theQuery.list();
+		Query<String> theQuery = session.createQuery("select name from Category where name like '"+nameCategory+"%'",String.class);
+		List<String> str = theQuery.getResultList();
 		return str;
 	}
 
