@@ -140,7 +140,6 @@ public class BookController {
 		
 		
 		//add book metoda
-		@SuppressWarnings("unused")
 		public void addBook(Book theBook, HttpServletRequest req) {
 			
 			
@@ -178,9 +177,10 @@ public class BookController {
 				theBook.setCategory(theCategory);
 			}
 			
-			for(int i = 0; i < numOfAuthors; i ++) {
+			for(int i = 0; i < (numOfAuthors + 1); i ++) {
 					theAuthors = new Authors(req.getParameter("authors[" + i + "].authorsName"), req.getParameter("authors[" + i + "].authorsSurname"));
 					authorsService.addAuthors(theAuthors);
+					System.out.println("\n\n" + theAuthors + "\n\n");
 					a.add(theAuthors);
 				}
 			theBook.setAuthors(a);
