@@ -63,7 +63,7 @@ public class BookController {
 				    			HttpServletRequest req) {
 			
 			if(update.equals("update")) {
-				updateBook(theBook);
+				updateBook(theBook, req);
 			}else {		
 				addBook(theBook, req);
 			}
@@ -71,35 +71,45 @@ public class BookController {
     	return "redirect:/book/books";
     }
 	
-	 	@GetMapping("/showFormForUpdate")
+	 	@RequestMapping("/showFormForUpdate")
 	    public String showFormForUpdate(@RequestParam("bookId") int bookId, 
 										@RequestParam("categoryId") int categoryId, 
-										@RequestParam("authorsId") int authorsId,
 										@RequestParam("publishersId") int publisherId,
+										@RequestParam("authorsId") int authorsId,
+										@RequestParam("numOfAuthors") int numOfAuthors,
 										Model model, 
 						    			HttpServletRequest req) {
-
-	    	Book theBook = bookService.getBookById(bookId);
-	    	Category theCategory = categoryService.getCategoryById(categoryId);
-	    	Publisher thePublisher = publisherService.getPublisherById(publisherId);
-	    	Authors theAuthor = authorsService.getAuthorsById(authorsId);
+	 				
+//	    	Book theBook = bookService.getBookById(bookId);
 	    	
-	    	List<Authors> a = new ArrayList<Authors>();
-	    	a.add(theAuthor);
-	    	
-	    	List<Publisher> p = new ArrayList<Publisher>();
-	    	p.add(thePublisher);
-	    	
-			theBook.setAuthors(a);
-			theBook.setPublishers(p);
-			theBook.setCategory(theCategory);
-			
-			String update = req.getParameter("update");
-			
-	    	model.addAttribute("book", theBook);
-	    	model.addAttribute("update", update);
-	    	
-	    	return "addBook";
+//	 		List<Authors> a = new ArrayList<Authors>();	 
+//	    	for(int i = 0; i < (numOfAuthors); i ++) {	 		
+//	 			Authors theAuthor = authorsService.getAuthorsById(authorsId);
+//	 			a.add(theAuthor);
+//	 			System.out.println("\n\n" + theAuthor);
+//	    	}
+    	
+	 			Book theBook = bookService.getBookById(bookId);
+		    	Category theCategory = categoryService.getCategoryById(categoryId);
+		    	Publisher thePublisher = publisherService.getPublisherById(publisherId);
+		    	Authors theAuthor = authorsService.getAuthorsById(authorsId);
+		    	
+		    	List<Authors> a = new ArrayList<Authors>();
+		    	a.add(theAuthor);
+		    	
+		    	List<Publisher> p = new ArrayList<Publisher>();
+		    	p.add(thePublisher);
+		    	
+				theBook.setAuthors(a);
+				theBook.setPublishers(p);
+				theBook.setCategory(theCategory);
+				
+				String update = req.getParameter("update");
+				
+		    	model.addAttribute("book", theBook);
+		    	model.addAttribute("update", update);
+		    	
+		    	return "addBook";
 	    }
 	    
 	    @GetMapping("/deleteBook")
@@ -148,7 +158,6 @@ public class BookController {
 			
 			List<Publisher> p = new ArrayList<Publisher>();		
 			List<Authors> a = new ArrayList<Authors>();
-			Authors theAuthors;
 			
 			Publisher thePublisher = publisherService.findPublisherByName(req.getParameter("publishers[0].name"));
 			Category theCategory = categoryService.findCategoryByName(req.getParameter("category.name"));
@@ -169,7 +178,6 @@ public class BookController {
 			if(theCategory == null) {
 				theCategory = new Category(req.getParameter("category.name"), req.getParameter("category.description"));
 				categoryService.addCategory(theCategory);
-				System.out.println("\n\nfrom if: " + theCategory + "\n\n");
 				theBook.setCategory(theCategory);
 			}else {	
 				categoryService.addCategory(theCategory);
@@ -177,23 +185,39 @@ public class BookController {
 				theBook.setCategory(theCategory);
 			}
 			
-			for(int i = 0; i < (numOfAuthors + 1); i ++) {
+			boolean authorExists = false;
+			for(int i = 0; i < (numOfAuthors + 1); i++) {
+				Authors theAuthors = new Authors();
+				List<Authors> authorListWithName = authorsService.findAuthorByNames(req.getParameter("authors[" + i + "].authorsName"));
+				if(!authorListWithName.equals(null)) {
+					for(int j = 0; j < authorListWithName.size(); j++) {
+						if(req.getParameter("authors[" + i + "].authorsSurname").equals(authorListWithName.get(j).getAuthorsSurname())) {
+							theAuthors = authorListWithName.get(j);
+							authorsService.addAuthors(theAuthors);
+							authorExists = true;
+							System.out.println("\n\n" + theAuthors);
+						}
+					}
+				}
+				if(authorExists == false){
 					theAuthors = new Authors(req.getParameter("authors[" + i + "].authorsName"), req.getParameter("authors[" + i + "].authorsSurname"));
 					authorsService.addAuthors(theAuthors);
-					System.out.println("\n\n" + theAuthors + "\n\n");
-					a.add(theAuthors);
 				}
+					a.add(theAuthors);
+			}
 			theBook.setAuthors(a);
 			bookService.addBook(theBook);
 			
 		}		
 		//update book metoda
-		public void updateBook(Book theBook) {
+		public void updateBook(Book theBook, HttpServletRequest req) {
+			
 			
 			bookService.addBook(theBook);
 			categoryService.addCategory(theBook.getCategory());
 			authorsService.addAuthorsList(theBook.getAuthors());
-			publisherService.addPublisherList(theBook.getPublishers());			
+			publisherService.addPublisherList(theBook.getPublishers());		
+			
 		}
 }
 

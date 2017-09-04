@@ -1,6 +1,7 @@
 package com.library.dao;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -28,10 +29,6 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			Query<Authors> theQuery = session.createQuery("from Authors", Authors.class);
 			List<Authors> theAuthors = theQuery.getResultList();
 			
-			for(Authors a: theAuthors) {
-				System.out.println("Authors List" + a + "\n");
-				
-			}
 			return theAuthors;
 		}
 
@@ -63,13 +60,14 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 		}
 
 		@Override
-		public Authors findAuthorByName(String str) {
+		public List<Authors> findAuthorByNames(String str) {
 			Session session = sessionFactory.getCurrentSession();
+			List<Authors> a = new ArrayList<>();
 			
-			@SuppressWarnings("rawtypes")
 			Query theQuery = session.createQuery("from Authors where authorsName like :str", Authors.class);
 			theQuery.setParameter("str", str);
-			Authors a = (Authors) theQuery.uniqueResult();
+			
+			a = theQuery.getResultList();
 			
 			return a;
 		}

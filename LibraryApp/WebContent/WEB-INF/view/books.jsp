@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -93,7 +94,7 @@
 		                    <td>${book.numberOfRentedBook}</td>
 		                    <td>${book.bookRating}</td>
 		                    <td>${book.bookLocation}</td>
-		                    <td><a href="${updateLink}&update=update">Update</a> | 
+		                    <td><a href="${updateLink}&update=update&numOfAuthors=${fn:length(book.authors)}">Update</a> | 
 		                    	<a href="${deleteLink}"
 		                    	   onclick="if(!(confirm('Are you sure you want to delete this BOOK?'))) return false"
 		                    	>Delete</a></td>

@@ -53,7 +53,7 @@
 							<tbody id = "idAuthors">
 								<c:if test="${!empty book.authors}">
 									<c:forEach var="author" items="${book.authors}" varStatus="status">
-										<form:hidden path="authors[${status.index}].authorsId"/>
+										<input type="hidden" name="authors[${status.index}].authorsId" value="authors[${status.index}].authorsId"/>
 										<tr>
 											<th>Author Name: </th>
 											<td><form:input path="authors[${status.index}].authorsName" size="50"/></td>
@@ -85,7 +85,7 @@
 							<tbody>
 								<c:if test="${!empty book.publishers}">
 									<c:forEach var="publisher" items="${book.publishers}" varStatus="status">
-									<	form:hidden path="publishers[${status.index}].id"/>
+									<input type="hidden" name="publishers[${status.index}].id"/>
 										<tr>
 											<th>Publisher Name: </th>
 											<td><form:input path="publishers[${status.index}].name" size="50"/></td>

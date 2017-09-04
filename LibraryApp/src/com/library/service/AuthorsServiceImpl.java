@@ -51,8 +51,8 @@ public class AuthorsServiceImpl implements AuthorsService{
 
 	@Override
 	@Transactional
-	public Authors findAuthorByName(String str) {
-		return authorsDAO.findAuthorByName(str);
+	public List<Authors> findAuthorByNames(String str) {
+		return authorsDAO.findAuthorByNames(str);
 	}
 	
 }
