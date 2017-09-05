@@ -75,27 +75,23 @@ public class BookController {
 	    public String showFormForUpdate(@RequestParam("bookId") int bookId, 
 										@RequestParam("categoryId") int categoryId, 
 										@RequestParam("publishersId") int publisherId,
-										@RequestParam("authorsId") int authorsId,
+										@RequestParam("authorsId") int[] authorsId,
 										@RequestParam("numOfAuthors") int numOfAuthors,
 										Model model, 
 						    			HttpServletRequest req) {
 	 				
-//	    	Book theBook = bookService.getBookById(bookId);
+	    	Book theBook = bookService.getBookById(bookId);
 	    	
-//	 		List<Authors> a = new ArrayList<Authors>();	 
-//	    	for(int i = 0; i < (numOfAuthors); i ++) {	 		
-//	 			Authors theAuthor = authorsService.getAuthorsById(authorsId);
-//	 			a.add(theAuthor);
-//	 			System.out.println("\n\n" + theAuthor);
-//	    	}
+	 		List<Authors> a = new ArrayList<Authors>();	 
+	    	for(int i = 0; i < (numOfAuthors); i ++) {	 		
+	 			Authors theAuthor = authorsService.getAuthorsById(authorsId[i]);
+	 			a.add(theAuthor);
+	 			System.out.println("\n\n" + theAuthor);
+	    	}
     	
-	 			Book theBook = bookService.getBookById(bookId);
 		    	Category theCategory = categoryService.getCategoryById(categoryId);
 		    	Publisher thePublisher = publisherService.getPublisherById(publisherId);
-		    	Authors theAuthor = authorsService.getAuthorsById(authorsId);
-		    	
-		    	List<Authors> a = new ArrayList<Authors>();
-		    	a.add(theAuthor);
+		    
 		    	
 		    	List<Publisher> p = new ArrayList<Publisher>();
 		    	p.add(thePublisher);
