@@ -86,7 +86,7 @@
 							<tbody>
 								<c:if test="${!empty book.publishers}">
 									<c:forEach var="publisher" items="${book.publishers}" varStatus="status">
-									<input type="hidden" name="publishers[${status.index}].id"/>
+									<form:hidden path="publishers[${status.index}].id"/>
 										<tr>
 											<th>Publisher Name: </th>
 											<td><form:input path="publishers[${status.index}].name" size="50"/></td>
