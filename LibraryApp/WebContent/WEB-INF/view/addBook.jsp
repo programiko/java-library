@@ -54,7 +54,7 @@
 								<c:if test="${!empty book.authors}">
 									<c:forEach var="author" items="${book.authors}" varStatus="status">
 										<form:hidden path="authors[${status.index}].authorsId"/>
-										<tr>
+										<tr >
 											<th>Author Name: </th>
 											<td><form:input path="authors[${status.index}].authorsName" size="50"/></td>
 										</tr>
@@ -67,7 +67,7 @@
 								<c:if test="${empty book.authors}">
 									<tr>
 										<th>Author Name: </th>
-										<td><input type="text" name="authors[0].authorsName" size="50"/></td>
+										<td><input type="text" name="authors[0].authorsName" size="50" /></td>
 									</tr>
 									<tr>
 										<th>Author Surname: </th>
@@ -77,6 +77,7 @@
 							</tbody>
 						</table>
 						<input type="button" onclick="addRowForAuthor()" value="Add Author" class="add-button"/>
+						<input type="button" onclick="removeField('idAuthors')" value="Remove Author" class="remove-button" id="remove"/>
 					</div>
 					<br> 		
 					<div>
@@ -175,6 +176,15 @@
 					
 					return authors;
 				}
+				/*	function removeField(){
+						$(".remove-button").on('click', function() {
+							
+							$(this).prev().remove();
+						   $(this).remove();
+						});
+					}
+				*/
+	
 			</script>
 	</body>
 </html>

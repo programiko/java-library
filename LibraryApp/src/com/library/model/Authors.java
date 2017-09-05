@@ -33,6 +33,7 @@ public class Authors{
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy="authors", cascade = CascadeType.REMOVE) 
 	private List<Book> books;
 	
+	
 	public Authors(String authorsName, String authorsSurname) {
 		super();
 		this.authorsName = authorsName;

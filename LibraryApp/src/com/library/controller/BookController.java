@@ -195,6 +195,14 @@ public class BookController {
 			authorsService.addAuthorsList(theBook.getAuthors());
 			publisherService.addPublisherList(theBook.getPublishers());			
 		}
+		
+		public String deleteBook(Book theBook) {
+			
+			
+			
+			
+			return "redirect:/book/books";
+		}
 }
 
 

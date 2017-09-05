@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.library.model.Authors;
+import com.library.model.Book;
 import com.library.service.AuthorsService;
 
 @Controller  
@@ -19,7 +20,7 @@ public class AuthorsController {
 	//need to inject the authors dao
 	@Autowired
 	private AuthorsService authorsService;
-
+	
     @GetMapping("/authors")
     public String listAuthors(Model model) {
     	
@@ -60,6 +61,7 @@ public class AuthorsController {
     
     @GetMapping("/delete")
     public String deleteAuthors(@RequestParam("authorsId") int authorsId) {
+
     	
     	authorsService.removeAuthors(authorsId);
     	

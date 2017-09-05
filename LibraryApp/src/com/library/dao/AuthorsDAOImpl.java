@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.library.model.Authors;
+import com.library.model.Book;
 
 @Repository
 public class AuthorsDAOImpl implements AuthorsDAO{
@@ -50,6 +51,13 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			Session session = sessionFactory.getCurrentSession();
 			
 			Authors authors = session.get(Authors.class, id);
+			
+			 
+			for (Book b: authors.getBooks()) {
+				
+				b.getAuthors().remove(authors);
+			}
+			authors.getBooks().clear();
 			
 			session.delete(authors);
 		}
