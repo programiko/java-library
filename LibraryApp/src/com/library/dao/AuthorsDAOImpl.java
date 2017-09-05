@@ -59,6 +59,7 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			}
 		}
 
+		@SuppressWarnings({ "rawtypes", "unchecked" })
 		@Override
 		public List<Authors> findAuthorByNames(String str) {
 			Session session = sessionFactory.getCurrentSession();

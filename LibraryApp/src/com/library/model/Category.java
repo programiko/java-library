@@ -28,7 +28,7 @@ public class Category {
 	@Column(name="description")
 	String description;
 	
-	@OneToMany(mappedBy="category", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)	
+	@OneToMany(mappedBy="category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)	
 	private List<Book> books;
 	
 	public int getId() {

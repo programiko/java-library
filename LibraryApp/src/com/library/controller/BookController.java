@@ -62,8 +62,11 @@ public class BookController {
     							@ModelAttribute("update") String update,
 				    			HttpServletRequest req) {
 			
-			if(update.equals("update")) {
-				updateBook(theBook, req);
+			if(update.equals("update")) {				
+				bookService.addBook(theBook);
+				categoryService.addCategory(theBook.getCategory());
+				authorsService.addAuthorsList(theBook.getAuthors());
+				publisherService.addPublisherList(theBook.getPublishers());	
 			}else {		
 				addBook(theBook, req);
 			}
@@ -78,29 +81,34 @@ public class BookController {
 										@RequestParam("authorsId") int[] authorsId,
 										@RequestParam("numOfAuthors") int numOfAuthors,
 										Model model, 
-						    			HttpServletRequest req) {
-	 				
-	    	Book theBook = bookService.getBookById(bookId);
-	    	
+										HttpServletRequest req) {
+	 		
+Book theBook = bookService.getBookById(bookId);
+	 		
+	 		
 	 		List<Authors> a = new ArrayList<Authors>();	 
 	    	for(int i = 0; i < (numOfAuthors); i ++) {	 		
 	 			Authors theAuthor = authorsService.getAuthorsById(authorsId[i]);
+	 			authorsService.addAuthors(theAuthor);
 	 			a.add(theAuthor);
-	 			System.out.println("\n\n" + theAuthor);
 	    	}
     	
 		    	Category theCategory = categoryService.getCategoryById(categoryId);
+		    	categoryService.addCategory(theCategory);
+		    	
 		    	Publisher thePublisher = publisherService.getPublisherById(publisherId);
-		    
+		    	publisherService.addPublisher(thePublisher);	    
 		    	
 		    	List<Publisher> p = new ArrayList<Publisher>();
 		    	p.add(thePublisher);
-		    	
+				
+				String update = req.getParameter("update");
+				
 				theBook.setAuthors(a);
 				theBook.setPublishers(p);
 				theBook.setCategory(theCategory);
 				
-				String update = req.getParameter("update");
+				bookService.addBook(theBook);
 				
 		    	model.addAttribute("book", theBook);
 		    	model.addAttribute("update", update);
@@ -205,16 +213,7 @@ public class BookController {
 			bookService.addBook(theBook);
 			
 		}		
-		//update book metoda
-		public void updateBook(Book theBook, HttpServletRequest req) {
-			
-			
-			bookService.addBook(theBook);
-			categoryService.addCategory(theBook.getCategory());
-			authorsService.addAuthorsList(theBook.getAuthors());
-			publisherService.addPublisherList(theBook.getPublishers());		
-			
-		}
+
 }
 
 
