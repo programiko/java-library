@@ -54,6 +54,7 @@ public class BookController {
 		Book theBook = new Book();	
 		
 		model.addAttribute("book", theBook);
+		model.addAttribute("c", categoryService.getCategory());
     	  	
     	return "addBook";
     }
@@ -148,6 +149,8 @@ public class BookController {
 			Category theCategory = categoryService.findCategoryByName(req.getParameter("category.name"));
 			Authors theAuthors = authorsService.findAuthorByName(req.getParameter("authors[0].authorsName"));
 			
+			Authors ta = authorsService.findAuthorByName(req.getParameter("authors[1].authorsName"));
+			
 			if(thePublisher == null) {
 				thePublisher = new Publisher(req.getParameter("publishers[0].name"), req.getParameter("publishers[0].address"), req.getParameter("publishers[0].phone"));
 				publisherService.addPublisher(thePublisher);
@@ -172,8 +175,11 @@ public class BookController {
 						
 			if(theAuthors == null) {
 				theAuthors = new Authors(req.getParameter("authors[0].authorsName"), req.getParameter("authors[0].authorsSurname"));
+				ta = new Authors(req.getParameter("authors[1].authorsName"), req.getParameter("authors[1].authorsSurname"));
 				authorsService.addAuthors(theAuthors);
+				authorsService.addAuthors(ta);
 				a.add(theAuthors);
+				a.add(ta);
 				System.out.println("\n\nfrom if: " + theAuthors + "\n\n");
 				theBook.setAuthors(a);
 			}else {	

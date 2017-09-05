@@ -96,7 +96,7 @@ public class BookDAOImpl implements BookDAO {
 		//Query<String> theQuery = session.createQuery("select concat(bookTitle,' ',category.name) from Book where bookTitle like :n or category.name like :n",String.class);
 		//Query<String> theQuery = session.createQuery("select bookTitle from Book where bookTitle like :n",String.class);
 		Query<String> theQuery = session.createQuery("select concat(b.bookTitle,' | ',p.name,' | ',a.authorsName,' ',a.authorsSurname,' | ',c.name) from Book b join b.publishers p join b.authors a join b.category c where b.bookTitle like :n or p.name like :n or a.authorsName like :n or a.authorsSurname like :n or c.name like :n",String.class);
-		theQuery.setParameter("n", nameBook + "%");
+		theQuery.setParameter("n", "%"+ nameBook + "%");
 		List<String> str = theQuery.list();
 		return str;
 	}
@@ -108,7 +108,7 @@ public class BookDAOImpl implements BookDAO {
 		//Query<Book> theQuery = session.createQuery("select b from Book b join b.publishers p where p.name like :n",Book.class);
 		
 		
-		theQuery.setParameter("n", nameBook + "%");
+		theQuery.setParameter("n", "%"+nameBook + "%");
 		List<Book> bookList = theQuery.list();
 		return bookList;
 	}

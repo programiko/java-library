@@ -9,6 +9,72 @@
 		<link type="text/css"
 			rel="stylesheet"
 			href="${pageContext.request.contextPath}/resources/css/style.css" />
+			
+			<!-- dugme za dodavanje -->
+
+ 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+			 <!-- JavaScript -->
+			  
+	 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
+	 
+	  	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	   	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  		
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$(function() {
+			$("#search").autocomplete({
+				source : function(request, response) {
+					$.ajax({
+						url : "${pageContext.request.contextPath}/publisher/search",
+						type : "GET",
+						data : {
+							term : request.term
+						},
+						
+						dataType : "json",
+						
+						success : function(data) {
+							
+							response(data);
+							
+						
+						}
+					});
+				}
+			});
+			
+			$('#search').bind('click keyup', function(e) {
+
+			    if ( e.keyCode === 13 || e.type === 'click') { // 13 is enter key
+			      $.ajax({
+			   	   type: "POST", 
+			   	   dataType: "html", 
+			   	   url: "${pageContext.request.contextPath}/publisher/sara", 
+			   	   data: "name=" + $('#search').val(),
+			   	   success: function(response){
+			   		   var t = response;
+			   		   var obj = JSON.parse(t);
+			   		$('#example').val(obj.address);
+			   	      $('#example1').val(obj.phone);
+			   	   }
+			   	});
+			    }
+
+
+
+			    });
+
+			});
+		});
+
+
+	</script>
+			
 	</head>
 	<body>
 		<div style="float: left">
@@ -77,9 +143,12 @@
 										<th>Author Surname: </th>
 										<td><form:input path="authors[0].authorsSurname" size="50"/></td>
 									</tr>
+										
 								</c:if>
+								
 							</tbody>
 						</table>
+					
 					</div>
 					<br> 		
 					<div>
@@ -88,7 +157,7 @@
 							<tbody>
 								<c:if test="${!empty book.publishers}">
 									<c:forEach var="publisher" items="${book.publishers}" varStatus="status">
-									<	form:hidden path="publishers[${status.index}].id"/>
+									<form:hidden path="publishers[${status.index}].id"/>
 										<tr>
 											<th>Publisher Name: </th>
 											<td><form:input path="publishers[${status.index}].name" size="50"/></td>
@@ -106,15 +175,15 @@
 								<c:if test="${empty book.publishers}">
 									<tr>
 										<th>Publisher Name: </th>
-										<td><form:input path="publishers[0].name" size="50"/></td>
+										<td><form:input path="publishers[0].name" size="50" id="search"/></td>
 									</tr>
 									<tr>
 										<th>Publisher Address: </th>
-										<td><form:input path="publishers[0].address" size="50"/></td>
+										<td><form:input path="publishers[0].address" size="50" id="example"/></td>
 									</tr>
 									<tr>
 										<th>Publisher Phone: </th>
-										<td><form:input path="publishers[0].phone" size="50"/></td>
+										<td><form:input path="publishers[0].phone" size="50" id="example1"/></td>
 									</tr>
 								</c:if>
 							</tbody>
@@ -127,12 +196,14 @@
 							<tbody>
 								<tr>
 									<th>Category: </th>
-									<td><form:input path="category.name" size="50"/></td>
+									<td ><form:select path="category.name" id="category" >
+									<c:forEach var="c" items="${c}">
+									<option value="${c.name}" >${c.name}</option>
+									</c:forEach>
+									</form:select></td>
+									<!--  <td><form:input path="category.name" size="50"/></td>-->
 								</tr>
-								<tr>
-									<th>Category Description: </th>
-									<td><form:textarea path="category.description" rows="5" cols="50"/></td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>
@@ -140,5 +211,6 @@
 				<input type="submit" value="Save" class="add-button"/>			
 			</form:form>			
 		</div>
+
 	</body>
 </html>

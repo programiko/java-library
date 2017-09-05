@@ -86,7 +86,7 @@ public class PublisherDAOImpl implements PublisherDAO {
 	public List<String> searchAutocomplete(String namePublisher) {
 		Session session = sessionFactory.getCurrentSession();
 		Query<String> theQuery = session.createQuery("select name from Publisher where name like :n",String.class);
-		theQuery.setParameter("n", namePublisher + "%");
+		theQuery.setParameter("n", "%"+ namePublisher + "%");
 		List<String> str = theQuery.list();
 		return str;
 	}
@@ -95,7 +95,7 @@ public class PublisherDAOImpl implements PublisherDAO {
 	public List<Publisher> searchPublisherByName(String namePublisher) {
 		Session session = sessionFactory.getCurrentSession();
 		Query<Publisher> theQuery = session.createQuery("from Publisher where name like :n",Publisher.class);
-		theQuery.setParameter("n", namePublisher + "%");
+		theQuery.setParameter("n","%"+namePublisher + "%");
 		List<Publisher> publisherList = theQuery.list();
 		return publisherList;
 	}

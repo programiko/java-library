@@ -101,6 +101,7 @@ public class PublisherController {
 		
 		String term = request.getParameter("term");
 		String searchList = new Gson().toJson(publisherService.searchAutocomplete(term));
+		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(searchList);
@@ -111,5 +112,18 @@ public class PublisherController {
 		
 		model.addAttribute("publisher", publisherService.searchPublisherByName(str));
 		return "publishers";
+	}
+	
+	@PostMapping("/sara")
+	void sara(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		String term = request.getParameter("name");
+		Publisher publ = publisherService.findPublisherByName(term);
+		Publisher publ2 = new Publisher(publ.getName(), publ.getAddress(), publ.getPhone());
+		String p = new Gson().toJson(publ2);
+		System.out.println(p);
+		//System.out.println(term);
+			response.getWriter().write(p);
 	}
 }
