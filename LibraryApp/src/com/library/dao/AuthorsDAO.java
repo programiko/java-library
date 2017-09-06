@@ -16,7 +16,7 @@ public interface AuthorsDAO {
 
 		public void addAuthorsList(List<Authors> authors);
 
-		public Authors findAuthorByName(String str);
+		public List<Authors> findAuthorByNames(String str);
 
 	
 
