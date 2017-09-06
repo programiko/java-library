@@ -17,12 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name="books")
 public class Book{
-
 	
 	//table columns
 	@Id
@@ -195,47 +192,6 @@ public class Book{
 				+ bookLocation + ", publishers=" + publishers.toString() + "author=" + authors.toString()
 				+ ", category" + category +"]";
 	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

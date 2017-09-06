@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity 
 @Table (name = "categories")
 
@@ -30,6 +28,15 @@ public class Category {
 	
 	@OneToMany(mappedBy="category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)	
 	private List<Book> books;
+	
+	public Category(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
+	public Category() {
+		super();
+	}
 	
 	public int getId() {
 		return id;
@@ -56,15 +63,7 @@ public class Category {
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
-	public Category(String name, String description) {
-		super();
-		this.name = name;
-		this.description = description;
-	}
-	public Category() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", name=" + name + ", description=" + description + "]";

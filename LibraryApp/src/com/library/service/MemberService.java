@@ -13,4 +13,8 @@ public interface MemberService {
     public Member getMemberById(int id);
  
     public void removeMember(int id);
+    
+    public List<String> searchAutocomplete(String nameMember);
+    
+    public List<Member> searchMemberByName(String nameMember);
 }

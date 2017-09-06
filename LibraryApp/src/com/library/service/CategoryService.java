@@ -17,7 +17,11 @@ public interface CategoryService {
     public void removeCategory(int id);
     
     public Category updateCategory(int id);
-
+    
 	public Category findCategoryByName(String str);
+    
+    public List<String> searchAutocomplete(String nameCategory);
+    
+    public List<Category> searchCategoryByName(String nameCategory);
     
 }

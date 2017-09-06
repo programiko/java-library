@@ -1,10 +1,14 @@
 package com.library.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.Gson;
 import com.library.model.Book;
 import com.library.model.Debits;
 import com.library.model.Member;
@@ -174,7 +179,35 @@ public class MemberController{
     	
     }
     
-    
+	@GetMapping("/search")
+	void search(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		//new String(request.getParameter("term").getBytes("ISO-8859-1"),"UTF-8");
+				
+		String term = request.getParameter("term");
+	
+		String searchList = new Gson().toJson(memberService.searchAutocomplete(term));
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+	response.getWriter().write(searchList);
+	}
+	
+	@PostMapping("/searchByName")
+	public String searchByName(@RequestParam("search") String str, Model model) {
+		if(str != null && str.length()>0) {
+		String[] parts = str.split(" ");
+		String part1 = parts[0];
+	
+		model.addAttribute("listMembers", memberService.searchMemberByName(part1));
+		return "members";
+		}else {
+	        model.addAttribute("listMembers", memberService.getMembers());
+	        
+	        return "members";
+		}
+		
+	}
     
 }
 

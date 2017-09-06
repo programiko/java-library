@@ -15,7 +15,11 @@ public interface AuthorsService {
     public void removeAuthors(int id);
 
 	public void addAuthorsList(List<Authors> authors);
-
+	
 	public List<Authors> findAuthorByNames(String str);
+	
+    public List<String> searchAutocomplete(String nameAuthors);
+    
+    public List<Authors> searchAuthorsByName(String nameAuthors);
 	
 }

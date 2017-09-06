@@ -36,8 +36,7 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 		@Override
 		public Authors getAuthorsById(int id) {
 			//get the current hibernate session
-			Session session = sessionFactory.getCurrentSession();
-			
+			Session session = sessionFactory.getCurrentSession();		
 			//now retrive from database using the primary key
 			Authors authors = session.get(Authors.class, id);
 					return authors;
@@ -45,10 +44,8 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 
 		@Override
 		public void removeAuthors(int id) {
-			Session session = sessionFactory.getCurrentSession();
-			
-			Authors authors = session.get(Authors.class, id);
-			
+			Session session = sessionFactory.getCurrentSession();			
+			Authors authors = session.get(Authors.class, id);			
 			 
 			for (Book b: authors.getBooks()) {
 				
@@ -66,7 +63,7 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 				session.saveOrUpdate(a);
 			}
 		}
-
+		
 		@SuppressWarnings({ "rawtypes", "unchecked" })
 		@Override
 		public List<Authors> findAuthorByNames(String str) {
@@ -79,6 +76,25 @@ public class AuthorsDAOImpl implements AuthorsDAO{
 			a = theQuery.getResultList();
 			
 			return a;
+		}
+
+		@Override
+		public List<String> searchAutocomplete(String nameAuthors) {
+
+			Session session = sessionFactory.getCurrentSession();
+			Query<String> theQuery = session.createQuery("select concat(authorsName, ' ',authorsSurname) from Authors where authorsName like :n or authorsSurname like :n",String.class);
+			theQuery.setParameter("n", "%"+ nameAuthors + "%");
+			List<String> str = theQuery.list();
+			return str;
+		}
+		
+		@Override
+		public List<Authors> searchAuthorsByName(String nameAuthors) {
+			Session session = sessionFactory.getCurrentSession();
+			Query<Authors> theQuery = session.createQuery("from Authors where authorsName like :n",Authors.class);
+			theQuery.setParameter("n","%"+ nameAuthors + "%");
+			List<Authors> authorsList = theQuery.list();
+			return authorsList;
 		}
 	
 }

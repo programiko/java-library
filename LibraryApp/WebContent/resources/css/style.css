@@ -47,3 +47,7 @@
 	padding: 5px 10px;
 	margin-bottom: 15px;
 }
+
+.tg form:select {
+	width: 150px;
+}

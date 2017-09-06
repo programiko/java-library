@@ -1,6 +1,10 @@
 package com.library.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.Gson;
 import com.library.model.Publisher;
 import com.library.service.BookService;
 import com.library.service.PublisherService;
@@ -88,5 +93,37 @@ public class PublisherController {
 		
 		//stay on same page
 		return "redirect:/publisher/publishers";
+	}
+	
+	@GetMapping("/search")
+	void search(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		String term = request.getParameter("term");
+		String searchList = new Gson().toJson(publisherService.searchAutocomplete(term));
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(searchList);
+	}
+	
+	@PostMapping("/searchByName")
+	public String searchByName(@RequestParam("search") String str, Model model) {
+		
+		model.addAttribute("publisher", publisherService.searchPublisherByName(str));
+		return "publishers";
+	}
+	
+	@PostMapping("/sara")
+	void sara(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		String term = request.getParameter("name");
+		Publisher publ = publisherService.findPublisherByName(term);
+		Publisher publ2 = new Publisher(publ.getName(), publ.getAddress(), publ.getPhone());
+		String p = new Gson().toJson(publ2);
+		System.out.println(p);
+		//System.out.println(term);
+			response.getWriter().write(p);
 	}
 }

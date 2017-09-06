@@ -1,5 +1,6 @@
 package com.library.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.Gson;
 import com.library.model.Authors;
 import com.library.model.Book;
 import com.library.model.Category;
@@ -28,18 +30,17 @@ import com.library.service.PublisherService;
 @RequestMapping("/book")
 public class BookController {
 
-		@Autowired
-		private BookService bookService;
-		@Autowired
-		private CategoryService categoryService;
-		@Autowired
-		private PublisherService publisherService;
-		@Autowired
-		AuthorsService authorsService;
-	
+	@Autowired
+	private BookService bookService;
+	@Autowired
+	private CategoryService categoryService;
+	@Autowired
+	private PublisherService publisherService;
+	@Autowired
+	AuthorsService authorsService;
 	
 	@GetMapping("/books")
-    	public String listBooks(Model model) {
+    public String listBooks(Model model) {
     	
 		Book book = new Book();
     	model.addAttribute("books", book);
@@ -53,14 +54,15 @@ public class BookController {
 		Book theBook = new Book();	
 		
 		model.addAttribute("book", theBook);
+		model.addAttribute("c", categoryService.getCategory());
     	  	
     	return "addBook";
     }
 	
-		@PostMapping("/saveBook")
-    	public String saveBook(@ModelAttribute("book") Book theBook, 
-    							@ModelAttribute("update") String update,
-				    			HttpServletRequest req) {
+	@PostMapping("/saveBook")
+    public String saveBook(@ModelAttribute("book") Book theBook, 
+    						@ModelAttribute("update") String update,
+				    		HttpServletRequest req) {
 			
 			if(update.equals("update")) {				
 				bookService.addBook(theBook);
@@ -150,16 +152,12 @@ Book theBook = bookService.getBookById(bookId);
 	    	model.addAttribute("listBooks", bookService.getBooksForCategory(categoryId));
 	        return "books";
 	    }
-
-		
-		
+	
 		//add book metoda
 		public void addBook(Book theBook, HttpServletRequest req) {
-			
-			
+				
 			int numOfAuthors = Integer.parseInt(req.getParameter("numOfAuthors"));
 			System.out.println("\n\n" + numOfAuthors + "\n\n");
-			
 			List<Publisher> p = new ArrayList<Publisher>();		
 			List<Authors> a = new ArrayList<Authors>();
 			
@@ -167,6 +165,8 @@ Book theBook = bookService.getBookById(bookId);
 			Category theCategory = categoryService.findCategoryByName(req.getParameter("category.name"));
 			
 			
+			
+			Authors ta = authorsService.findAuthorByName(req.getParameter("authors[1].authorsName"));
 			
 			if(thePublisher == null) {
 				thePublisher = new Publisher(req.getParameter("publishers[0].name"), req.getParameter("publishers[0].address"), req.getParameter("publishers[0].phone"));
@@ -221,6 +221,34 @@ Book theBook = bookService.getBookById(bookId);
 			
 			
 			return "redirect:/book/books";
+		}
+		
+		@GetMapping("/search")
+		void search(HttpServletRequest request,
+				HttpServletResponse response) throws IOException {
+					
+			String term = request.getParameter("term");
+		
+			String searchList = new Gson().toJson(bookService.searchAutocomplete(term));
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(searchList);
+		}
+		
+		@PostMapping("/searchByName")
+		public String searchByName(@RequestParam("search") String str, Model model) {
+			if(str != null && str.length()>0) {
+			String[] parts = str.split(" ");
+			String part1 = parts[0];
+		
+			model.addAttribute("listBooks", bookService.searchBooksByName(part1));
+			
+			return "books";
+			}else {
+		        model.addAttribute("listBooks", bookService.getBooks());
+		        
+		        return "books";
+			}	
 		}
 }
 

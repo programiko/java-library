@@ -12,13 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name="members")
 public class Member {
-	
-	
+		
 	//table columns
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

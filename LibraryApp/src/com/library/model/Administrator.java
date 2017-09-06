@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.sun.istack.internal.NotNull;
+
 @Entity
 @Table(name = "administrators")
 public class Administrator{
@@ -17,6 +19,7 @@ public class Administrator{
 	private Integer id;
 	
 	@Column(name = "username")
+	@NotNull
 	private String username;
 	
 	@Column(name = "password")
@@ -53,10 +56,13 @@ public class Administrator{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	@Override
 	public String toString() {
-	return "Person [id=" + id + ", Username=" + username + ", Password" + password + "]";
+		return "Administrator [id=" + id + ", username=" + username + ", password=" + password + "]";
 	}
+	
+	
+	
 
 }

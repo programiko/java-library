@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name="authors")
 
@@ -40,6 +38,9 @@ public class Authors{
 		this.authorsSurname = authorsSurname;
 	}
 
+	public Authors() {
+		
+	}
 
 	public int getAuthorsId() {
 		return authorsId;
@@ -70,29 +71,20 @@ public class Authors{
 		this.authorsSurname = authorsSurname;
 	}
 
-	
-	public Authors() {
-		
-	}
-
-
-	@Override
-	public String toString() {
-		return "Authors [authorsId=" + authorsId + ", authorsName=" + authorsName + ", authorsSurname=" + authorsSurname
-				+ "]";
-	}
-
-
 	public List<Book> getBooks() {
 		return books;
 	}
-
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Authors [authorsId=" + authorsId + ", authorsName=" + authorsName + ", authorsSurname=" + authorsSurname
+				+ "]";
+	}
+		
 		
 }
 

@@ -13,7 +13,6 @@ import com.library.model.Category;
 public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
-	
 	private CategoryDAO cateogoryDAO;
 	
 	@Override
@@ -21,14 +20,11 @@ public class CategoryServiceImpl implements CategoryService {
 	public void addCategory(Category category) {
 		
 		cateogoryDAO.addCategory(category);
-
 	}
 
 	@Override
 	@Transactional
-	public List<Category> getCategory() {
-		
-		
+	public List<Category> getCategory() {		
 		return cateogoryDAO.getCategory();
 	}
 
@@ -44,7 +40,6 @@ public class CategoryServiceImpl implements CategoryService {
 	public void removeCategory(int id) {
 		
 		cateogoryDAO.removeCategory(id);
-
 	}
 
 	@Override
@@ -58,6 +53,21 @@ public class CategoryServiceImpl implements CategoryService {
 	@Transactional
 	public Category findCategoryByName(String str) {
 		return cateogoryDAO.findCategoryByName(str);
+	}
+	
+	@Override
+	@Transactional
+	public List<String> searchAutocomplete(String nameCategory) {
+		// TODO Auto-generated method stub
+		return cateogoryDAO.searchAutocomplete(nameCategory);
+	}
+
+
+	@Override
+	@Transactional
+	public List<Category> searchCategoryByName(String nameCategory) {
+		// TODO Auto-generated method stub
+		return cateogoryDAO.searchCategoryByName(nameCategory);
 	}
 
 }
